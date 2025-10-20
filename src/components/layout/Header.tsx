@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
@@ -13,7 +14,6 @@ const navLinks = [
   { href: '/courses', label: 'Courses' },
   { href: '/internship', label: 'Internship' },
   { href: '/solutions', label: 'Solutions' },
-  { href: '/mentorship', label: 'Mentorship' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -28,10 +28,22 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-red via-primary-orange to-primary-amber rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
-            </div>
-            <span className="text-xl md:text-2xl font-bold font-display">
+            {/* Light mode - black logo, Dark mode - yellow logo */}
+            <Image
+              src="/images/blacklogo.png"
+              alt="Practicode Logo"
+              width={28}
+              height={28}
+              className="dark:hidden object-contain"
+            />
+            <Image
+              src="/images/yellowlogo.png"
+              alt="Practicode Logo"
+              width={28}
+              height={28}
+              className="hidden dark:block object-contain"
+            />
+            <span className="text-xl md:text-2xl font-semibold font-display">
               Practi<span className="text-primary-red">code</span>
             </span>
           </Link>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 const footerLinks = {
@@ -45,10 +46,14 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-red via-primary-orange to-primary-amber rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
-              </div>
-              <span className="text-xl md:text-2xl font-bold font-display">
+              <Image
+                src="/images/yellowlogo.png"
+                alt="Practicode Logo"
+                width={28}
+                height={28}
+                className="object-contain"
+              />
+              <span className="text-xl md:text-2xl font-semibold font-display">
                 Practi<span className="text-primary-red">code</span>
               </span>
             </Link>
