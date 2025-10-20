@@ -15,11 +15,12 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         
         <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="text-center"
             >
               <div className="inline-block px-4 py-2 bg-primary-red/20 border border-primary-red rounded-full mb-6">
                 <span className="text-primary-amber font-semibold">🚀 Empowering Tech Futures</span>
@@ -30,11 +31,11 @@ export default function HomePage() {
                 <span className="text-gradient">Practicode</span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Transform your career with world-class training in Web Development, Data Analytics, UI/UX Design, and Digital Marketing. Learn from industry experts in Ibadan, Nigeria.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/courses">
                   <Button size="lg" className="group">
                     Explore Courses
@@ -48,36 +49,20 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="mt-12 grid grid-cols-3 gap-6">
+              <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
                 <div>
-                  <div className="text-3xl font-bold text-primary-amber">500+</div>
+                  <div className="text-4xl font-bold text-primary-amber mb-2">500+</div>
                   <div className="text-gray-400 text-sm">Students Trained</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary-amber">95%</div>
+                  <div className="text-4xl font-bold text-primary-amber mb-2">95%</div>
                   <div className="text-gray-400 text-sm">Success Rate</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary-amber">50+</div>
+                  <div className="text-4xl font-bold text-primary-amber mb-2">50+</div>
                   <div className="text-gray-400 text-sm">Partner Companies</div>
                 </div>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="hidden lg:block relative"
-            >
-              <div className="relative z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600"
-                  alt="Students learning"
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-red via-primary-orange to-primary-amber opacity-20 rounded-2xl blur-3xl" />
             </motion.div>
           </div>
         </div>
