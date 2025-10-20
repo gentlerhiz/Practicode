@@ -135,16 +135,16 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <Card className="bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber text-white border-0">
-            <CardContent className="text-center py-12">
-              <h2 className="heading-3 mb-4">Ready to Transform Your Business?</h2>
-              <p className="text-lg mb-6 max-w-2xl mx-auto">
+          <Card className="bg-primary-red text-white border-0">
+            <CardContent className="text-center py-8">
+              <h2 className="heading-3 mb-3">Ready to Transform Your Business?</h2>
+              <p className="text-base mb-6 max-w-2xl mx-auto">
                 Let&apos;s discuss how we can help you achieve your digital goals with our expert solutions.
               </p>
               <Link href="/contact">
-                <Button size="lg" className="bg-white text-primary-red hover:bg-gray-100">
+                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
                   Start Your Project
                 </Button>
               </Link>

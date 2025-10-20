@@ -9,12 +9,11 @@
   }
 
   * {
-    @apply border-gray-200 dark:border-gray-800;
+    @apply border-gray-200;
   }
 
   body {
-    @apply bg-white dark:bg-primary-black text-primary-black dark:text-white;
-    @apply transition-colors duration-300;
+    @apply bg-white text-primary-black;
   }
 
   html {
@@ -47,24 +46,20 @@
     @apply text-xl md:text-2xl font-semibold;
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber bg-clip-text text-transparent;
-  }
-
   .btn-primary {
-    @apply bg-primary-red hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply bg-primary-red hover:bg-yellow-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
   }
 
   .btn-secondary {
-    @apply bg-primary-amber hover:bg-yellow-500 text-primary-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply bg-primary-amber hover:bg-yellow-500 text-gray-900 font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
   }
 
   .btn-outline {
-    @apply border-2 border-primary-red text-primary-red dark:text-white hover:bg-primary-red hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply border-2 border-primary-red text-primary-red hover:bg-primary-red hover:text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
   }
 
   .card {
-    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6;
+    @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6;
   }
 
   .card-hover {

@@ -229,16 +229,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <Card className="bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber text-white border-0">
-            <CardContent className="text-center py-12">
-              <h2 className="heading-3 mb-4">Join Our Growing Community</h2>
-              <p className="text-lg mb-6 max-w-2xl mx-auto">
+          <Card className="bg-primary-red text-white border-0">
+            <CardContent className="text-center py-8">
+              <h2 className="heading-3 mb-3">Join Our Growing Community</h2>
+              <p className="text-base mb-6 max-w-2xl mx-auto">
                 Be part of the Practicode family and start your journey to tech excellence today.
               </p>
               <Link href="/courses">
-                <Button size="lg" className="bg-white text-primary-red hover:bg-gray-100">
+                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
                   Explore Courses
                 </Button>
               </Link>

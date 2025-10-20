@@ -128,11 +128,11 @@ export default function InternshipPage() {
               >
                 <Card className="text-center h-full">
                   <CardContent className="pt-6">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-red to-primary-amber rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-primary-red rounded-full flex items-center justify-center text-white text-2xl font-bold">
                       {item.step}
                     </div>
                     <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+                    <p className="text-gray-600 text-sm">{item.desc}</p>
                   </CardContent>
                 </Card>
                 {index < 3 && (
@@ -153,18 +153,18 @@ export default function InternshipPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <Card className="bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber text-white border-0">
-            <CardContent className="text-center py-12">
-              <h2 className="heading-3 mb-4">Ready to Gain Real-World Experience?</h2>
-              <p className="text-lg mb-6 max-w-2xl mx-auto">
+          <Card className="bg-primary-red text-white border-0">
+            <CardContent className="text-center py-8">
+              <h2 className="heading-3 mb-3">Ready to Gain Real-World Experience?</h2>
+              <p className="text-base mb-6 max-w-2xl mx-auto">
                 Join our internship program and work on real projects while building your professional network.
               </p>
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-white text-primary-red hover:bg-gray-100"
+                  className="bg-white text-gray-900 hover:bg-gray-100"
                 >
                   Get Started Today
                 </Button>

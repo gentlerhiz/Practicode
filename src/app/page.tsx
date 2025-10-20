@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight, Code, Database, Palette, TrendingUp, Users, Award, Briefcase } from 'lucide-react'
 import Button from '@/components/ui/Button'
@@ -11,9 +12,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-black via-gray-900 to-primary-black text-white section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        
+      <section className="relative bg-white section-padding overflow-hidden">
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -22,16 +21,16 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <div className="inline-block px-4 py-2 bg-primary-red/20 border border-primary-red rounded-full mb-6">
-                <span className="text-primary-amber font-semibold">🚀 Empowering Tech Futures</span>
+              <div className="inline-block px-4 py-2 bg-white border border-gray-300 rounded-full mb-6 shadow-sm">
+                <span className="text-gray-700 font-semibold">🚀 Empowering Tech Futures</span>
               </div>
               
-              <h1 className="heading-1 mb-6">
+              <h1 className="heading-1 mb-6 text-gray-900">
                 Master Tech Skills with{' '}
-                <span className="text-gradient">Practicode</span>
+                <span className="text-primary-red">Practicode</span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                 Transform your career with world-class training in Web Development, Data Analytics, UI/UX Design, and Digital Marketing. Learn from industry experts in Ibadan, Nigeria.
               </p>
               
@@ -48,28 +47,13 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </div>
-
-              <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-                <div>
-                  <div className="text-4xl font-bold text-primary-amber mb-2">500+</div>
-                  <div className="text-gray-400 text-sm">Students Trained</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary-amber mb-2">95%</div>
-                  <div className="text-gray-400 text-sm">Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary-amber mb-2">50+</div>
-                  <div className="text-gray-400 text-sm">Partner Companies</div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Programs Section */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
             <motion.h2
@@ -80,7 +64,7 @@ export default function HomePage() {
             >
               Our <span className="text-primary-red">Programs</span>
             </motion.h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Choose from our comprehensive tech programs designed for beginners and professionals.
             </p>
           </div>
@@ -88,7 +72,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Code, title: 'Web Development', desc: 'Full Stack JavaScript', color: 'text-primary-red' },
-              { icon: Database, title: 'Data Analytics', desc: 'Python & Visualization', color: 'text-primary-orange' },
+              { icon: Database, title: 'Data Analysis', desc: 'Python & Visualization', color: 'text-primary-orange' },
               { icon: Palette, title: 'UI/UX Design', desc: 'Figma & User Research', color: 'text-primary-amber' },
               { icon: TrendingUp, title: 'Digital Marketing', desc: 'SEO & Social Media', color: 'text-primary-red' },
             ].map((program, index) => {
@@ -103,7 +87,7 @@ export default function HomePage() {
                 >
                   <Card hover className="text-center h-full">
                     <CardContent className="pt-6">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gray-100 dark:bg-gray-800 mb-4 ${program.color}`}>
+                      <div className={`inline-flex p-4 rounded-2xl bg-gray-100 mb-4 ${program.color}`}>
                         <Icon className="w-8 h-8" />
                       </div>
                       <CardTitle className="mb-2">{program.title}</CardTitle>
@@ -126,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -159,7 +143,7 @@ export default function HomePage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
+                        <p className="text-gray-600">{item.desc}</p>
                       </div>
                     </motion.div>
                   )
@@ -184,7 +168,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-primary-black text-white">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
             <motion.h2
@@ -195,7 +179,7 @@ export default function HomePage() {
             >
               Success <span className="text-primary-amber">Stories</span>
             </motion.h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Hear from our students who transformed their careers with Practicode.
             </p>
           </div>
@@ -209,7 +193,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="bg-gray-900 border border-gray-800 h-full">
+                <Card className="bg-white h-full">
                   <CardContent className="pt-6">
                     <div className="flex items-center gap-4 mb-4">
                       <img
@@ -218,8 +202,8 @@ export default function HomePage() {
                         className="w-12 h-12 rounded-full"
                       />
                       <div>
-                        <div className="font-semibold text-white">{testimonial.name}</div>
-                        <div className="text-sm text-gray-400">{testimonial.role}</div>
+                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                        <div className="text-sm text-gray-600">{testimonial.role}</div>
                       </div>
                     </div>
                     <div className="flex gap-1 mb-3">
@@ -227,7 +211,7 @@ export default function HomePage() {
                         <span key={i} className="text-primary-amber">★</span>
                       ))}
                     </div>
-                    <p className="text-gray-300 text-sm">{testimonial.text}</p>
+                    <p className="text-gray-600 text-sm">{testimonial.text}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -236,23 +220,67 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Join Practicode Section - Coursera Style */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative">
+                {/* Decorative arc */}
+                <div className="absolute -left-8 -top-8 w-32 h-32 border-4 border-primary-amber rounded-full overflow-hidden">
+                  <div className="w-1/2 h-full bg-transparent"></div>
+                </div>
+                
+                <Image
+                  src="https://plus.unsplash.com/premium_photo-1683195783255-931c2ffb7505?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2xhc3Nyb29tJTIwYWR1bHQlMjBsZWFybmluZyUyMHllbGxvdyUyMG5pZ2VyaWFufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                  alt="Professional woman in office"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg w-full"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Take the next step toward your personal and professional goals with Practicode.
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Join now to receive personalized recommendations from the full Practicode catalog.
+              </p>
+              <Link href="/courses">
+                <Button size="lg" className="px-8">
+                  Join for Free
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber">
-        <div className="container-custom text-center text-white">
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="heading-2 mb-4">Ready to Start Your Tech Journey?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
+            <h2 className="heading-2 mb-4 text-gray-900">Ready to Start Your Tech Journey?</h2>
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600">
               Join hundreds of students who have transformed their careers with Practicode Academy.
             </p>
             <Link href="/courses">
-              <Button
-                size="lg"
-                className="bg-white text-primary-red hover:bg-gray-100"
-              >
+              <Button size="lg">
                 Enroll Now
               </Button>
             </Link>

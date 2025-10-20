@@ -120,11 +120,11 @@ export default function MentorshipPage() {
               >
                 <Card className="text-center">
                   <CardContent className="pt-6">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-red to-primary-amber rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-primary-red rounded-full flex items-center justify-center text-white text-2xl font-bold">
                       {item.step}
                     </div>
                     <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+                    <p className="text-gray-600 text-sm">{item.desc}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -181,23 +181,21 @@ export default function MentorshipPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber">
-        <div className="container-custom text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="heading-2 mb-4">Ready to Accelerate Your Career?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
-              Get matched with an experienced mentor who can guide you to success.
-            </p>
-            <Link href="/contact">
-              <Button size="lg" className="bg-white text-primary-red hover:bg-gray-100">
-                Apply for Mentorship
-              </Button>
-            </Link>
-          </motion.div>
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <Card className="bg-primary-red text-white border-0">
+            <CardContent className="text-center py-8">
+              <h2 className="heading-3 mb-3">Ready to Accelerate Your Career?</h2>
+              <p className="text-base mb-6 max-w-2xl mx-auto">
+                Get matched with an experienced mentor who can guide you to success.
+              </p>
+              <Link href="/contact">
+                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
+                  Apply for Mentorship
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </>
