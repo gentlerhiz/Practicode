@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-clash: 'Clash Display', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  body {
+    @apply bg-white dark:bg-primary-black text-primary-black dark:text-white;
+    @apply transition-colors duration-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 md:py-20 lg:py-24;
+  }
+
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold font-display;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold font-display;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold font-display;
+  }
+
+  .heading-4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-red via-primary-orange to-primary-amber bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply bg-primary-red hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-amber hover:bg-yellow-500 text-primary-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-red text-primary-red dark:text-white hover:bg-primary-red hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6;
+  }
+
+  .card-hover {
+    @apply transform hover:-translate-y-2 transition-transform duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Fallback for older browsers */
+  @supports not (text-wrap: balance) {
+    .text-balance {
+      max-width: 60ch;
+    }
+  }
+}
