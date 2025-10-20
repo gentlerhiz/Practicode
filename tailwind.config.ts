@@ -12,7 +12,7 @@ const config: Config = {
       colors: {
         primary: {
           black: '#0A0903',
-          red: '#FF0000',
+          red: '#D4A017',
           orange: '#FF8200',
           amber: '#FFC100',
           vanilla: '#FFEAAE',

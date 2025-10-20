@@ -22,14 +22,14 @@ export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-black via-gray-900 to-primary-black text-white py-20">
+      <section className="bg-background-dark dark:bg-primary-black py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="heading-1 mb-4">
+            <h1 className="heading-1 mb-4 text-white">
               Frequently Asked <span className="text-primary-amber">Questions</span>
             </h1>
             <p className="text-xl text-gray-300">

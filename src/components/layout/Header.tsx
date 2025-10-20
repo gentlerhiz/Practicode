@@ -106,7 +106,7 @@ export default function Header() {
                   className={cn(
                     'text-base font-medium transition-colors hover:text-primary-red px-4 py-2 rounded-lg',
                     pathname === link.href
-                      ? 'text-primary-red bg-red-50 dark:bg-red-950'
+                      ? 'text-primary-red bg-yellow-50 dark:bg-yellow-950'
                       : 'text-gray-700 dark:text-gray-300'
                   )}
                 >
