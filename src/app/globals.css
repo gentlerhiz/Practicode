@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-clash: 'Clash Display', system-ui, sans-serif;
+    --font-roboto: 'Roboto', system-ui, sans-serif;
   }
 
   * {
@@ -13,7 +13,11 @@
   }
 
   body {
-    @apply bg-white text-primary-black;
+    @apply bg-white text-gray-900 font-sans antialiased;
+    font-family: var(--font-inter);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
   }
 
   html {
@@ -47,11 +51,23 @@
   }
 
   .btn-primary {
-    @apply bg-primary-red hover:bg-yellow-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
+    @apply bg-primary-red text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
+    background-color: #D4A017;
+  }
+  
+  .btn-primary:hover {
+    background-color: #FFCA1A;
+    color: #212121;
   }
 
   .btn-secondary {
-    @apply bg-primary-amber hover:bg-yellow-500 text-gray-900 font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
+    @apply font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
+    background-color: #FFCA1A;
+    color: #212121;
+  }
+  
+  .btn-secondary:hover {
+    opacity: 0.9;
   }
 
   .btn-outline {

@@ -25,7 +25,7 @@ export default function CoursesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export default function CoursesPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="heading-1 mb-4 text-white">
-              Explore Our <span className="text-primary-amber">Courses</span>
+              Explore Our <span className="text-[#FFCA1A]">Courses</span>
             </h1>
             <p className="text-xl text-gray-300">
               Choose from our comprehensive programs designed to launch your tech career.
@@ -94,7 +94,7 @@ export default function CoursesPage() {
                   />
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="px-3 py-1 bg-primary-amber/20 text-primary-amber text-xs font-semibold rounded-full">
+                      <span className="px-3 py-1 bg-[#FFCA1A]/20 text-[#FFCA1A] text-xs font-semibold rounded-full">
                         {course.level}
                       </span>
                       <span className="text-gray-500 text-sm flex items-center gap-1">

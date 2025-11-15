@@ -59,7 +59,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function ContactPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="heading-1 mb-4 text-white">
-              Get in <span className="text-primary-amber">Touch</span>
+              Get in <span className="text-[#FFCA1A]">Touch</span>
             </h1>
             <p className="text-xl text-gray-300">
               Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
@@ -99,7 +99,7 @@ export default function ContactPage() {
                 title: 'Call Us',
                 content: '+234 707 277 8657\n+234 903 057 8667',
                 link: 'tel:+2347072778657',
-                color: 'text-primary-amber',
+                color: 'text-[#FFCA1A]',
               },
             ].map((item, index) => {
               const Icon = item.icon

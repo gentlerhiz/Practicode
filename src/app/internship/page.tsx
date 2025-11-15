@@ -11,7 +11,7 @@ export default function InternshipPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ export default function InternshipPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="heading-1 mb-4 text-white">
-              Hybrid <span className="text-primary-amber">Internship</span> Programs
+              Hybrid <span className="text-[#FFCA1A]">Internship</span> Programs
             </h1>
             <p className="text-xl text-gray-300">
               Gain real-world experience with our structured internship programs combining remote flexibility and hands-on office experience.
@@ -53,12 +53,12 @@ export default function InternshipPage() {
 
                   <CardContent className="space-y-6">
                     <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                      <Clock className="w-5 h-5 text-primary-amber" />
+                      <Clock className="w-5 h-5 text-[#FFCA1A]" />
                       <span>{program.duration}</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                      <MapPin className="w-5 h-5 text-primary-amber" />
+                      <MapPin className="w-5 h-5 text-[#FFCA1A]" />
                       <span>{program.schedule}</span>
                     </div>
 
@@ -85,7 +85,7 @@ export default function InternshipPage() {
                       <ul className="space-y-2">
                         {program.requirements.map((req, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <span className="text-primary-amber mt-0.5">•</span>
+                            <span className="text-[#FFCA1A] mt-0.5">•</span>
                             <span className="text-gray-600 dark:text-gray-400">{req}</span>
                           </li>
                         ))}
@@ -136,7 +136,7 @@ export default function InternshipPage() {
                   </CardContent>
                 </Card>
                 {index < 3 && (
-                  <ArrowRight className="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-6 h-6 text-primary-amber" />
+                  <ArrowRight className="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-6 h-6 text-[#FFCA1A]" />
                 )}
               </motion.div>
             ))}

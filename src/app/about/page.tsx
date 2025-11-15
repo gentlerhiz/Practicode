@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

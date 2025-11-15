@@ -4,8 +4,8 @@
   "description": "Empowering individuals and businesses with practical technology skills, mentorship, and digital solutions.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0903",
-  "theme_color": "#FF0000",
+  "background_color": "#212121",
+  "theme_color": "#FFCA1A",
   "icons": [
     {
       "src": "/icon-192x192.png",

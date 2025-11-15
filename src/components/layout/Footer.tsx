@@ -40,8 +40,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-primary-black text-white">
-      <div className="container-custom section-padding">
+    <footer className="bg-black text-white">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 py-8 md:py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -64,13 +64,13 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-primary-amber flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#FFCA1A] flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-gray-400">
                   7B Oba Olagbegi, Old Bodija, Ibadan, Nigeria
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-primary-amber flex-shrink-0" />
+                <Mail className="w-5 h-5 text-[#FFCA1A] flex-shrink-0" />
                 <a 
                   href="mailto:practicodeacademy@gmail.com" 
                   className="text-sm text-gray-400 hover:text-primary-amber transition-colors"
@@ -144,7 +144,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-12 pt-8 border-t border-white-900">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Copyright */}
             <p className="text-sm text-gray-400">
@@ -161,7 +161,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-red flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-[#000000] hover:bg-[#FFCA1A] hover:text-black flex items-center justify-center transition-colors"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />

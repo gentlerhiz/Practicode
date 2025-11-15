@@ -10,20 +10,36 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          black: '#0A0903',
+          black: '#212121',
           red: '#D4A017',
           orange: '#FF8200',
-          amber: '#FFC100',
+          amber: '#FFCA1A',
           vanilla: '#FFEAAE',
+          yellow: '#FFCA1A',
         },
         background: {
           light: '#FFFFFF',
-          dark: '#0A0903',
+          dark: '#212121',
         },
+        yellow: {
+          DEFAULT: '#FFCA1A',
+          50: '#FFF9E6',
+          100: '#FFF3CC',
+          200: '#FFE699',
+          300: '#FFD966',
+          400: '#FFCD33',
+          500: '#FFCA1A',
+          600: '#E6B517',
+          700: '#CC9F14',
+          800: '#B38A12',
+          900: '#99750F',
+        },
+        black: '#212121',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-clash)', 'system-ui', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'Roboto', 'system-ui', 'sans-serif'],
+        display: ['var(--font-roboto)', 'Roboto', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

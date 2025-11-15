@@ -6,287 +6,318 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Code, Database, Palette, TrendingUp, Users, Award, Briefcase } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import TrustedPartners from '@/components/ui/TrustedPartners'
+import Intro from '@/components/ui/Intro'
+import WhyDifferent from '@/components/ui/WhyDifferent'
+import OurPrograms from '@/components/ui/OurPrograms'
+import ResourcesHub from '@/components/ui/ResourcesHub'
+import Testimonials from '@/components/ui/Testimonials'
+import FAQIntro from '@/components/ui/FAQIntro'
+import MicroIntro from '@/components/ui/MicroIntro'
+import SolutionsIntro from '@/components/ui/SolutionsIntro'
+import Newsletter from '@/components/ui/Newsletter'
+import BlogSection from '@/components/ui/BlogSection'
+import EventsSection from '@/components/ui/EventsSection'
+import FinalCTA from '@/components/ui/FinalCTA'
 import { testimonials, courses } from '@/data'
 
 export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-white section-padding overflow-hidden">
-        <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto">
+      <section className="relative bg-gradient-to-br from-gray-50 via-white to-yellow-50/30 overflow-hidden min-h-[80vh] lg:min-h-screen mb-8">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 w-full h-full opacity-[0.03]">
+          <Image
+            src="/images/Home/heroImg.svg"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        {/* Gradient Orbs */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-yellow-200/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center py-20 lg:py-0 lg:min-h-screen">
+            {/* Left Column - Text Content */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-8 max-w-2xl"
             >
-              <div className="inline-block px-4 py-2 bg-white border border-gray-300 rounded-full mb-6 shadow-sm">
-                <span className="text-gray-700 font-semibold">🚀 Empowering Tech Futures</span>
-              </div>
-              
-              <h1 className="heading-1 mb-6 text-gray-900">
-                Master Tech Skills with{' '}
-                <span className="text-primary-red">Practicode</span>
-              </h1>
-              
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Transform your career with world-class training in Web Development, Data Analytics, UI/UX Design, and Digital Marketing. Learn from industry experts in Ibadan, Nigeria.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/courses">
-                  <Button size="lg" className="group">
-                    Explore Courses
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="lg">
-                    Get in Touch
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="heading-2 mb-4"
-            >
-              Our <span className="text-primary-red">Programs</span>
-            </motion.h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Choose from our comprehensive tech programs designed for beginners and professionals.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Code, title: 'Web Development', desc: 'Full Stack JavaScript', color: 'text-primary-red' },
-              { icon: Database, title: 'Data Analysis', desc: 'Python & Visualization', color: 'text-primary-orange' },
-              { icon: Palette, title: 'UI/UX Design', desc: 'Figma & User Research', color: 'text-primary-amber' },
-              { icon: TrendingUp, title: 'Digital Marketing', desc: 'SEO & Social Media', color: 'text-primary-red' },
-            ].map((program, index) => {
-              const Icon = program.icon
-              return (
-                <motion.div
-                  key={program.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card hover className="text-center h-full">
-                    <CardContent className="pt-6">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gray-100 mb-4 ${program.color}`}>
-                        <Icon className="w-8 h-8" />
-                      </div>
-                      <CardTitle className="mb-2">{program.title}</CardTitle>
-                      <CardDescription>{program.desc}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/courses">
-              <Button variant="secondary" size="lg">
-                View All Courses
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="heading-2 mb-6">
-                Why Choose <span className="text-primary-red">Practicode?</span>
-              </h2>
-              <div className="space-y-6">
-                {[
-                  { icon: Users, title: 'Expert Instructors', desc: 'Learn from industry professionals with years of experience' },
-                  { icon: Briefcase, title: 'Hands-On Projects', desc: 'Build real-world projects for your portfolio' },
-                  { icon: Award, title: 'Certificates', desc: 'Earn verified certificates upon completion' },
-                  { icon: Users, title: 'Job Support', desc: 'Career guidance and job placement assistance' },
-                ].map((item, index) => {
-                  const Icon = item.icon
-                  return (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex gap-4"
-                    >
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary-red/10 rounded-lg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-primary-red" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600"
-                alt="Team collaboration"
-                className="rounded-2xl shadow-xl"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="heading-2 mb-4"
-            >
-              Success <span className="text-primary-amber">Stories</span>
-            </motion.h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Hear from our students who transformed their careers with Practicode.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
+              {/* Main Heading - Ultra Clean & Powerful */}
               <motion.div
-                key={testimonial.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-6"
               >
-                <Card className="bg-white h-full">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full"
-                      />
-                      <div>
-                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                        <div className="text-sm text-gray-600">{testimonial.role}</div>
-                      </div>
-                    </div>
-                    <div className="flex gap-1 mb-3">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <span key={i} className="text-primary-amber">★</span>
-                      ))}
-                    </div>
-                    <p className="text-gray-600 text-sm">{testimonial.text}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <div className="-space-y-2 lg:-space-y-3">
+                  <h1 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7rem] font-bold text-gray-900 leading-[0.88] tracking-[-0.03em]">
+                    Learn.
+                  </h1>
+                  <h1 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7rem] font-bold text-gray-900 leading-[0.88] tracking-[-0.03em]">
+                    Build.
+                  </h1>
+                  <h1 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7rem] font-bold leading-[0.88] tracking-[-0.03em] relative">
+                    <span className="relative inline-block">
+                      Launch
+                      <span className="absolute -bottom-1 left-0 w-full h-4 bg-[#FFCA1A] -z-10 rounded-sm"></span>
+                    </span>
+                    <span className="text-gray-900">.</span>
+                  </h1>
+                </div>
 
-      {/* Join Practicode Section - Coursera Style */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Animated Visual Icon - Shows on mobile, hidden on lg */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="lg:hidden relative"
+                >
+                  {/* Animated Circles - Abstract Visual */}
+                  <div className="relative w-32 h-32 flex items-center justify-center">
+                    {/* Outer rotating ring */}
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 border-4 border-[#FFCA1A]/30 rounded-full border-t-[#FFCA1A] border-r-transparent"
+                    />
+                    
+                    {/* Middle pulsing circle */}
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute w-20 h-20 bg-gradient-to-br from-[#FFCA1A]/20 to-emerald-400/20 rounded-full backdrop-blur-sm"
+                    />
+                    
+                    {/* Inner animated icon */}
+                    <motion.div
+                      animate={{ 
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="relative z-10 w-16 h-16 bg-gradient-to-br from-[#FFCA1A] to-[#FFD700] rounded-2xl shadow-xl flex items-center justify-center"
+                    >
+                      <Code className="w-8 h-8 text-gray-900" strokeWidth={2.5} />
+                    </motion.div>
+                    
+                    {/* Floating particles */}
+                    <motion.div
+                      animate={{ 
+                        y: [0, -20, 0],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+                      className="absolute top-2 right-4 w-3 h-3 bg-emerald-400 rounded-full"
+                    />
+                    <motion.div
+                      animate={{ 
+                        y: [0, -15, 0],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      className="absolute bottom-4 left-2 w-2 h-2 bg-[#FFCA1A] rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+              
+              {/* Description - Refined */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl font-light"
+              >
+                Master in-demand tech skills through hands-on training, build real-world projects, and launch your dream career with expert mentorship.
+              </motion.p>
+              
+              {/* CTA Buttons - Refined */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-wrap gap-4 mb-6"
+              >
+                <Link href="/courses" className="group">
+                  <button className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-bold text-gray-900 bg-[#FFCA1A] rounded-full transition-all duration-300 group-hover:scale-[1.02] hover:bg-[#FFD700]">
+                    <span>Get Started</span>
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" strokeWidth={3} />
+                  </button>
+                </Link>
+                <Link href="/contact" className="group">
+                  <button className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-full transition-all duration-300 group-hover:border-gray-300 hover:bg-gray-50 group-hover:scale-[1.02]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <span>Book a Call</span>
+                  </button>
+                </Link>
+              </motion.div>
+
+              {/* Stats - Elegant & Compact */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden flex items-center gap-6 sm:gap-8 pt-4"
+              >
+                <div className="relative">
+                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">500<span className="text-[#FFCA1A]">+</span></div>
+                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Students Trained</div>
+                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
+                </div>
+                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-200 to-transparent"></div>
+                <div className="relative">
+                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">98<span className="text-[#FFCA1A]">%</span></div>
+                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Success Rate</div>
+                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
+                </div>
+                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-200 to-transparent"></div>
+                <div className="relative">
+                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">50<span className="text-[#FFCA1A]">+</span></div>
+                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Expert Mentors</div>
+                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Image with Enhanced Floating Badges */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="relative hidden lg:flex justify-center items-center"
             >
-              <div className="relative">
-                {/* Decorative arc */}
-                <div className="absolute -left-8 -top-8 w-32 h-32 border-4 border-primary-amber rounded-full overflow-hidden">
-                  <div className="w-1/2 h-full bg-transparent"></div>
+              {/* Ambient Glow Effects */}
+              <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-[#FFCA1A]/10 via-yellow-100/5 to-transparent rounded-full blur-3xl"></div>
+              <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tr from-blue-500/5 via-purple-100/5 to-transparent rounded-full blur-3xl"></div>
+              
+              {/* Main Image Container - Ultra Sophisticated */}
+              <div className="relative z-10 w-full max-w-sm">
+                <div className="relative aspect-[5/6] rounded-[2.5rem] overflow-hidden border border-white/50 bg-gradient-to-br from-gray-50 to-white">
+                  <Image
+                    src="/images/Home/student-hero.png"
+                    alt="Student learning with technology"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  {/* Image Overlay for sophistication */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 via-transparent to-transparent"></div>
                 </div>
                 
-                <Image
-                  src="https://plus.unsplash.com/premium_photo-1683195783255-931c2ffb7505?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2xhc3Nyb29tJTIwYWR1bHQlMjBsZWFybmluZyUyMHllbGxvdyUyMG5pZ2VyaWFufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
-                  alt="Professional woman in office"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-lg w-full"
-                />
+                {/* Premium Floating Badge - Job-Driven Projects */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-6 -left-36 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-xl shadow-gray-900/10 p-5 border border-gray-100/80 hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                      <Briefcase className="w-6 h-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="pr-1">
+                      <p className="text-sm font-bold text-gray-900 tracking-tight leading-tight">Job-Driven</p>
+                      <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Projects</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Premium Floating Badge - ISO-Standard Curriculum */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-40 -left-24 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-xl shadow-gray-900/10 p-5 border border-gray-100/80 hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+                      <Award className="w-6 h-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="pr-1">
+                      <p className="text-sm font-bold text-gray-900 tracking-tight leading-tight">ISO-Standard</p>
+                      <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Curriculum</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Premium Floating Badge - Online + Physical Classes */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-xl shadow-gray-900/10 p-5 border border-gray-100/80 hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFCA1A] via-[#FFD700] to-[#FFC700] rounded-xl flex items-center justify-center shadow-lg">
+                      <Users className="w-6 h-6 text-gray-900" strokeWidth={2.5} />
+                    </div>
+                    <div className="pr-1">
+                      <p className="text-sm font-bold text-gray-900 tracking-tight leading-tight">Online + Physical</p>
+                      <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Classes</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Elegant Decorative Elements */}
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 border-l-[3px] border-b-[3px] border-[#FFCA1A]/20 rounded-bl-[4rem]"></div>
+                <div className="absolute -top-6 -right-6 w-24 h-24 border-r-[3px] border-t-[3px] border-[#FFCA1A]/20 rounded-tr-[3rem]"></div>
               </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Take the next step toward your personal and professional goals with Practicode.
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Join now to receive personalized recommendations from the full Practicode catalog.
-              </p>
-              <Link href="/courses">
-                <Button size="lg" className="px-8">
-                  Join for Free
-                </Button>
-              </Link>
-            </motion.div>
           </div>
+
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="heading-2 mb-4 text-gray-900">Ready to Start Your Tech Journey?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600">
-              Join hundreds of students who have transformed their careers with Practicode Academy.
-            </p>
-            <Link href="/courses">
-              <Button size="lg">
-                Enroll Now
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Intro Section */}
+      <Intro />
+
+      {/* Partners Section */}
+      <TrustedPartners />
+
+      {/* Our Programs Section */}
+      <OurPrograms />
+
+      {/* Micro Courses Section */}
+      <MicroIntro />
+
+      {/* Resources Hub Section */}
+      <ResourcesHub />
+
+      {/* What Makes Us Different Section */}
+      <WhyDifferent />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* FAQ Intro Section */}
+      <FAQIntro />
+
+      {/* Solutions Intro Section */}
+      <SolutionsIntro />
+
+      
+
+      {/* Blog Section */}
+      <BlogSection />
+
+      {/* Events & Community Section */}
+      <EventsSection />
+
+      {/* Newsletter Section */}
+      <Newsletter />
+
+      {/* Final CTA Section */}
+      {/* <FinalCTA /> */}
     </>
   )
 }

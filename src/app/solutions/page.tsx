@@ -11,7 +11,7 @@ export default function SolutionsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ export default function SolutionsPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="heading-1 mb-4 text-white">
-              Digital <span className="text-primary-amber">Solutions</span>
+              Digital <span className="text-[#FFCA1A]">Solutions</span>
             </h1>
             <p className="text-xl text-gray-300">
               Transform your business with our comprehensive digital services and custom software solutions.

@@ -11,7 +11,7 @@ export default function MentorshipPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background-dark dark:bg-primary-black py-20">
+      <section className="bg-[#212121] py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ export default function MentorshipPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="heading-1 mb-4 text-white">
-              Career <span className="text-primary-amber">Mentorship</span>
+              Career <span className="text-[#FFCA1A]">Mentorship</span>
             </h1>
             <p className="text-xl text-gray-300">
               Get personalized guidance from industry professionals to accelerate your tech career.
@@ -166,7 +166,7 @@ export default function MentorshipPage() {
                     </div>
                     <div className="flex gap-1 mb-3">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <span key={i} className="text-primary-amber">★</span>
+                        <span key={i} className="text-[#FFCA1A]">★</span>
                       ))}
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 text-sm">
