@@ -15,19 +15,19 @@ export default function AboutPage() {
   
   const aboutImages = [
     '/images/About/1.jpeg',
-    '/images/About/2.JPG',
+    '/images/About/2.PNG',
     '/images/About/3.jpeg',
-    '/images/About/4.JPG',
+    '/images/About/4.PNG',
     '/images/About/5.jpeg',
-    '/images/About/6.JPG',
+    '/images/About/6.PNG',
     '/images/About/7.jpeg',
     '/images/About/8.jpeg',
     '/images/About/9.jpeg',
-    '/images/About/10.JPG',
-    '/images/About/11.JPG',
-    '/images/About/12.JPG',
-    '/images/About/13.JPG',
-    '/images/About/14.JPG',
+    '/images/About/10.PNG',
+    '/images/About/11.PNG',
+    '/images/About/12.PNG',
+    '/images/About/13.PNG',
+    '/images/About/14.PNG',
   ]
 
   const nextImage = () => {
