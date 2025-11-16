@@ -22,10 +22,47 @@ import FinalCTA from '@/components/ui/FinalCTA'
 import { testimonials, courses } from '@/data'
 
 export default function HomePage() {
+  // JSON-LD Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Practicode Academy",
+    "description": "Tech training academy offering courses in Web Development, Data Analytics, UI/UX Design, Machine Learning, and Graphics Design",
+    "url": "https://practicodeacademy.com",
+    "logo": "https://practicodeacademy.com/images/yellowlogo.png",
+    "image": "https://practicodeacademy.com/images/og-image.png",
+    "telephone": "+234-707-277-8657",
+    "email": "practicodeacademy@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7B Oba Olagbegi, Old Bodija",
+      "addressLocality": "Ibadan",
+      "addressRegion": "Oyo State",
+      "addressCountry": "Nigeria"
+    },
+    "sameAs": [
+      "https://twitter.com/practicode",
+      "https://facebook.com/practicode",
+      "https://linkedin.com/company/practicode",
+      "https://instagram.com/practicode"
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "NGN",
+      "lowPrice": "20000",
+      "highPrice": "180000"
+    }
+  };
+
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-50 via-white to-yellow-50/30 overflow-hidden min-h-[80vh] lg:min-h-screen mb-8">
+      <section className="relative bg-gradient-to-br from-gray-50 via-white to-yellow-50/30 overflow-hidden lg:min-h-screen mb-0 lg:mb-8">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 w-full h-full opacity-[0.03]">
           <Image
@@ -42,13 +79,13 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center py-20 lg:py-0 lg:min-h-screen">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center pt-10 pb-10 lg:py-0 lg:min-h-screen">
             {/* Left Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-8 max-w-2xl"
+              className="space-y-6 lg:space-y-8 max-w-2xl"
             >
               {/* Main Heading - Ultra Clean & Powerful */}
               <motion.div
@@ -57,7 +94,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="flex items-center gap-6"
               >
-                <div className="-space-y-2 lg:-space-y-3">
+                <div className="space-y-1 lg:-space-y-3">
                   <h1 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7rem] font-bold text-gray-900 leading-[0.88] tracking-[-0.03em]">
                     Learn.
                   </h1>
@@ -144,48 +181,22 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-wrap gap-4 mb-6"
+                className="flex flex-wrap gap-4"
               >
                 <Link href="/courses" className="group">
-                  <button className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-bold text-gray-900 bg-[#FFCA1A] rounded-full transition-all duration-300 group-hover:scale-[1.02] hover:bg-[#FFD700]">
+                  <button className="inline-flex items-center justify-center gap-2 px-20 py-5 text-base font-bold text-gray-900 bg-[#FFCA1A] rounded-full transition-all duration-300 group-hover:scale-[1.02] hover:bg-[#FFD700]">
                     <span>Get Started</span>
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" strokeWidth={3} />
                   </button>
                 </Link>
                 <Link href="/contact" className="group">
-                  <button className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-full transition-all duration-300 group-hover:border-gray-300 hover:bg-gray-50 group-hover:scale-[1.02]">
+                  <button className="inline-flex items-center justify-center gap-2 px-20 py-5 text-base font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-full transition-all duration-300 group-hover:border-gray-300 hover:bg-gray-50 group-hover:scale-[1.02]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span>Book a Call</span>
                   </button>
                 </Link>
-              </motion.div>
-
-              {/* Stats - Elegant & Compact */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="hidden flex items-center gap-6 sm:gap-8 pt-4"
-              >
-                <div className="relative">
-                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">500<span className="text-[#FFCA1A]">+</span></div>
-                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Students Trained</div>
-                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
-                </div>
-                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-200 to-transparent"></div>
-                <div className="relative">
-                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">98<span className="text-[#FFCA1A]">%</span></div>
-                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Success Rate</div>
-                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
-                </div>
-                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-200 to-transparent"></div>
-                <div className="relative">
-                  <div className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">50<span className="text-[#FFCA1A]">+</span></div>
-                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.1em] font-medium mt-1">Expert Mentors</div>
-                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#FFCA1A] to-transparent"></div>
-                </div>
               </motion.div>
             </motion.div>
 
@@ -284,28 +295,26 @@ export default function HomePage() {
       {/* Partners Section */}
       <TrustedPartners />
 
+      {/* What Makes Us Different Section */}
+      <WhyDifferent />
+
       {/* Our Programs Section */}
       <OurPrograms />
 
       {/* Micro Courses Section */}
       <MicroIntro />
 
+      {/* Solutions Intro Section */}
+      <SolutionsIntro />
+
       {/* Resources Hub Section */}
       <ResourcesHub />
-
-      {/* What Makes Us Different Section */}
-      <WhyDifferent />
 
       {/* Testimonials Section */}
       <Testimonials />
 
       {/* FAQ Intro Section */}
       <FAQIntro />
-
-      {/* Solutions Intro Section */}
-      <SolutionsIntro />
-
-      
 
       {/* Blog Section */}
       <BlogSection />

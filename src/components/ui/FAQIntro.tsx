@@ -31,7 +31,7 @@ const faqs = [
 export default function FAQIntro() {
   const [openId, setOpenId] = useState<number | null>(null)
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 lg:py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Icon Design */}
@@ -39,7 +39,7 @@ export default function FAQIntro() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative flex items-center justify-center"
+            className="relative hidden lg:flex items-center justify-center"
           >
             <div className="relative w-full max-w-md aspect-square">
               {/* Background gradient circle */}

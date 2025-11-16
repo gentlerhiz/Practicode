@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BookOpen, FileText, Briefcase, Code, Users, Download, Video, Calendar, Search } from 'lucide-react'
+import { BookOpen, FileText, Briefcase, Code, Users, Download, Video, Calendar, Search, ArrowRight, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -61,7 +61,8 @@ const downloads = [
     type: 'PDF',
     size: '2.5 MB',
     downloads: '1,234',
-    icon: FileText
+    icon: FileText,
+    file: '/downloads/html-css-cheatsheet.pdf'
   },
   {
     title: 'JavaScript Interview Questions',
@@ -70,7 +71,8 @@ const downloads = [
     type: 'PDF',
     size: '1.8 MB',
     downloads: '2,456',
-    icon: FileText
+    icon: FileText,
+    file: '/downloads/javascript-interview-questions.pdf'
   },
   {
     title: 'Resume Template for Developers',
@@ -79,7 +81,8 @@ const downloads = [
     type: 'DOCX',
     size: '0.5 MB',
     downloads: '3,789',
-    icon: FileText
+    icon: FileText,
+    file: '/downloads/developer-resume-template.docx'
   },
   {
     title: 'SQL Commands Reference',
@@ -88,7 +91,8 @@ const downloads = [
     type: 'PDF',
     size: '1.2 MB',
     downloads: '1,567',
-    icon: FileText
+    icon: FileText,
+    file: '/downloads/sql-commands-reference.pdf'
   }
 ]
 
@@ -200,110 +204,206 @@ export default function ResourcesPage() {
     return matchesCategory && matchesSearch
   })
 
+  const handleDownload = (file: string, title: string) => {
+    const link = document.createElement('a')
+    link.href = file
+    link.download = title
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-20 border-b border-gray-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Resources Hub
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8">
-              Everything you need to learn, grow, and succeed in your tech career — all in one place.
-            </p>
+      {/* Hero Section - Clean Black */}
+      <section className="relative bg-[#000000] overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+          <div className="py-20 lg:py-28 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              {/* Overline */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-[#FFCA1A] text-xs font-bold uppercase tracking-[0.2em] mb-4"
+              >
+                Learn & Grow
+              </motion.p>
+              
+              {/* Main heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight"
+              >
+                Your Complete
+                <br />
+                <span className="relative inline-block mt-2">
+                  Learning Resource Hub
+                  <span className="absolute -bottom-2 left-0 w-full h-4 bg-[#FFCA1A] -z-10 rounded-sm"></span>
+                </span>
+              </motion.h1>
+              
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10"
+              >
+                Everything you need to learn, grow, and succeed in your tech career — tutorials, downloads, career guides, and more.
+              </motion.p>
 
-            {/* Search Bar */}
-            <div className="relative max-w-2xl mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search resources..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-gray-900 focus:outline-none text-gray-900 placeholder-gray-400"
-              />
-            </div>
-          </motion.div>
+              {/* Search Bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="relative max-w-2xl mx-auto"
+              >
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search resources..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-14 pr-6 py-5 rounded-2xl border-2 border-gray-700 bg-white/10 backdrop-blur-sm focus:bg-white focus:border-[#FFCA1A] focus:outline-none text-white placeholder-gray-400 transition-all duration-300"
+                />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Category Tabs */}
-      <section className="sticky top-16 bg-white border-b border-gray-200 z-40">
+      <section className="sticky top-16 bg-white border-b-2 border-gray-100 z-40 shadow-sm">
         <div className="container mx-auto px-6 md:px-12 lg:px-16 py-6">
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
-              <button
+              <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-7 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
                   activeCategory === category.id
-                    ? 'bg-gray-900 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'bg-[#000000] text-white shadow-lg'
+                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
                 {category.label}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
       {/* Resources Grid */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="container mx-auto px-6 md:px-12 lg:px-16">
           {filteredResources.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No resources found. Try a different search or category.</p>
+              <div className="inline-flex w-20 h-20 rounded-full bg-gray-100 items-center justify-center mb-6">
+                <Search className="w-10 h-10 text-gray-400" />
+              </div>
+              <p className="text-gray-500 text-lg font-medium">No resources found. Try a different search or category.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResources.map((resource, index) => {
                 const Icon = resource.icon
+                const borderColors = ['border-blue-300', 'border-green-300', 'border-yellow-300', 'border-purple-300', 'border-pink-300', 'border-cyan-300']
+                const iconColors = ['text-blue-600', 'text-green-600', 'text-yellow-600', 'text-purple-600', 'text-pink-600', 'text-cyan-600']
+                const bgColors = ['bg-blue-50', 'bg-green-50', 'bg-yellow-50', 'bg-purple-50', 'bg-pink-50', 'bg-cyan-50']
+                const borderColor = borderColors[index % borderColors.length]
+                const iconColor = iconColors[index % iconColors.length]
+                const bgColor = bgColors[index % bgColors.length]
+                
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-900 hover:shadow-lg transition-all duration-300"
+                    className={`group bg-white border-2 ${borderColor} rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}
                   >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-white" strokeWidth={2} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-2">
+                    {/* Card Header */}
+                    <div className={`${bgColor} p-6`}>
+                      <div className="flex items-start justify-between mb-3">
+                        <div className={`flex-shrink-0 w-14 h-14 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                          <Icon className={`w-7 h-7 ${iconColor}`} strokeWidth={2.5} />
+                        </div>
+                        <span className="inline-block px-3 py-1.5 bg-white text-gray-700 text-xs font-bold rounded-full shadow-sm">
                           {resource.type}
                         </span>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors line-clamp-2">
-                          {resource.title}
-                        </h3>
                       </div>
+                      <h3 className="text-xl font-bold text-[#000000] mb-2 line-clamp-2 group-hover:text-gray-700 transition-colors">
+                        {resource.title}
+                      </h3>
                     </div>
 
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">{resource.description}</p>
+                    {/* Card Body */}
+                    <div className="p-6">
+                      <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">{resource.description}</p>
 
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <div className="flex items-center gap-3">
-                        {'duration' in resource && resource.duration && <span>{resource.duration}</span>}
-                        {'readTime' in resource && resource.readTime && <span>{resource.readTime}</span>}
-                        {'size' in resource && resource.size && <span>{resource.size}</span>}
-                        {'problems' in resource && resource.problems && <span>{resource.problems} problems</span>}
-                        {'date' in resource && resource.date && <span>{resource.date}</span>}
+                      {/* Meta Info */}
+                      <div className="flex flex-wrap items-center gap-3 mb-5 text-sm text-gray-500">
+                        {'duration' in resource && resource.duration && (
+                          <span className="flex items-center gap-1">
+                            <CheckCircle className="w-4 h-4" />
+                            {resource.duration}
+                          </span>
+                        )}
+                        {'readTime' in resource && resource.readTime && (
+                          <span className="flex items-center gap-1">
+                            <CheckCircle className="w-4 h-4" />
+                            {resource.readTime}
+                          </span>
+                        )}
+                        {'size' in resource && resource.size && (
+                          <span className="flex items-center gap-1">
+                            <Download className="w-4 h-4" />
+                            {resource.size}
+                          </span>
+                        )}
+                        {'problems' in resource && resource.problems && (
+                          <span className="flex items-center gap-1">
+                            <Code className="w-4 h-4" />
+                            {resource.problems} problems
+                          </span>
+                        )}
+                        {'date' in resource && resource.date && (
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {resource.date}
+                          </span>
+                        )}
                       </div>
-                    </div>
 
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <button className="w-full py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors">
-                        {resource.category === 'downloads' ? 'Download' : 
-                         resource.category === 'events' ? 'Register' : 
-                         'Access Now'}
-                      </button>
+                      {/* Action Button */}
+                      {'file' in resource && resource.file ? (
+                        <button
+                          onClick={() => handleDownload(resource.file, resource.title)}
+                          className="w-full py-3.5 bg-[#FFCA1A] text-[#000000] text-sm font-bold rounded-xl hover:bg-[#000000] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                        >
+                          <Download className="w-5 h-5 group-hover/btn:animate-bounce" strokeWidth={2.5} />
+                          <span>Download</span>
+                        </button>
+                      ) : (
+                        <button className="w-full py-3.5 bg-[#000000] text-white text-sm font-bold rounded-xl hover:bg-[#FFCA1A] hover:text-[#000000] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                          <span>
+                            {resource.category === 'events' ? 'Register' : 'Access Now'}
+                          </span>
+                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" strokeWidth={2.5} />
+                        </button>
+                      )}
                     </div>
                   </motion.div>
                 )
@@ -313,30 +413,52 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Success Stories CTA */}
-      <section className="py-20 bg-gradient-to-br from-[#FFCA1A] to-[#FFD700]">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 text-center">
+      {/* CTA Section */}
+      <section className="py-20 bg-[#000000]">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ready to Start Your Learning Journey?
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FFCA1A]/20 border-2 border-[#FFCA1A] rounded-full mb-6"
+            >
+              <BookOpen className="w-5 h-5 text-[#FFCA1A]" strokeWidth={2.5} />
+              <span className="text-[#FFCA1A] text-sm font-bold">Start Learning Today</span>
+            </motion.div>
+
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-5">
+              Ready to Transform Your Career?
             </h2>
-            <p className="text-lg text-gray-800 mb-8 max-w-2xl mx-auto">
-              Join thousands of students who are transforming their careers with our structured programs.
+            <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Join thousands of students who are building successful careers with our comprehensive programs and expert guidance.
             </p>
+            
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/courses">
-                <button className="px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-all duration-300 shadow-lg">
-                  Explore Courses
-                </button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFCA1A] text-[#000000] font-bold text-base rounded-xl hover:bg-white transition-all duration-300 shadow-lg"
+                >
+                  <span>Explore Courses</span>
+                  <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
+                </motion.button>
               </Link>
               <Link href="/contact">
-                <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-50 transition-all duration-300 border-2 border-gray-900">
-                  Talk to an Advisor
-                </button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold text-base rounded-xl hover:bg-white hover:text-[#000000] transition-all duration-300"
+                >
+                  <span>Talk to an Advisor</span>
+                </motion.button>
               </Link>
             </div>
           </motion.div>

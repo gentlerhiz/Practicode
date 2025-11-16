@@ -34,7 +34,7 @@ const microCourses = [
 
 export default function MicroIntro() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <div className="container mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Icon Design */}
@@ -42,7 +42,7 @@ export default function MicroIntro() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative flex items-center justify-center order-2 lg:order-1"
+            className="relative hidden lg:flex items-center justify-center order-2 lg:order-1"
           >
             <div className="relative w-full max-w-md aspect-square">
               {/* Background gradient */}

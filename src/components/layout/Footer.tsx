@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, MessageCircle } from 'lucide-react'
 
 const footerLinks = {
   company: [
@@ -30,9 +30,10 @@ const footerLinks = {
 }
 
 const socialLinks = [
+  { icon: MessageCircle, href: 'https://wa.me/message/UH5NCJFO6OAFI1', label: 'WhatsApp' },
+  { icon: Instagram, href: 'https://www.instagram.com/practicode_academy?igsh=bHd4MWc5c3M5aXhm&utm_source=qr', label: 'Instagram' },
   { icon: Facebook, href: 'https://facebook.com/practicode', label: 'Facebook' },
   { icon: Twitter, href: 'https://twitter.com/practicode', label: 'Twitter' },
-  { icon: Instagram, href: 'https://instagram.com/practicode', label: 'Instagram' },
   { icon: Linkedin, href: 'https://linkedin.com/company/practicode', label: 'LinkedIn' },
 ]
 
