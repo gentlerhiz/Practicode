@@ -648,6 +648,311 @@ export const coursesData = {
         answer: 'Our graduates typically charge ₦15,000-₦50,000 per project initially, growing to ₦100,000+ with experience.'
       }
     ]
+  },
+  // MICRO COURSES
+  'cybersecurity-basics': {
+    id: 'm1',
+    title: 'Cybersecurity Basics',
+    slug: 'cybersecurity-basics',
+    category: 'Micro Courses',
+    duration: '4 weeks',
+    level: 'Beginner',
+    price: 25000,
+    enrollmentStatus: 'Open',
+    nextCohort: 'Rolling admission',
+    studentsEnrolled: 180,
+    rating: 4.6,
+    totalReviews: 95,
+    description: 'Learn essential cybersecurity concepts, ethical hacking basics, and how to protect systems from threats.',
+    overview: 'Master cybersecurity fundamentals in just 4 weeks. Learn about network security, encryption, ethical hacking basics, and how to protect systems and data from cyber threats.',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80',
+    videoPreview: 'https://www.youtube.com/embed/example',
+    icon: Code,
+    color: 'from-red-500 to-orange-500',
+    
+    learningOutcomes: [
+      'Understand cybersecurity fundamentals',
+      'Learn basic ethical hacking techniques',
+      'Implement security best practices',
+      'Protect systems from common threats',
+      'Use security tools and software',
+      'Identify vulnerabilities'
+    ],
+    
+    curriculum: [
+      { module: 'Security Fundamentals', weeks: '1', topics: ['Cybersecurity Basics', 'Threat Landscape', 'Security Principles'] },
+      { module: 'Network Security', weeks: '2', topics: ['Firewalls', 'VPNs', 'Network Monitoring'] },
+      { module: 'Ethical Hacking', weeks: '3', topics: ['Penetration Testing', 'Vulnerability Scanning', 'Security Tools'] },
+      { module: 'Security Practices', weeks: '4', topics: ['Secure Coding', 'Data Protection', 'Incident Response'] }
+    ],
+    
+    prerequisites: ['Basic computer knowledge'],
+    tools: ['Kali Linux', 'Wireshark', 'Metasploit', 'Nmap'],
+    certifications: ['Certificate of Completion'],
+    careerPaths: ['Cybersecurity Analyst', 'Security Consultant', 'Ethical Hacker'],
+    instructors: [
+      { name: 'Security Expert', title: 'Cybersecurity Specialist', experience: '10+ years', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Security' }
+    ],
+    features: [
+      'Self-paced learning',
+      'Hands-on labs',
+      'Security tools training',
+      'Certificate of completion'
+    ],
+    schedule: {
+      format: 'Online',
+      classTimes: 'Self-paced',
+      duration: '4 weeks',
+      commitment: '4-6 hours per week'
+    },
+    faqs: [
+      {
+        question: 'Is this course for beginners?',
+        answer: 'Yes! No prior cybersecurity experience is needed. We cover everything from the basics.'
+      }
+    ]
+  },
+  'social-media-design': {
+    id: 'm2',
+    title: 'Social Media Design',
+    slug: 'social-media-design',
+    category: 'Micro Courses',
+    duration: '3 weeks',
+    level: 'Beginner',
+    price: 20000,
+    enrollmentStatus: 'Open',
+    nextCohort: 'Rolling admission',
+    studentsEnrolled: 250,
+    rating: 4.7,
+    totalReviews: 142,
+    description: 'Create stunning social media graphics for Instagram, Facebook, and Twitter using Canva and design principles.',
+    overview: 'Learn to create professional social media graphics in 3 weeks. Master Canva, design principles, and create content that engages your audience across all platforms.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80',
+    videoPreview: 'https://www.youtube.com/embed/example',
+    icon: Palette,
+    color: 'from-pink-500 to-rose-500',
+    
+    learningOutcomes: [
+      'Master Canva Pro',
+      'Design for all social platforms',
+      'Create branded content',
+      'Understand color and typography',
+      'Build a content calendar',
+      'Grow your following'
+    ],
+    
+    curriculum: [
+      { module: 'Design Basics', weeks: '1', topics: ['Canva Mastery', 'Design Principles', 'Color Theory'] },
+      { module: 'Platform-Specific Design', weeks: '2', topics: ['Instagram Posts', 'Facebook Graphics', 'Twitter Headers'] },
+      { module: 'Content Strategy', weeks: '3', topics: ['Content Calendar', 'Branding', 'Engagement Tips'] }
+    ],
+    
+    prerequisites: ['Basic computer skills'],
+    tools: ['Canva Pro', 'Figma'],
+    certifications: ['Certificate of Completion'],
+    careerPaths: ['Social Media Manager', 'Content Creator', 'Freelance Designer'],
+    instructors: [
+      { name: 'Design Guru', title: 'Social Media Designer', experience: '5+ years', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Designer' }
+    ],
+    features: [
+      'Canva Pro access included',
+      '50+ templates',
+      'Social media strategy guide',
+      'Certificate of completion'
+    ],
+    schedule: {
+      format: 'Online',
+      classTimes: 'Self-paced',
+      duration: '3 weeks',
+      commitment: '3-5 hours per week'
+    },
+    faqs: [
+      {
+        question: 'Do I need design experience?',
+        answer: 'No! This course is perfect for beginners. We teach you everything step by step.'
+      }
+    ]
+  },
+  'javascript-crash': {
+    id: 'm3',
+    title: 'JavaScript Crash Course',
+    slug: 'javascript-crash',
+    category: 'Micro Courses',
+    duration: '3 weeks',
+    level: 'Beginner',
+    price: 22000,
+    enrollmentStatus: 'Open',
+    nextCohort: 'Rolling admission',
+    studentsEnrolled: 320,
+    rating: 4.8,
+    totalReviews: 198,
+    description: 'Master JavaScript fundamentals fast. Learn ES6+, DOM manipulation, and build interactive web projects.',
+    overview: 'Learn JavaScript essentials in 3 intensive weeks. Cover variables, functions, arrays, objects, DOM manipulation, and ES6+ features. Build 5 hands-on projects.',
+    image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=1200&q=80',
+    videoPreview: 'https://www.youtube.com/embed/example',
+    icon: Code,
+    color: 'from-yellow-500 to-orange-500',
+    
+    learningOutcomes: [
+      'Master JavaScript fundamentals',
+      'Work with ES6+ features',
+      'Manipulate the DOM',
+      'Handle async operations',
+      'Build interactive projects',
+      'Debug like a pro'
+    ],
+    
+    curriculum: [
+      { module: 'JS Fundamentals', weeks: '1', topics: ['Variables & Data Types', 'Functions', 'Arrays & Objects'] },
+      { module: 'DOM & Events', weeks: '2', topics: ['DOM Manipulation', 'Event Handling', 'Forms'] },
+      { module: 'Modern JavaScript', weeks: '3', topics: ['ES6+ Features', 'Async/Await', 'Mini Projects'] }
+    ],
+    
+    prerequisites: ['Basic HTML & CSS'],
+    tools: ['VS Code', 'Chrome DevTools'],
+    certifications: ['Certificate of Completion'],
+    careerPaths: ['Frontend Developer', 'Web Developer', 'JavaScript Developer'],
+    instructors: [
+      { name: 'JS Expert', title: 'JavaScript Developer', experience: '7+ years', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JSExpert' }
+    ],
+    features: [
+      '5 hands-on projects',
+      'Code challenges',
+      'Cheat sheets',
+      'Certificate of completion'
+    ],
+    schedule: {
+      format: 'Online',
+      classTimes: 'Self-paced',
+      duration: '3 weeks',
+      commitment: '5-8 hours per week'
+    },
+    faqs: [
+      {
+        question: 'Do I need programming experience?',
+        answer: 'Basic HTML/CSS knowledge is helpful, but we start from the JavaScript basics.'
+      }
+    ]
+  },
+  'freelancing-career': {
+    id: 'm4',
+    title: 'Freelancing Career Launch',
+    slug: 'freelancing-career',
+    category: 'Micro Courses',
+    duration: '2 weeks',
+    level: 'Beginner',
+    price: 18000,
+    enrollmentStatus: 'Open',
+    nextCohort: 'Rolling admission',
+    studentsEnrolled: 195,
+    rating: 4.5,
+    totalReviews: 87,
+    description: 'Launch your freelance career on Upwork, Fiverr, and local platforms. Learn pricing, proposals, and client management.',
+    overview: 'Start earning as a freelancer in 2 weeks. Learn how to set up profiles, write winning proposals, price your services, and land your first clients on Upwork, Fiverr, and local platforms.',
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80',
+    videoPreview: 'https://www.youtube.com/embed/example',
+    icon: TrendingUp,
+    color: 'from-green-500 to-teal-500',
+    
+    learningOutcomes: [
+      'Set up winning freelance profiles',
+      'Write proposals that convert',
+      'Price your services correctly',
+      'Find and land clients',
+      'Manage projects effectively',
+      'Build client relationships'
+    ],
+    
+    curriculum: [
+      { module: 'Freelance Foundations', weeks: '1', topics: ['Platform Setup', 'Profile Optimization', 'Pricing Strategy'] },
+      { module: 'Getting Clients', weeks: '2', topics: ['Proposal Writing', 'Client Communication', 'Project Management'] }
+    ],
+    
+    prerequisites: ['Any skill to offer (design, writing, coding, etc.)'],
+    tools: ['Upwork', 'Fiverr', 'LinkedIn'],
+    certifications: ['Certificate of Completion'],
+    careerPaths: ['Freelancer', 'Independent Contractor', 'Consultant'],
+    instructors: [
+      { name: 'Freelance Pro', title: 'Freelance Consultant', experience: '8+ years freelancing', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Freelancer' }
+    ],
+    features: [
+      'Profile templates',
+      'Proposal templates',
+      'Pricing calculator',
+      'Certificate of completion'
+    ],
+    schedule: {
+      format: 'Online',
+      classTimes: 'Self-paced',
+      duration: '2 weeks',
+      commitment: '3-4 hours per week'
+    },
+    faqs: [
+      {
+        question: 'What skills can I freelance with?',
+        answer: 'Any skill! Design, writing, coding, virtual assistance, marketing, and more. We show you how to package and sell your skills.'
+      }
+    ]
+  },
+  'ai-tools-productivity': {
+    id: 'm5',
+    title: 'AI Tools for Productivity',
+    slug: 'ai-tools-productivity',
+    category: 'Micro Courses',
+    duration: '2 weeks',
+    level: 'Beginner',
+    price: 20000,
+    enrollmentStatus: 'Open',
+    nextCohort: 'Rolling admission',
+    studentsEnrolled: 285,
+    rating: 4.9,
+    totalReviews: 156,
+    description: 'Master ChatGPT, Midjourney, and AI productivity tools to 10x your output in 2025.',
+    overview: 'Supercharge your productivity with AI in just 2 weeks. Master ChatGPT, Midjourney, Notion AI, and other cutting-edge tools. Learn prompt engineering and AI workflows.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
+    videoPreview: 'https://www.youtube.com/embed/example',
+    icon: TrendingUp,
+    color: 'from-purple-500 to-pink-500',
+    
+    learningOutcomes: [
+      'Master ChatGPT and prompt engineering',
+      'Create AI art with Midjourney',
+      'Automate tasks with AI',
+      'Use AI for content creation',
+      'Boost productivity 10x',
+      'Stay ahead of AI trends'
+    ],
+    
+    curriculum: [
+      { module: 'AI Fundamentals', weeks: '1', topics: ['ChatGPT Mastery', 'Prompt Engineering', 'AI Writing Tools'] },
+      { module: 'Advanced AI Tools', weeks: '2', topics: ['Midjourney Art', 'AI Automation', 'Productivity Workflows'] }
+    ],
+    
+    prerequisites: ['None - open to everyone'],
+    tools: ['ChatGPT', 'Midjourney', 'Notion AI', 'Copy.ai'],
+    certifications: ['Certificate of Completion'],
+    careerPaths: ['AI Consultant', 'Content Creator', 'Productivity Coach'],
+    instructors: [
+      { name: 'AI Innovator', title: 'AI & Automation Expert', experience: '5+ years with AI', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AIExpert' }
+    ],
+    features: [
+      'AI tool access guide',
+      '100+ prompt templates',
+      'Automation workflows',
+      'Certificate of completion'
+    ],
+    schedule: {
+      format: 'Online',
+      classTimes: 'Self-paced',
+      duration: '2 weeks',
+      commitment: '3-5 hours per week'
+    },
+    faqs: [
+      {
+        question: 'Do I need technical skills?',
+        answer: 'Not at all! This course is designed for everyone. If you can use a computer, you can learn AI tools.'
+      }
+    ]
   }
 }
 
