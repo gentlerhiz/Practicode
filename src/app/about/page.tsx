@@ -43,14 +43,14 @@ export default function AboutPage() {
       id: '1',
       name: 'Idris Akande Rasaq',
       role: 'Founder & Academic Coordinator',
-      image: '/images/team/idris.jpeg',
+      image: '/images/team/idris.jpg',
       bio: 'Passionate about building the next generation of tech professionals across Africa.',
     },
     {
       id: '2',
       name: 'Paul Olaojo',
       role: 'Data Scientist Instructor',
-      image: '/images/team/paul.jpeg',
+      image: '/images/team/paul.jpg',
       bio: 'Transforming data into actionable insights and empowering students with analytics skills.',
     },
     {

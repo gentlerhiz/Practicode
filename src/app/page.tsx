@@ -27,7 +27,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Practicode Academy",
-    "description": "Tech training academy offering courses in Web Development, Data Analytics, UI/UX Design, Machine Learning, and Graphics Design",
+    "description": "Tech training academy offering courses in Responsive Web Design, Javascript for Web Development, Data Analysis, UI/UX Design, Python Programming for Machine Learning, and Graphics Design",
     "url": "https://practicodeacademy.com",
     "logo": "https://practicodeacademy.com/images/yellowlogo.png",
     "image": "https://practicodeacademy.com/images/og-image.png",

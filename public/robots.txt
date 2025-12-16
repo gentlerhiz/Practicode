@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://practicode.com/sitemap.xml
+Sitemap: https://practicode.tech/sitemap.xml
