@@ -1,0 +1,359 @@
+# PRACTICODE ACADEMY PITCH DECK (COMPACT VERSION)
+
+## Slide 1: Cover
+**PRACTICODE ACADEMY**  
+*Building Job-Ready Tech Talent Through Practical Learning*
+
+**Tagline:** Learn. Build. Earn.
+
+**Visual:** Students coding in modern classroom + laptop screens showing projects
+
+**AMABC 1.0 Business Contest | December 2024**
+
+---
+
+## Slide 2: The Problem
+**Nigeria's Tech Ecosystem Challenge**
+
+**The Education Gap:**
+- 85% of tech graduates lack practical, job-ready skills
+- Traditional courses cost ₦300k-₦500k with little hands-on training
+- Theory-heavy curriculums produce unemployable graduates
+
+**The Business Gap:**
+- Small businesses (retailers, schools, clinics) operate manually
+- Custom software costs ₦500k-₦2M+—unaffordable for SMEs
+- No middle-ground solution exists
+
+**The Result:**
+- Talented youth can't access affordable practical training
+- Businesses can't afford digital transformation
+- Both markets remain underserved
+
+**Quote:** *"I hire graduates who can't build a simple website. And small businesses tell me they can't afford my ₦800k quote for basic systems."* — Nigerian Developer
+
+---
+
+## Slide 3: Our Solution
+**Dual Impact: Train Developers, Transform Businesses**
+
+### **Affordable Tech Education (₦80,000/3 months)**
+✅ **90% Hands-On**: Real projects, not just theory  
+✅ **6 In-Demand Courses**: Web Design, JavaScript, Data Analysis, UI/UX, Python ML, Graphics  
+✅ **Flexible Learning**: Physical (Ibadan) + Virtual (nationwide)  
+✅ **Student Projects**: Learn by building real client solutions  
+
+### **Affordable Business Solutions (₦150k-₦500k)**
+✅ **Inventory Systems** for retailers  
+✅ **Appointment Booking** for clinics/salons  
+✅ **WhatsApp CRM** for SMEs  
+✅ **School Admin Systems** for private schools  
+✅ **Data Services** for businesses  
+
+### **The Flywheel:**
+Students learn → Build real solutions → Businesses get affordable tech → More demand for training → More students enroll
+
+**Impact:** Train talent while solving real business problems at scale
+
+---
+
+## Slide 4: Market Opportunity
+**Massive, Underserved Dual Market**
+
+### **Education Market**
+- 🎓 **15M+ potential learners** (ages 18-35 in Nigeria)
+- 💰 **₦500B+ market** (tech education)
+- 📈 **35% annual growth** in African tech
+- 🎯 **Target:** University students, career switchers, upskilling professionals
+
+### **Business Solutions Market**
+- 🏢 **2M+ SMEs** in Nigeria (retailers, schools, clinics, salons)
+- 💡 **70% operate manually** (paper, WhatsApp)
+- 💸 **Can't afford** traditional development (₦500k-₦2M)
+- 🎯 **Target:** Small retailers, private schools, clinics, salons
+
+### **Serviceable Market (Southwest Nigeria)**
+- 500,000+ potential students
+- 200,000+ SMEs needing digitization
+- Combined addressable market: **₦60B+**
+
+**Competitive Advantage:** Only player bridging both markets with affordable, practical solutions
+
+---
+
+## Slide 5: Business Model & Revenue
+**Integrated Dual-Revenue Engine**
+
+### **Revenue Stream 1: Education (60%)**
+
+**Cohort Courses** (₦80,000 × 3 months)
+- Web Development, Data Analysis, UI/UX, Graphics Design, Python ML
+- **Target:** 200 students/year (2 cohorts)
+- **Revenue:** ₦16M/year
+
+**Micro Courses** (₦18k-₦25k × 2-4 weeks)
+- Cybersecurity, Social Media Design, JavaScript, Freelancing, AI Tools
+- **Target:** 300 students/year
+- **Revenue:** ₦6M/year
+
+**Corporate Training** (₦500k+ per program)
+- **Target:** 5 programs/year
+- **Revenue:** ₦2.5M/year
+
+---
+
+### **Revenue Stream 2: Business Solutions (40%)**
+
+**Practical SME Solutions** (₦150k-₦500k)
+- Inventory, Booking, CRM, School Systems, Data Services
+- **Students build as capstone projects** (low labor cost)
+- **Target:** 30 projects/year
+- **Revenue:** ₦9M-₦15M/year
+
+**Enterprise Solutions** (₦500k-₦2M)
+- Custom apps, e-commerce, AI integration
+- **Target:** 10 projects/year
+- **Revenue:** ₦5M-₦20M/year
+
+---
+
+### **Year 1 Revenue Breakdown (Actual 2024)**
+- **Total Revenue:** ₦8M
+- Education: ₦4.8M (60%)
+- Solutions: ₦3.2M (40%)
+- Students: 150 | Projects: 15
+- **Status:** Break-even achieved (Month 8)
+
+### **Year 2 Projection (2025)**
+- **Total Revenue:** ₦40M (5× growth)
+- Education: ₦22M | Solutions: ₦18M
+- Students: 400 | Projects: 40
+- **Gross Margin:** 70% | **Net Margin:** 25%
+
+**Unit Economics:**
+- Student LTV: ₦120,000 | CAC: ₦8,000 (15:1 ratio)
+- Project Avg Value: ₦350,000 | CAC: ₦15,000 (23:1 ratio)
+
+---
+
+## Slide 6: Traction & Proof
+**Real Results, Real Impact**
+
+### **2024 Achievements (Year 1)**
+
+**Education Metrics:**
+- 🎓 **150+ students** trained (3 cohorts)
+- ⭐ **95% satisfaction** rate
+- 💼 **40+ job placements** in tech roles
+- 📈 **85% completion** rate (vs 60% industry avg)
+- 🤝 **50+ marketing affiliates** driving enrollment
+
+**Business Solutions Metrics:**
+- 🛠️ **15 solutions delivered** (inventory, school systems, booking apps)
+- 🏢 **12 SME clients** served (retailers, schools, clinics)
+- ⏱️ **2-4 weeks** avg delivery (vs 3-6 months industry)
+- 🔄 **80% client retention** for ongoing support
+- 💰 **₦8M total revenue** (60% education, 40% solutions)
+
+**Student Success Pipeline:**
+- **25%** now freelancing (₦100k-300k/month)
+- **15%** employed full-time (₦150k-400k/month)
+- **3** hired as junior devs on our client projects
+- **Students build** real client solutions as capstone projects
+
+---
+
+### **Success Stories**
+
+**Sarah A. (Web Dev Graduate):**  
+*"I went from zero coding to building a school admin system now used by 3 private schools. I earn ₦200k/month freelancing."*
+
+**Mr. Adekunle (Retail Shop Owner):**  
+*"Practicode built our inventory system for ₦200k. Other quotes were ₦800k+. Our sales tracking improved 40%."*
+
+**Dr. Funmi (Clinic Owner):**  
+*"Their appointment system increased our bookings by 35% in 2 months."*
+
+---
+
+## Slide 7: Competitive Advantage
+**What Makes Practicode Unique**
+
+### **Only Player with Dual-Model Flywheel**
+
+| Factor | Practicode | Bootcamps | Software Agencies | Universities |
+|--------|-----------|-----------|------------------|--------------|
+| **Cost** | ₦80k (courses)<br>₦150k-500k (solutions) | ₦300k-500k | ₦500k-2M+ | ₦500k+/year |
+| **Practical Focus** | 90% hands-on | 60% theory | 100% custom | 20% practical |
+| **Affordable Solutions** | ✅ SME-focused | ❌ No | ❌ Too expensive | ❌ No |
+| **Students Work on Real Projects** | ✅ Client work | ❌ Mock projects | ❌ No | ❌ Rare |
+| **Speed** | 3 months (courses)<br>2-4 weeks (projects) | 6-12 months | 3-6 months | 4 years |
+
+---
+
+### **Our Unique Moats**
+
+1. **Student Labor Pool**  
+   150+ trained developers = lower project costs = affordable pricing for SMEs
+
+2. **Real-World Learning**  
+   Students graduate with deployed products (portfolio + experience)
+
+3. **Dual-Mode Delivery**  
+   Physical (Ibadan) + Virtual (nationwide) = wider reach
+
+4. **Affiliate Network**  
+   50+ marketers driving enrollment at zero upfront cost
+
+5. **SME-Focused Pricing**  
+   Only player offering ₦150k-500k solutions (vs ₦500k-2M+ market rate)
+
+6. **Proven Execution**  
+   Bootstrapped to ₦8M revenue, 150 students, 15 projects in Year 1
+
+---
+
+## Slide 8: Growth Strategy
+**Scaling the Flywheel**
+
+### **Customer Acquisition**
+
+**Education Side:**
+- 🎯 **Affiliate marketing** (50+ partners, 20-30% commission)
+- 📱 **Social media** (Instagram, Facebook, X + paid ads)
+- 🤝 **University partnerships** (campus ambassadors)
+- 🎤 **Free workshops** (hackathons, tech talks)
+
+**Business Side:**
+- 🏢 **Direct B2B sales** (retailers, schools, clinics, salons)
+- 🤝 **Student referrals** (graduates refer employers)
+- 📊 **Case studies** (showcase success stories)
+- 🎯 **Trade shows** (business expos, industry events)
+
+---
+
+### **Expansion Roadmap**
+
+**2025 Q1** — Scale to 200 students/cohort + 10 solution projects  
+**2025 Q2** — Launch Lagos physical hub + enterprise solutions tier  
+**2025 Q3** — Partner with 3 universities + 20 solution projects  
+**2025 Q4** — Expand to Abuja, Port Harcourt + corporate training arm
+
+---
+
+### **Key Metrics**
+- Education CAC: ₦8,000 | LTV: ₦120,000 (15:1)
+- Solutions CAC: ₦15,000 | LTV: ₦500,000 (33:1)
+- Churn: <15% (education), <20% (solutions)
+- Gross Margin: 70%+
+
+---
+
+## Slide 9: Financials & The Ask
+**Path to ₦100M+ in 3 Years**
+
+### **Financial Projections**
+
+**Year 1 (2024 - Actual):**
+- Revenue: **₦8M** | Students: 150 | Projects: 15
+- **Break-even achieved** (Month 8)
+
+**Year 2 (2025 - Projected):**
+- Revenue: **₦40M** (5× growth)
+  - Education: ₦22M (55%) | Solutions: ₦18M (45%)
+- Students: 400 | Projects: 40
+- Locations: 2 (Ibadan, Lagos)
+- **Gross Margin:** 70% | **Net Margin:** 25%
+
+**Year 3 (2026 - Projected):**
+- Revenue: **₦100M** (2.5× growth)
+  - Education: ₦50M | Solutions: ₦40M | Corp Training: ₦10M
+- Students: 800 | Projects: 80
+- Locations: 4 cities (+ Abuja, Port Harcourt)
+- **Gross Margin:** 72% | **Net Margin:** 35%
+
+---
+
+### **The Ask**
+**Seeking:** ₦10M seed funding  
+**Valuation:** ₦40M (post-money)  
+**Use of Funds:**
+- 40% — Marketing & customer acquisition
+- 25% — Infrastructure (classrooms, labs, equipment)
+- 20% — Talent (instructors, senior devs, sales team)
+- 10% — Curriculum development + solution templates
+- 5% — Operations & legal
+
+**Milestones with Funding:**
+- **Month 3:** Lagos hub launch
+- **Month 6:** 400 students enrolled
+- **Month 12:** ₦24M revenue run rate
+- **Month 18:** Break-even on investment
+
+---
+
+### **Impact with ₦10M Investment**
+- Train **800+ students** (vs 400 without funding)
+- Digitize **80+ SMEs** (vs 40 without funding)
+- Create **100+ tech jobs** through placements
+- Unlock **₦400M+ earning potential** for graduates
+
+---
+
+## Slide 10: Closing & Call to Action
+**Building Africa's Tech Future, One Student at a Time**
+
+### **Why Practicode?**
+
+✅ **Proven Model:** ₦8M revenue, 150 students, 15 projects in Year 1  
+✅ **Dual Impact:** Train talent + Transform businesses  
+✅ **Scalable Flywheel:** Each student → More projects → More students  
+✅ **Strong Margins:** 70% gross, 25% net (Year 2)  
+✅ **Massive Market:** ₦60B+ addressable in Southwest Nigeria alone  
+✅ **Mission-Driven:** Changing lives through practical tech education  
+
+---
+
+### **The Opportunity**
+
+- 🌍 **Market:** Fastest-growing tech ecosystem in Africa
+- 💰 **Revenue:** 5× growth in Year 2, 2.5× in Year 3
+- 🎯 **Scalable:** Proven model ready for expansion
+- 📈 **Exit Potential:** EdTech + SaaS hybrid (high multiples)
+- ❤️ **Impact:** Train 10,000+ students, digitize 1,000+ SMEs by 2030
+
+---
+
+### **Join Us**
+
+*"Let's build the next generation of African tech leaders together."*
+
+**Contact:**
+📧 practicodeacademy@gmail.com  
+📱 +234 707 277 8657 | +234 903 057 8667  
+🌐 practicodeacademy.com  
+📍 7B Oba Olagbegi, Old Bodija, Ibadan
+
+---
+
+**PRACTICODE ACADEMY**  
+*Learn. Build. Earn.*
+
+---
+
+## Design Notes for Gamma:
+
+**Visuals:**
+- Slide 2: Show frustrated graduate + manual business operations
+- Slide 3: Show students coding + deployed solutions
+- Slide 4: Nigeria map with market data overlay
+- Slide 5: Revenue breakdown pie charts + growth curves
+- Slide 6: Student testimonials + project screenshots
+- Slide 7: Comparison table + unique value icons
+- Slide 8: Growth timeline + expansion map
+- Slide 9: Financial projections bar chart
+- Slide 10: Team/students photo + bold CTA
+
+**Color Scheme:** #FFCA1A (yellow), #000000 (black), white, gray tones
+
+**Tone:** Professional, data-driven, impact-focused, confident

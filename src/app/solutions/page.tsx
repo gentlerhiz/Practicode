@@ -113,14 +113,14 @@ export default function SolutionsPage() {
       </section>
 
       {/* Solutions Grid - Two Column Alternating Layout */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="container mx-auto px-6 md:px-12 lg:px-16">
           {/* Section Header - Enhanced */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <motion.p
               initial={{ opacity: 0 }}
@@ -131,77 +131,80 @@ export default function SolutionsPage() {
               What We Offer
             </motion.p>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#000000] mb-4">
-              Our Solutions
+              Practical Business Solutions
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              From AI-powered automation to scalable cloud solutions, we deliver cutting-edge technology that drives real results
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+              From small business automation to enterprise-grade systems, we deliver <span className="font-semibold text-[#000000]">affordable, production-ready solutions</span> that solve real-world problems
+            </p>
+          </motion.div>
+
+          {/* Category: Practical Business Solutions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="h-1 w-12 bg-[#FFCA1A] rounded-full"></div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-[#000000]">
+                Practical Business Solutions
+              </h3>
+              <div className="h-1 flex-1 bg-gray-200 rounded-full"></div>
+            </div>
+            <p className="text-gray-600 max-w-4xl mb-10">
+              Affordable, easy-to-use solutions designed specifically for small businesses, schools, clinics, and retail shops in Nigeria
             </p>
           </motion.div>
 
           {/* Solutions - Alternating Two Column Layout */}
-          <div className="space-y-16">
-            {solutions.map((solution, index) => {
-              const borderColors = [
-                'border-blue-300',
-                'border-green-300', 
-                'border-yellow-300',
-                'border-purple-300',
-                'border-pink-300',
-                'border-cyan-300',
-                'border-orange-300',
-                'border-indigo-300'
+          <div className="space-y-12">
+            {solutions.slice(0, 7).map((solution, index) => {
+              const accentColors = [
+                { border: 'border-blue-400', badge: 'bg-blue-50 text-blue-700 border-blue-200', accent: 'bg-blue-500', hover: 'hover:border-blue-500' },
+                { border: 'border-emerald-400', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200', accent: 'bg-emerald-500', hover: 'hover:border-emerald-500' },
+                { border: 'border-amber-400', badge: 'bg-amber-50 text-amber-700 border-amber-200', accent: 'bg-amber-500', hover: 'hover:border-amber-500' },
+                { border: 'border-purple-400', badge: 'bg-purple-50 text-purple-700 border-purple-200', accent: 'bg-purple-500', hover: 'hover:border-purple-500' },
+                { border: 'border-pink-400', badge: 'bg-pink-50 text-pink-700 border-pink-200', accent: 'bg-pink-500', hover: 'hover:border-pink-500' },
+                { border: 'border-cyan-400', badge: 'bg-cyan-50 text-cyan-700 border-cyan-200', accent: 'bg-cyan-500', hover: 'hover:border-cyan-500' },
+                { border: 'border-orange-400', badge: 'bg-orange-50 text-orange-700 border-orange-200', accent: 'bg-orange-500', hover: 'hover:border-orange-500' },
               ]
-              const borderColor = borderColors[index % borderColors.length]
+              const colors = accentColors[index % accentColors.length]
               
               return (
                 <motion.div
                   key={solution.id}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <div className={`grid md:grid-cols-2 gap-0 items-center border-3 ${borderColor} rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300`}>
+                  <div className={`group grid md:grid-cols-2 gap-0 items-center border-2 ${colors.border} ${colors.hover} rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500`}>
                     {/* Image Column */}
-                    <div className={`${index % 2 === 1 ? 'md:order-2' : ''} group h-full`}>
-                      <div className="relative h-72 md:h-full min-h-[400px] overflow-hidden">
+                    <div className={`${index % 2 === 1 ? 'md:order-2' : ''} relative h-full`}>
+                      <div className="relative h-72 md:h-full min-h-[420px] overflow-hidden">
                         <Image 
                           src={solution.image}
                           alt={solution.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
-                        {/* Overlay on hover */}
-                        <div className="absolute inset-0 bg-[#000000]/0 group-hover:bg-[#000000]/10 transition-all duration-300"></div>
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        {/* Category Badge on Image */}
+                        <div className="absolute top-6 left-6">
+                          <div className={`px-4 py-2 ${colors.badge} backdrop-blur-sm border rounded-full text-xs font-bold uppercase tracking-wider shadow-lg`}>
+                            {solution.category}
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
                     {/* Content Column */}
-                    <div className={`${index % 2 === 1 ? 'md:order-1' : ''} p-8 lg:p-10`}>
-                      <div className="space-y-5">
-                      {/* Value Badge */}
-                      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full w-fit ${
-                        solution.id === '1' ? 'bg-blue-100 text-blue-700' : 
-                        solution.id === '2' ? 'bg-green-100 text-green-700' : 
-                        solution.id === '3' ? 'bg-yellow-100 text-yellow-700' : 
-                        solution.id === '4' ? 'bg-purple-100 text-purple-700' :
-                        solution.id === '5' ? 'bg-pink-100 text-pink-700' :
-                        solution.id === '6' ? 'bg-cyan-100 text-cyan-700' :
-                        solution.id === '7' ? 'bg-orange-100 text-orange-700' :
-                        'bg-indigo-100 text-indigo-700'
-                      }`}>
-                        <CheckCircle className="w-4 h-4" strokeWidth={2.5} />
-                        <span className="text-sm font-bold">
-                          {solution.id === '1' ? 'Scalable & Secure' : 
-                           solution.id === '2' ? 'Cross-Platform Ready' : 
-                           solution.id === '3' ? 'Problem-Solving Design' : 
-                           solution.id === '4' ? 'Real-World Insights' :
-                           solution.id === '5' ? 'AI-Powered' :
-                           solution.id === '6' ? 'Revenue Ready' :
-                           solution.id === '7' ? 'Smart Connected' :
-                           'Cloud-Based'}
-                        </span>
-                      </div>
+                    <div className={`${index % 2 === 1 ? 'md:order-1' : ''} p-8 lg:p-12`}>
+                      <div className="space-y-6">
+                      {/* Small Accent Line */}
+                      <div className={`h-1 w-16 ${colors.accent} rounded-full`}></div>
 
                       <h3 className="text-3xl lg:text-4xl font-bold text-[#000000] leading-tight">
                         {solution.title}
@@ -213,16 +216,17 @@ export default function SolutionsPage() {
                       
                       {/* Features */}
                       <div>
-                        <h4 className="text-sm font-bold text-[#000000] mb-3 uppercase tracking-wide">
+                        <h4 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-[#FFCA1A]" />
                           Key Features
                         </h4>
-                        <ul className="space-y-2.5">
-                          {solution.features.slice(0, 3).map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className="w-5 h-5 rounded-full bg-[#FFCA1A] flex items-center justify-center mt-0.5 flex-shrink-0">
+                        <ul className="space-y-3">
+                          {solution.features.slice(0, 4).map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-3 group/item">
+                              <div className="w-5 h-5 rounded-full bg-[#FFCA1A] flex items-center justify-center mt-0.5 flex-shrink-0 group-hover/item:scale-110 transition-transform">
                                 <CheckCircle className="w-3 h-3 text-[#000000]" strokeWidth={3} />
                               </div>
-                              <span className="text-sm text-gray-700 leading-relaxed">
+                              <span className="text-sm text-gray-700 leading-relaxed font-medium">
                                 {feature}
                               </span>
                             </li>
@@ -233,28 +237,183 @@ export default function SolutionsPage() {
                       {/* Technologies */}
                       <div>
                         <div className="flex flex-wrap gap-2">
-                          {solution.technologies.slice(0, 3).map((tech, idx) => (
+                          {solution.technologies.slice(0, 4).map((tech, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-xs font-semibold hover:bg-[#FFCA1A] hover:text-[#000000] transition-all duration-300"
+                              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-bold hover:bg-[#FFCA1A] hover:text-[#000000] transition-all duration-300 border border-gray-200"
                             >
                               {tech}
                             </span>
                           ))}
-                          {solution.technologies.length > 3 && (
-                            <span className="px-3 py-1.5 bg-gray-200 text-gray-700 rounded-lg text-xs font-semibold">
-                              +{solution.technologies.length - 3} more
+                          {solution.technologies.length > 4 && (
+                            <span className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-xs font-bold">
+                              +{solution.technologies.length - 4} more
                             </span>
                           )}
                         </div>
                       </div>
                       
                       {/* CTA Button */}
-                      <div className="pt-2">
+                      <div className="pt-3">
                         <Link href="/contact">
-                          <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFCA1A] text-[#000000] font-bold text-base rounded-xl hover:bg-yellow-400 hover:text-[#000000] transition-all duration-300 group">
+                          <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFCA1A] text-[#000000] font-bold text-base rounded-xl hover:bg-[#FFD700] hover:shadow-xl hover:scale-105 transition-all duration-300 group/btn shadow-lg">
                             <span>Get Started</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" strokeWidth={3} />
+                          </button>
+                        </Link>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Divider Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="my-20 py-16 bg-gradient-to-r from-[#FFCA1A]/5 via-[#FFCA1A]/10 to-[#FFCA1A]/5 rounded-3xl"
+          >
+            <div className="text-center max-w-3xl mx-auto px-6">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFCA1A] rounded-full mb-6">
+                <Zap className="w-5 h-5 text-[#000000]" strokeWidth={3} />
+                <span className="text-sm font-bold text-[#000000] uppercase tracking-wider">Enterprise Solutions</span>
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-bold text-[#000000] mb-4">
+                Advanced Technology Solutions
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                For larger organizations and businesses ready to scale, we offer enterprise-grade solutions with cutting-edge technology and unlimited scalability
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Category: Enterprise Tech Solutions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="h-1 w-12 bg-purple-500 rounded-full"></div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-[#000000]">
+                Enterprise Technology Solutions
+              </h3>
+              <div className="h-1 flex-1 bg-gray-200 rounded-full"></div>
+            </div>
+            <p className="text-gray-600 max-w-4xl mb-10">
+              Scalable, enterprise-grade solutions for businesses ready to leverage AI, cloud infrastructure, and modern software architecture
+            </p>
+          </motion.div>
+
+          {/* Enterprise Solutions Grid */}
+          <div className="space-y-12">
+            {solutions.slice(7).map((solution, index) => {
+              const actualIndex = index + 7
+              const accentColors = [
+                { border: 'border-indigo-400', badge: 'bg-indigo-50 text-indigo-700 border-indigo-200', accent: 'bg-indigo-500', hover: 'hover:border-indigo-500' },
+                { border: 'border-violet-400', badge: 'bg-violet-50 text-violet-700 border-violet-200', accent: 'bg-violet-500', hover: 'hover:border-violet-500' },
+                { border: 'border-fuchsia-400', badge: 'bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200', accent: 'bg-fuchsia-500', hover: 'hover:border-fuchsia-500' },
+                { border: 'border-rose-400', badge: 'bg-rose-50 text-rose-700 border-rose-200', accent: 'bg-rose-500', hover: 'hover:border-rose-500' },
+                { border: 'border-teal-400', badge: 'bg-teal-50 text-teal-700 border-teal-200', accent: 'bg-teal-500', hover: 'hover:border-teal-500' },
+                { border: 'border-sky-400', badge: 'bg-sky-50 text-sky-700 border-sky-200', accent: 'bg-sky-500', hover: 'hover:border-sky-500' },
+                { border: 'border-lime-400', badge: 'bg-lime-50 text-lime-700 border-lime-200', accent: 'bg-lime-500', hover: 'hover:border-lime-500' },
+                { border: 'border-red-400', badge: 'bg-red-50 text-red-700 border-red-200', accent: 'bg-red-500', hover: 'hover:border-red-500' },
+              ]
+              const colors = accentColors[index % accentColors.length]
+              
+              return (
+                <motion.div
+                  key={solution.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className={`group grid md:grid-cols-2 gap-0 items-center border-2 ${colors.border} ${colors.hover} rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500`}>
+                    {/* Image Column */}
+                    <div className={`${actualIndex % 2 === 1 ? 'md:order-2' : ''} relative h-full`}>
+                      <div className="relative h-72 md:h-full min-h-[420px] overflow-hidden">
+                        <Image 
+                          src={solution.image}
+                          alt={solution.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        {/* Category Badge on Image */}
+                        <div className="absolute top-6 left-6">
+                          <div className={`px-4 py-2 ${colors.badge} backdrop-blur-sm border rounded-full text-xs font-bold uppercase tracking-wider shadow-lg`}>
+                            {solution.category}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Content Column */}
+                    <div className={`${actualIndex % 2 === 1 ? 'md:order-1' : ''} p-8 lg:p-12`}>
+                      <div className="space-y-6">
+                      {/* Small Accent Line */}
+                      <div className={`h-1 w-16 ${colors.accent} rounded-full`}></div>
+
+                      <h3 className="text-3xl lg:text-4xl font-bold text-[#000000] leading-tight">
+                        {solution.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
+                        {solution.description}
+                      </p>
+                      
+                      {/* Features */}
+                      <div>
+                        <h4 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-[#FFCA1A]" />
+                          Key Features
+                        </h4>
+                        <ul className="space-y-3">
+                          {solution.features.slice(0, 4).map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-3 group/item">
+                              <div className="w-5 h-5 rounded-full bg-[#FFCA1A] flex items-center justify-center mt-0.5 flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <CheckCircle className="w-3 h-3 text-[#000000]" strokeWidth={3} />
+                              </div>
+                              <span className="text-sm text-gray-700 leading-relaxed font-medium">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Technologies */}
+                      <div>
+                        <div className="flex flex-wrap gap-2">
+                          {solution.technologies.slice(0, 4).map((tech, idx) => (
+                            <span
+                              key={idx}
+                              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-bold hover:bg-[#FFCA1A] hover:text-[#000000] transition-all duration-300 border border-gray-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {solution.technologies.length > 4 && (
+                            <span className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-xs font-bold">
+                              +{solution.technologies.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* CTA Button */}
+                      <div className="pt-3">
+                        <Link href="/contact">
+                          <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFCA1A] text-[#000000] font-bold text-base rounded-xl hover:bg-[#FFD700] hover:shadow-xl hover:scale-105 transition-all duration-300 group/btn shadow-lg">
+                            <span>Get Started</span>
+                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" strokeWidth={3} />
                           </button>
                         </Link>
                       </div>

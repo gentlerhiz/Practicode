@@ -1,0 +1,871 @@
+PRACTICODE ACADEMY - COMPLETE COURSE CATALOG & PRICING
+Last Updated: December 17, 2025
+Contact: practicodeacademy@gmail.com | +234 707 277 8657 | +234 903 057 8667
+
+==================================================================================
+                            COHORT PROGRAMS (3 MONTHS)
+==================================================================================
+All Cohort Courses: ₦80,000 per student | Duration: 3 months
+Format: Hybrid (Physical in Ibadan + Virtual Nationwide)
+Schedule: 3 sessions per week, 2-3 hours per session
+Commitment: 8-15 hours per week
+
+==================================================================================
+1. RESPONSIVE WEB DESIGN
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: January 15, 2026
+Students Enrolled: 380+
+Rating: 4.9/5 (285 reviews)
+
+OVERVIEW:
+Master HTML5, CSS3, and responsive design principles. Build beautiful, mobile-first 
+websites that work on all devices. Learn to create professional websites from 
+scratch and deploy them to production.
+
+WHAT YOU'LL LEARN:
+- Build responsive, mobile-first websites
+- Master HTML5 semantic markup
+- Create stunning layouts with CSS3, Flexbox, and Grid
+- Implement modern design principles
+- Optimize websites for performance and accessibility
+- Deploy websites to live servers
+- Build a professional portfolio with 10+ projects
+- Work with design tools like Figma
+
+CURRICULUM:
+
+Week 1-2: HTML Foundations
+- HTML5 & Semantic Markup
+- Forms & Validation
+- SEO Best Practices
+- Accessibility Standards
+
+Week 3-5: CSS Mastery
+- CSS3 Fundamentals
+- Flexbox & Grid Layout
+- Responsive Design
+- CSS Animations & Transitions
+
+Week 6-8: Advanced Techniques
+- Mobile-First Design
+- CSS Frameworks (Tailwind/Bootstrap)
+- Design Systems
+- Performance Optimization
+
+Week 9-12: Real Projects
+- Portfolio Website
+- E-commerce Landing Page
+- Blog Template
+- Business Website
+
+TOOLS YOU'LL USE:
+- VS Code
+- Figma
+- Git & GitHub
+- Chrome DevTools
+- Netlify/Vercel
+
+PREREQUISITES:
+- Basic computer skills
+- No coding experience required
+- Computer with internet access
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- Web Designer
+- Frontend Developer
+- UI Developer
+- Freelance Web Developer
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Mon, Wed, Fri - 6:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 8-12 hours per week
+
+==================================================================================
+2. JAVASCRIPT FOR WEB DEVELOPMENT
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: January 20, 2026
+Students Enrolled: 340+
+Rating: 4.9/5 (265 reviews)
+
+OVERVIEW:
+Master JavaScript ES6+, DOM manipulation, async programming, and modern web 
+development with React. Build interactive web applications and dynamic user 
+interfaces that solve real problems.
+
+WHAT YOU'LL LEARN:
+- Master JavaScript ES6+ features
+- Build interactive web applications
+- Work with APIs and async programming
+- Create dynamic user interfaces with React
+- Implement state management
+- Debug and optimize JavaScript code
+- Build 8+ real-world projects
+- Deploy applications to production
+
+CURRICULUM:
+
+Week 1-3: JavaScript Fundamentals
+- Variables & Data Types
+- Functions & Scope
+- Arrays & Objects
+- ES6+ Features (Arrow Functions, Destructuring, Spread/Rest)
+
+Week 4-6: DOM & Browser APIs
+- DOM Manipulation
+- Event Handling
+- Local Storage
+- Fetch API & AJAX
+
+Week 7-9: React Development
+- React Basics & JSX
+- Components & Props
+- State & Hooks (useState, useEffect, useContext)
+- React Router
+
+Week 10-12: Advanced Projects
+- API Integration
+- Authentication
+- State Management
+- Full Stack Projects
+
+TOOLS YOU'LL USE:
+- VS Code
+- Node.js
+- React
+- Git & GitHub
+- Chrome DevTools
+- Postman
+
+PREREQUISITES:
+- Basic HTML & CSS knowledge
+- Basic computer skills
+- No JavaScript experience required
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- JavaScript Developer
+- React Developer
+- Frontend Developer
+- Full Stack Developer
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Tue, Thu, Sat - 6:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 10-15 hours per week
+
+==================================================================================
+3. DATA ANALYSIS
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: January 25, 2026
+Students Enrolled: 380+
+Rating: 4.8/5 (285 reviews)
+
+OVERVIEW:
+Transform raw data into actionable insights using Excel, Power BI, Python, and SQL.
+Learn to collect, clean, analyze, and visualize data. Create stunning dashboards 
+that drive business decisions.
+
+WHAT YOU'LL LEARN:
+- Analyze complex datasets using Excel and Python
+- Create interactive dashboards with Power BI
+- Write efficient SQL queries for data extraction
+- Perform statistical analysis and reporting
+- Clean and transform messy data
+- Present data insights to stakeholders
+- Automate repetitive data tasks
+- Build a professional analytics portfolio
+
+CURRICULUM:
+
+Week 1-3: Excel & Data Fundamentals
+- Advanced Excel Functions (VLOOKUP, INDEX-MATCH, SUMIFS)
+- Pivot Tables & Charts
+- Data Cleaning Techniques
+- Statistical Analysis
+
+Week 4-6: SQL & Databases
+- SQL Basics (SELECT, WHERE, ORDER BY)
+- Queries & Joins (INNER, LEFT, RIGHT)
+- Database Management
+- Data Extraction & Transformation
+
+Week 7-9: Python for Analysis
+- Python Basics
+- Pandas & NumPy
+- Data Manipulation & Cleaning
+- Matplotlib & Seaborn Visualization
+
+Week 10-12: Power BI & Projects
+- Power BI Dashboards
+- DAX Functions
+- Data Storytelling
+- Capstone Project (End-to-End Analysis)
+
+TOOLS YOU'LL USE:
+- Microsoft Excel
+- Power BI Desktop
+- Python & Jupyter Notebook
+- SQL Server
+- Tableau
+
+PREREQUISITES:
+- Basic computer skills
+- Basic Excel knowledge
+- No programming experience required
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- Data Analyst
+- Business Analyst
+- Business Intelligence Developer
+- Analytics Consultant
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Mon, Wed, Fri - 6:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 10-15 hours per week
+
+==================================================================================
+4. UI/UX DESIGN
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: February 1, 2026
+Students Enrolled: 320+
+Rating: 4.9/5 (245 reviews)
+
+OVERVIEW:
+Design beautiful, user-friendly interfaces with Figma. Master user research, 
+wireframing, prototyping, and usability testing. Build a professional portfolio 
+with real projects and start freelancing.
+
+WHAT YOU'LL LEARN:
+- Create user-centered designs based on research
+- Design high-fidelity mockups in Figma
+- Build interactive prototypes for testing
+- Conduct usability tests and iterate designs
+- Develop design systems and style guides
+- Present and defend design decisions
+- Collaborate with developers effectively
+- Build a professional design portfolio
+
+CURRICULUM:
+
+Week 1-3: UX Foundations
+- Design Thinking Process
+- User Research Methods (Surveys, Interviews)
+- Personas & User Journeys
+- Information Architecture
+
+Week 4-6: UI Design Principles
+- Visual Design Fundamentals
+- Typography & Color Theory
+- Layout & Grid Systems
+- Figma & Adobe XD Mastery
+
+Week 7-9: Prototyping & Testing
+- Wireframing (Low-Fidelity, High-Fidelity)
+- Interactive Prototyping
+- Usability Testing
+- Design Iteration
+
+Week 10-12: Portfolio & Projects
+- Mobile App Design
+- Web Dashboard Design
+- Design Systems
+- Portfolio Development
+
+TOOLS YOU'LL USE:
+- Figma
+- Adobe XD
+- Adobe Photoshop
+- Illustrator
+- Miro
+- Notion
+
+PREREQUISITES:
+- No design experience required
+- Creative mindset
+- Basic computer skills
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- UI Designer
+- UX Designer
+- Product Designer
+- Interaction Designer
+- UX Researcher
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Tue, Thu, Sat - 5:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 8-12 hours per week
+
+==================================================================================
+5. PYTHON PROGRAMMING FOR MACHINE LEARNING
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: February 10, 2026
+Students Enrolled: 220+
+Rating: 4.9/5 (185 reviews)
+
+OVERVIEW:
+Master Python programming and machine learning fundamentals. Build ML models, 
+work with data, and create AI applications. Learn the most in-demand tech skill 
+of 2025.
+
+WHAT YOU'LL LEARN:
+- Master Python programming fundamentals
+- Work with NumPy, Pandas, and data libraries
+- Build machine learning models with scikit-learn
+- Understand ML algorithms and when to use them
+- Perform data preprocessing and feature engineering
+- Create data visualizations
+- Deploy ML models to production
+- Build AI-powered applications
+
+CURRICULUM:
+
+Week 1-3: Python Fundamentals
+- Python Basics (Variables, Data Types, Operators)
+- Data Structures (Lists, Tuples, Dictionaries, Sets)
+- Functions & Modules
+- Object-Oriented Programming
+
+Week 4-6: Data Science Libraries
+- NumPy Arrays & Operations
+- Pandas DataFrames
+- Data Cleaning & Transformation
+- Matplotlib & Seaborn Visualization
+
+Week 7-9: Machine Learning
+- ML Fundamentals & Theory
+- Supervised Learning (Regression, Classification)
+- Unsupervised Learning (Clustering, PCA)
+- Model Evaluation & Metrics
+
+Week 10-12: ML Projects
+- Regression Projects (House Price Prediction)
+- Classification Projects (Customer Churn)
+- Model Deployment
+- Capstone Project
+
+TOOLS YOU'LL USE:
+- Python
+- Jupyter Notebook
+- NumPy
+- Pandas
+- scikit-learn
+- Matplotlib
+- VS Code
+
+PREREQUISITES:
+- Basic computer skills
+- Basic mathematics
+- No programming experience required
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- Python Developer
+- Machine Learning Engineer
+- Data Scientist
+- AI Developer
+- ML Analyst
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Mon, Wed, Sat - 6:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 12-15 hours per week
+
+==================================================================================
+6. GRAPHICS DESIGN
+==================================================================================
+Price: ₦80,000
+Duration: 3 months (12 weeks)
+Level: Beginner to Advanced
+Next Cohort: January 28, 2026
+Students Enrolled: 280+
+Rating: 4.7/5 (212 reviews)
+
+OVERVIEW:
+Master Adobe Creative Suite and design principles. Create logos, brand identities,
+social media graphics, and print materials. Build a portfolio and start earning 
+as a freelance designer.
+
+WHAT YOU'LL LEARN:
+- Master Adobe Photoshop, Illustrator, and InDesign
+- Design professional logos and brand identities
+- Create engaging social media graphics
+- Understand color theory, typography, and composition
+- Build a professional design portfolio
+- Start earning as a freelance designer
+- Work with real clients on projects
+- Price your design services effectively
+
+CURRICULUM:
+
+Week 1-2: Design Fundamentals
+- Design Principles & Theory
+- Color Theory & Psychology
+- Typography Mastery
+- Composition & Layout
+
+Week 3-6: Adobe Creative Suite
+- Photoshop Photo Editing & Manipulation
+- Illustrator Vector Graphics & Logo Design
+- InDesign Layouts & Publications
+- Workflow Optimization
+
+Week 7-9: Brand Design
+- Logo Design Process
+- Brand Identity Systems
+- Brand Guidelines Creation
+- Packaging Design
+
+Week 10-12: Portfolio & Freelancing
+- Social Media Templates
+- Print Design Projects (Flyers, Brochures)
+- Portfolio Presentation
+- Client Management & Pricing
+
+TOOLS YOU'LL USE:
+- Adobe Photoshop
+- Adobe Illustrator
+- Adobe InDesign
+- Canva Pro
+- Figma
+- Behance
+
+PREREQUISITES:
+- Basic computer skills
+- Creative passion
+- No design experience required
+
+CERTIFICATES:
+- Yes
+- Project Portfolio
+
+CAREER PATHS:
+- Graphic Designer
+- Brand Designer
+- Freelance Designer
+- Social Media Designer
+- Creative Director
+
+COURSE FEATURES:
+- 24/7 access to learning materials
+- Unlimited Internet access (physical mode)
+- Mentorship from industry experts
+- Build real-world projects
+
+SCHEDULE:
+Format: Hybrid (Online + Physical)
+Class Times: Tue, Thu, Sat - 4:00 PM WAT
+Duration: 2-3 hours per session
+Commitment: 10-12 hours per week
+
+FREELANCE EARNING POTENTIAL:
+- Beginner: ₦15,000-₦50,000 per project
+- Intermediate: ₦50,000-₦150,000 per project
+- Advanced: ₦100,000-₦500,000+ per project
+
+==================================================================================
+                            MICRO COURSES (2-4 WEEKS)
+==================================================================================
+Short, focused courses for specific skills. Self-paced online learning.
+Perfect for quick skill acquisition or skill upgrades.
+
+==================================================================================
+MICRO COURSE 1: CYBERSECURITY BASICS
+==================================================================================
+Price: ₦25,000
+Duration: 4 weeks
+Level: Beginner
+Format: Self-paced Online
+Students Enrolled: 180+
+Rating: 4.6/5 (95 reviews)
+
+OVERVIEW:
+Learn essential cybersecurity concepts, ethical hacking basics, and how to 
+protect systems from threats. Master security fundamentals in just 4 weeks.
+
+WHAT YOU'LL LEARN:
+- Understand cybersecurity fundamentals
+- Learn basic ethical hacking techniques
+- Implement security best practices
+- Protect systems from common threats
+- Use security tools and software
+- Identify vulnerabilities
+
+CURRICULUM:
+Week 1: Security Fundamentals (Cybersecurity Basics, Threat Landscape, Principles)
+Week 2: Network Security (Firewalls, VPNs, Network Monitoring)
+Week 3: Ethical Hacking (Penetration Testing, Vulnerability Scanning, Tools)
+Week 4: Security Practices (Secure Coding, Data Protection, Incident Response)
+
+TOOLS: Kali Linux, Wireshark, Metasploit, Nmap
+
+CAREER PATHS:
+- Cybersecurity Analyst
+- Security Consultant
+- Ethical Hacker
+
+==================================================================================
+MICRO COURSE 2: SOCIAL MEDIA DESIGN
+==================================================================================
+Price: ₦20,000
+Duration: 3 weeks
+Level: Beginner
+Format: Self-paced Online
+Students Enrolled: 250+
+Rating: 4.7/5 (142 reviews)
+
+OVERVIEW:
+Create stunning social media graphics for Instagram, Facebook, and Twitter using 
+Canva and design principles. Grow your following with engaging content.
+
+WHAT YOU'LL LEARN:
+- Master Canva Pro
+- Design for all social platforms
+- Create branded content
+- Understand color and typography
+- Build a content calendar
+- Grow your following
+
+CURRICULUM:
+Week 1: Design Basics (Canva Mastery, Design Principles, Color Theory)
+Week 2: Platform-Specific Design (Instagram Posts, Facebook Graphics, Twitter)
+Week 3: Content Strategy (Content Calendar, Branding, Engagement Tips)
+
+TOOLS: Canva Pro (access included), Figma
+
+INCLUDES:
+- Canva Pro access
+- 50+ design templates
+- Social media strategy guide
+
+CAREER PATHS:
+- Social Media Manager
+- Content Creator
+- Freelance Designer
+
+==================================================================================
+MICRO COURSE 3: JAVASCRIPT CRASH COURSE
+==================================================================================
+Price: ₦22,000
+Duration: 3 weeks
+Level: Beginner
+Format: Self-paced Online
+Students Enrolled: 320+
+Rating: 4.8/5 (198 reviews)
+
+OVERVIEW:
+Master JavaScript fundamentals fast. Learn ES6+, DOM manipulation, and build 
+interactive web projects. Perfect for web developers who want to add JavaScript.
+
+WHAT YOU'LL LEARN:
+- Master JavaScript fundamentals
+- Work with ES6+ features
+- Manipulate the DOM
+- Handle async operations
+- Build 5 interactive projects
+- Debug like a pro
+
+CURRICULUM:
+Week 1: JS Fundamentals (Variables, Data Types, Functions, Arrays, Objects)
+Week 2: DOM & Events (DOM Manipulation, Event Handling, Forms)
+Week 3: Modern JavaScript (ES6+ Features, Async/Await, Mini Projects)
+
+TOOLS: VS Code, Chrome DevTools
+
+INCLUDES:
+- 5 hands-on projects
+- Code challenges
+- JavaScript cheat sheets
+
+PREREQUISITES: Basic HTML & CSS
+
+CAREER PATHS:
+- Frontend Developer
+- Web Developer
+- JavaScript Developer
+
+==================================================================================
+MICRO COURSE 4: FREELANCING CAREER LAUNCH
+==================================================================================
+Price: ₦18,000
+Duration: 2 weeks
+Level: Beginner
+Format: Self-paced Online
+Students Enrolled: 195+
+Rating: 4.5/5 (87 reviews)
+
+OVERVIEW:
+Launch your freelance career on Upwork, Fiverr, and local platforms. Learn 
+pricing, proposals, and client management. Start earning within weeks.
+
+WHAT YOU'LL LEARN:
+- Set up winning freelance profiles
+- Write proposals that convert
+- Price your services correctly
+- Find and land clients
+- Manage projects effectively
+- Build long-term client relationships
+
+CURRICULUM:
+Week 1: Freelance Foundations (Platform Setup, Profile Optimization, Pricing)
+Week 2: Getting Clients (Proposal Writing, Client Communication, Project Management)
+
+INCLUDES:
+- Profile templates
+- Proposal templates
+- Pricing calculator
+
+PREREQUISITES: Any marketable skill (design, writing, coding, etc.)
+
+PERFECT FOR:
+Anyone with a skill who wants to start freelancing and earning online.
+
+==================================================================================
+MICRO COURSE 5: AI TOOLS FOR PRODUCTIVITY
+==================================================================================
+Price: ₦20,000
+Duration: 2 weeks
+Level: Beginner
+Format: Self-paced Online
+Students Enrolled: 285+
+Rating: 4.9/5 (156 reviews)
+
+OVERVIEW:
+Master ChatGPT, Midjourney, and AI productivity tools to 10x your output in 2025.
+Learn prompt engineering and AI workflows that save hours of work daily.
+
+WHAT YOU'LL LEARN:
+- Master ChatGPT and prompt engineering
+- Create AI art with Midjourney
+- Automate tasks with AI
+- Use AI for content creation
+- Boost productivity 10x
+- Stay ahead of AI trends
+
+CURRICULUM:
+Week 1: AI Fundamentals (ChatGPT Mastery, Prompt Engineering, AI Writing Tools)
+Week 2: Advanced AI Tools (Midjourney Art, AI Automation, Productivity Workflows)
+
+TOOLS: ChatGPT, Midjourney, Notion AI, Copy.ai
+
+INCLUDES:
+- AI tool access guide
+- 100+ prompt templates
+- Automation workflows
+
+PREREQUISITES: None - open to everyone
+
+CAREER PATHS:
+- AI Consultant
+- Content Creator
+- Productivity Coach
+
+==================================================================================
+                        PAYMENT & ENROLLMENT INFORMATION
+==================================================================================
+
+PRICING SUMMARY:
+- Cohort Programs (3 months): ₦80,000 per course
+- Micro Courses (2-4 weeks): ₦18,000 - ₦25,000 per course
+
+PAYMENT OPTIONS:
+1. Full Payment (get 5% discount)
+2. Installment Plans (contact for details)
+3. Early Bird Discount (register 2 weeks before cohort starts, get 10% off)
+
+ENROLLMENT PROCESS:
+1. Visit: practicodeacademy.com
+2. Select your course
+3. Fill enrollment form
+4. Make payment
+5. Receive confirmation email
+6. Join WhatsApp class group
+7. Start learning!
+
+REFUND POLICY:
+- Full refund within 7 days of enrollment
+- Must be before attending more than 2 classes
+
+CERTIFICATES:
+All students receive certificates upon successful completion.
+
+LOCATIONS:
+Physical Classes: 7B Oba Olagbegi, Old Bodija, Ibadan, Oyo State
+Virtual Classes: Accessible nationwide
+
+CONTACT INFORMATION:
+Email: practicodeacademy@gmail.com
+Phone: +234 707 277 8657
+WhatsApp: +234 903 057 8667
+Website: practicodeacademy.com
+Instagram: @practicodeacademy
+Address: 7B Oba Olagbegi, Old Bodija, Ibadan
+
+WORKING HOURS:
+Monday - Friday: 9:00 AM - 6:00 PM
+Saturday: 10:00 AM - 4:00 PM
+Sunday: Closed
+
+==================================================================================
+                            FREQUENTLY ASKED QUESTIONS
+==================================================================================
+
+Q: Do I need prior experience?
+A: No! All our beginner courses start from the fundamentals. No prior experience 
+   is required.
+
+Q: Can I learn online from anywhere?
+A: Yes! All cohort courses are hybrid (online + physical). You can join from 
+   anywhere in Nigeria.
+
+Q: What if I miss a class?
+A: All classes are recorded. You can watch replays anytime.
+
+Q: Do you offer certificates?
+A: Yes! You receive ISO-Standard certificates upon completion.
+
+Q: Can I get a job after completing a course?
+A: Yes! We provide job placement assistance, resume reviews, and interview prep.
+   Many students get jobs within 3-6 months.
+
+Q: Do you offer payment plans?
+A: Yes! Contact us for flexible installment options.
+
+Q: Can I switch courses after enrollment?
+A: Yes, within the first 2 weeks, subject to availability and approval.
+
+Q: What is the refund policy?
+A: Full refund within 7 days of enrollment and before attending more than 2 classes.
+
+Q: How long do I have access to course materials?
+A: Lifetime access to all course materials and updates.
+
+Q: Do you help with job placements?
+A: Yes! We offer career guidance, resume reviews, interview prep, and connect 
+   you with our hiring partners.
+
+==================================================================================
+                            STUDENT SUCCESS STORIES
+==================================================================================
+
+"I went from zero coding to building a school admin system now used by 3 private 
+schools. I earn ₦200k/month freelancing." - Sarah A., Web Development Graduate
+
+"Practicode's data analysis course got me a job at a fintech startup earning 
+₦250k/month." - Tunde O., Data Analytics Graduate
+
+"I started freelancing during the graphics design course. I now make ₦150k-300k 
+monthly on Fiverr." - Blessing A., Graphics Design Graduate
+
+"The UI/UX course changed my career. I'm now a product designer at a tech company 
+earning ₦350k/month." - Chioma E., UI/UX Graduate
+
+==================================================================================
+                            WHY CHOOSE PRACTICODE?
+==================================================================================
+
+✅ AFFORDABLE: 50-70% cheaper than other bootcamps
+✅ PRACTICAL: 90% hands-on learning with real projects
+✅ FLEXIBLE: Hybrid format (physical + virtual)
+✅ JOB-READY: Career support and placement assistance
+✅ PROVEN: 150+ students trained, 40+ job placements in Year 1
+✅ CERTIFIED: ISO-Standard certificates
+✅ LIFETIME ACCESS: Course materials forever
+✅ COMMUNITY: Join 500+ tech professionals in our alumni network
+
+==================================================================================
+                        BUSINESS SOLUTIONS & SERVICES
+==================================================================================
+
+In addition to tech education, Practicode also provides affordable business 
+solutions for SMEs:
+
+1. Inventory Tracking System (₦150k-300k)
+2. Appointment Booking System (₦200k-400k)
+3. WhatsApp Business CRM (₦150k-350k)
+4. School Admin System (₦300k-500k)
+5. Parent Progress Portal (₦200k-400k)
+6. IT Training for Non-Tech Staff (₦500k+ per program)
+7. Data Entry & Formatting Services (₦50k-200k)
+8. Custom Web/Mobile Apps (₦500k-2M)
+
+Contact us for custom quotes and project consultations.
+
+==================================================================================
+                            END OF CATALOG
+==================================================================================
+
+For more information, visit: practicodeacademy.com
+or contact us at practicodeacademy@gmail.com
+
+Learn. Build. Earn.
