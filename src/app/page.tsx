@@ -19,6 +19,8 @@ import Newsletter from '@/components/ui/Newsletter'
 import BlogSection from '@/components/ui/BlogSection'
 import EventsSection from '@/components/ui/EventsSection'
 import FinalCTA from '@/components/ui/FinalCTA'
+import HomeSiwesSection from '@/components/ui/HomeSiwesSection'
+import HomeStoreSection from '@/components/ui/HomeStoreSection'
 import { testimonials, courses } from '@/data'
 
 export default function HomePage() {
@@ -303,6 +305,11 @@ export default function HomePage() {
 
       {/* Micro Courses Section */}
       <MicroIntro />
+      {/* SIWES Promo */}
+      <HomeSiwesSection />
+
+      {/* Store Promo */}
+      <HomeStoreSection />
 
       {/* Solutions Intro Section */}
       <SolutionsIntro />

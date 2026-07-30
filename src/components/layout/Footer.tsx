@@ -17,8 +17,10 @@ const footerLinks = {
   ],
   services: [
     { label: 'Internship', href: '/internship' },
+    { label: 'SIWES', href: '/siwes' },
     { label: 'Mentorship', href: '/mentorship' },
     { label: 'Solutions', href: '/solutions' },
+    { label: 'Store', href: '/store' },
     { label: 'Corporate Training', href: '/solutions#training' },
   ],
   resources: [
@@ -43,7 +45,7 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-16 py-8 md:py-10 lg:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
@@ -115,6 +117,22 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4">Programs</h3>
             <ul className="space-y-2">
               {footerLinks.programs.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-primary-amber transition-colors text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Services</h3>
+            <ul className="space-y-2">
+              {footerLinks.services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
