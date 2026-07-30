@@ -29,7 +29,7 @@ const navLinks: NavLink[] = [
   {
     label: 'Resources',
     dropdown: [
-      { href: '/resources', label: 'Resources' },
+      { href: '/resources', label: 'Library' },
       { href: '/blog', label: 'Blogs' },
       { href: '/faq', label: 'FAQs' },
       {
