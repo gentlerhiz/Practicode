@@ -101,10 +101,6 @@ export default function HomePage() {
       <section className="relative overflow-hidden px-4 pt-10 pb-12 tab:min-h-[640px] tab:px-10 tab:pt-[104px] tab:pb-28">
         <div aria-hidden="true" className="hero-wash" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden wide:block">
-          <figure className={`${floatCard} float-slow top-14 left-[3%] w-[220px] -rotate-[7deg] border-ai/50`}>
-            <Image src={photos.graduation.src} alt="" width={400} height={300} className="h-[150px] w-full rounded-[14px] object-cover" />
-            <figcaption className="px-1 pt-2.5 pb-0.5 text-[13px] font-semibold">Graduation day</figcaption>
-          </figure>
           <div className={`${floatCard} float-slower top-[400px] left-[6%] w-[200px] rotate-[5deg] border-success-fill/50`}>
             <p className="mb-3 text-[13px] font-semibold text-da-text">Weekly sales</p>
             <div className="flex h-[76px] items-end gap-2">
@@ -162,23 +158,15 @@ export default function HomePage() {
               Explore Programmes
             </Link>
           </div>
-          <Image
-            src={photos.graduation.src}
-            alt={photos.graduation.alt}
-            width={800}
-            height={480}
-            priority
-            className="h-60 w-full -rotate-[1.5deg] rounded-3xl border border-line object-cover tab:hidden"
-          />
         </div>
       </section>
 
       {/* Tools strip */}
       <section aria-label="Tools you’ll learn" className="overflow-hidden border-y border-line-subtle bg-sunken">
-        <div className="marquee flex w-max gap-9 py-[22px] pl-10">
+        <div className="marquee flex w-max gap-7 py-3 pl-7">
           {[...tools, ...tools].map((tool, i) => (
-            <span key={i} aria-hidden={i >= tools.length || undefined} className="flex shrink-0 items-center gap-2.5 text-base font-semibold text-ink-soft">
-              <Tile icon={tool.icon} tone={tool.tone} size={30} />
+            <span key={i} aria-hidden={i >= tools.length || undefined} className="flex shrink-0 items-center gap-2 text-[13px] font-semibold text-ink-soft">
+              <Tile icon={tool.icon} tone={tool.tone} size={22} />
               {tool.name}
             </span>
           ))}
