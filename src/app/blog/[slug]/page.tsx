@@ -1,269 +1,172 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter, Linkedin } from 'lucide-react'
-import { notFound } from 'next/navigation'
+import type { Metadata, Route } from 'next'
 import Image from 'next/image'
-import { blogPosts } from '@/data/blogData'
-import Newsletter from '@/components/ui/Newsletter'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { ArrowUpRight, Laptop } from 'lucide-react'
+import { CtaBand } from '@/components/site/cta-band'
+import { JsonLd } from '@/components/seo/json-ld'
+import { Icon } from '@/components/ui/icon'
+import { Section } from '@/components/ui/section'
+import { Tile } from '@/components/ui/tile'
+import { findPost, formatDate, posts } from '@/content/blog'
+import { articleLd, breadcrumbLd, pageMeta } from '@/lib/seo'
+import { absoluteUrl, site } from '@/lib/site'
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(p => p.slug === params.slug)
+export const dynamicParams = false
+export const generateStaticParams = () => posts.map((p) => ({ slug: p.slug }))
 
-  if (!post) {
-    notFound()
-  }
+export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): Promise<Metadata> {
+  const post = findPost((await params).slug)
+  if (!post) return {}
+  const meta = pageMeta({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}` })
+  return { ...meta, openGraph: { ...meta.openGraph, type: 'article', publishedTime: post.date, images: [{ url: post.image.src, alt: post.image.alt }] } }
+}
 
-  // Get related posts from the same category
-  const relatedPosts = blogPosts
-    .filter(p => p.category === post.category && p.slug !== post.slug)
-    .slice(0, 3)
+export default async function PostPage({ params }: PageProps<'/blog/[slug]'>) {
+  const post = findPost((await params).slug)
+  if (!post) notFound()
+  const url = absoluteUrl(`/blog/${post.slug}`)
+  const share = [
+    { short: 'WA', label: 'Share on WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${url}`)}` },
+    { short: 'X', label: 'Share on X', href: `https://x.com/intent/post?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}` },
+    { short: 'in', label: 'Share on LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}` },
+  ]
+  const toc = post.body.filter((b) => b.type === 'h2')
+  const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-[#000000] py-12">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <div className="max-w-4xl mx-auto">
-            {/* Back Button */}
-            <Link href="/blog">
-              <motion.button
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-[#FFCA1A] transition-colors mb-8"
-              >
-                <ArrowLeft className="w-5 h-5" strokeWidth={2} />
-                <span className="font-medium">Back to Blog</span>
-              </motion.button>
+    <>
+      <header className="relative overflow-hidden">
+        <div aria-hidden="true" className="hero-wash" />
+        <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-[18px] px-4 pt-7 pb-7 text-center tab:px-10 tab:pt-16 tab:pb-11">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap justify-center gap-2 text-[13px] text-ink-muted">
+            <Link href="/blog" className="underline-offset-2 hover:underline">
+              Blog
             </Link>
-
-            {/* Category Badge */}
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="inline-block px-4 py-2 bg-[#FFCA1A] text-[#000000] text-xs font-bold rounded-full mb-6"
-            >
-              {post.categoryLabel}
-            </motion.span>
-
-            {/* Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-            >
-              {post.title}
-            </motion.h1>
-
-            {/* Meta Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap items-center gap-6 text-gray-400"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-[#FFCA1A] flex items-center justify-center text-[#000000] font-bold text-sm">
-                  {post.author.split(' ').map(n => n[0]).join('')}
-                </div>
-                <span className="font-medium">{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" strokeWidth={2} />
-                <span>{post.date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" strokeWidth={2} />
-                <span>{post.readTime}</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Image */}
-      <section className="relative bg-gray-50 py-8">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover"
-              />
+            <span aria-hidden="true">/</span>
+            <span className="text-ink">{post.category}</span>
+          </nav>
+          <span className="rounded-full bg-ux-tint px-3 py-[5px] text-[13px] font-semibold text-ux-text">{post.category}</span>
+          <h1 className="font-display text-[34px] leading-10 font-extrabold tracking-[-0.035em] text-ink tab:text-[56px] tab:leading-[62px]">{post.title}</h1>
+          <p className="max-w-[680px] text-base leading-[26px] text-ink-soft tab:text-[19px] tab:leading-[31px]">{post.excerpt}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+            <div className="flex items-center gap-3 text-left">
+              <span aria-hidden="true" className="flex size-11 items-center justify-center rounded-full border border-line bg-[#15122a] font-mono text-xs font-semibold text-yellow">
+                PA
+              </span>
+              <span className="flex flex-col">
+                <span className="text-[15px] font-semibold text-ink">{post.author}</span>
+                <span className="text-[13px] text-ink-muted">
+                  <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readMinutes} min read
+                </span>
+              </span>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Article Content */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="prose prose-lg max-w-none"
-            >
-              {/* Article Introduction */}
-              <p className="text-xl text-gray-700 leading-relaxed mb-8">
-                {post.excerpt}
-              </p>
-
-              {/* Sample Content - You can expand this with actual content */}
-              <h2 className="text-2xl font-bold text-[#000000] mt-10 mb-4">Introduction</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                In this comprehensive guide, we&apos;ll explore the key concepts and best practices that will help you master this topic. Whether you&apos;re just starting out or looking to level up your skills, this article will provide you with actionable insights and practical examples.
-              </p>
-
-              <h2 className="text-2xl font-bold text-[#000000] mt-10 mb-4">Key Takeaways</h2>
-              <ul className="list-disc list-inside space-y-3 text-gray-700 mb-6">
-                <li>Understanding the fundamental concepts is crucial for long-term success</li>
-                <li>Practice consistently with real-world projects to reinforce your learning</li>
-                <li>Stay updated with the latest industry trends and best practices</li>
-                <li>Join communities and network with other professionals in the field</li>
-                <li>Never stop learning and always seek opportunities to improve</li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-[#000000] mt-10 mb-4">Deep Dive</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Let&apos;s explore the core concepts in detail. Understanding these principles will give you a solid foundation and help you navigate more complex topics with confidence. The tech industry is constantly evolving, and staying ahead requires dedication and continuous learning.
-              </p>
-
-              <p className="text-gray-700 leading-relaxed mb-6">
-                By applying these strategies and techniques, you&apos;ll be well-equipped to tackle real-world challenges and build impressive projects that showcase your skills to potential employers or clients.
-              </p>
-
-              <h2 className="text-2xl font-bold text-[#000000] mt-10 mb-4">Practical Application</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                The best way to solidify your understanding is through hands-on practice. Start with small projects and gradually work your way up to more complex applications. Don&apos;t be afraid to make mistakes – they&apos;re an essential part of the learning process.
-              </p>
-
-              <h2 className="text-2xl font-bold text-[#000000] mt-10 mb-4">Conclusion</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Mastering this skill takes time and dedication, but with consistent effort and the right approach, you&apos;ll see significant progress. Remember to celebrate your wins along the way and keep pushing forward, even when things get challenging.
-              </p>
-
-              <div className="mt-12 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-gray-200">
-                <p className="text-gray-700 font-medium mb-2">
-                  <strong>Ready to take your skills to the next level?</strong>
-                </p>
-                <p className="text-gray-600 mb-4">
-                  Join our comprehensive courses and learn from industry experts with hands-on projects and personalized mentorship.
-                </p>
-                <Link href="/courses">
-                  <button className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFCA1A] text-[#000000] font-bold rounded-xl hover:bg-[#000000] hover:text-white transition-all duration-300">
-                    Explore Courses
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Share Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="mt-12 pt-8 border-t-2 border-gray-100"
-            >
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <h3 className="text-lg font-bold text-[#000000]">Share this article</h3>
-                <div className="flex items-center gap-3">
-                  <button 
-                    aria-label="Share on Facebook"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white flex items-center justify-center transition-all duration-300"
+            <ul aria-label="Share this post" className="flex gap-2">
+              {share.map((s) => (
+                <li key={s.short}>
+                  <a
+                    href={s.href}
+                    aria-label={s.label}
+                    className="flex size-10 items-center justify-center rounded-full border border-line-control font-mono text-xs font-semibold text-ink hover:bg-hover"
                   >
-                    <Facebook className="w-5 h-5" strokeWidth={2} />
-                  </button>
-                  <button 
-                    aria-label="Share on Twitter"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-sky-500 hover:text-white flex items-center justify-center transition-all duration-300"
-                  >
-                    <Twitter className="w-5 h-5" strokeWidth={2} />
-                  </button>
-                  <button 
-                    aria-label="Share on LinkedIn"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-700 hover:text-white flex items-center justify-center transition-all duration-300"
-                  >
-                    <Linkedin className="w-5 h-5" strokeWidth={2} />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
+                    {s.short}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="py-12 bg-gray-50">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#000000] mb-8">
-                Related Articles
+      <div className="mx-auto max-w-[1280px] px-4 tab:px-10">
+        <Image
+          src={post.image.src}
+          alt={post.image.alt}
+          width={1400}
+          height={700}
+          priority
+          sizes="(min-width: 1280px) 1200px, 100vw"
+          className="h-[220px] w-full rounded-[32px] border border-line object-cover tab:h-[460px]"
+        />
+      </div>
+
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-start gap-6 px-4 py-8 tab:gap-16 tab:px-10 tab:py-14">
+        <article className="prose-pc flex max-w-[760px] min-w-0 flex-[999_1_560px] flex-col gap-[22px]">
+          {post.body.map((b, i) =>
+            b.type === 'p' ? (
+              <p key={i}>{b.text}</p>
+            ) : b.type === 'h2' ? (
+              <h2 key={i} id={b.id} className="scroll-mt-28">
+                {b.text}
               </h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                {relatedPosts.map((relatedPost, index) => (
-                  <motion.article
-                    key={relatedPost.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group cursor-pointer"
-                  >
-                    <Link href={`/blog/${relatedPost.slug}`}>
-                      <div className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-[#FFCA1A] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
-                        {/* Image */}
-                        <div className="relative h-44 overflow-hidden bg-gray-100">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={relatedPost.image}
-                            alt={relatedPost.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-5 flex-1 flex flex-col">
-                          <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full mb-2 w-fit">
-                            {relatedPost.categoryLabel}
-                          </span>
-
-                          <h3 className="text-base font-bold text-[#000000] mb-2 group-hover:text-[#FFCA1A] transition-colors leading-tight line-clamp-2">
-                            {relatedPost.title}
-                          </h3>
-
-                          <div className="flex items-center gap-3 text-xs text-gray-500 mt-auto pt-3 border-t border-gray-100">
-                            <div className="flex items-center gap-1">
-                              <Clock className="w-3.5 h-3.5" strokeWidth={2} />
-                              <span>{relatedPost.readTime}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.article>
+            ) : (
+              <ul key={i}>
+                {b.items.map((it) => (
+                  <li key={it}>{it}</li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            ),
+          )}
+        </article>
+        <aside aria-label="On this page" className="flex min-w-0 flex-[1_1_260px] flex-col gap-4 tab:sticky tab:top-32 tab:max-w-[300px]">
+          {toc.length > 0 && (
+            <nav aria-label="Sections" className="flex flex-col gap-0.5 rounded-[22px] border border-line bg-card p-[18px]">
+              <p className="mb-1.5 text-[13px] font-semibold text-ink-muted">On this page</p>
+              {toc.map((h) =>
+                h.type === 'h2' ? (
+                  <a key={h.id} href={`#${h.id}`} className="rounded-xl px-3 py-2 text-sm text-ink-muted hover:bg-hover hover:text-ink">
+                    {h.text}
+                  </a>
+                ) : null,
+              )}
+            </nav>
+          )}
+          <div className="hidden flex-col gap-2.5 rounded-[22px] bg-[linear-gradient(150deg,#0a7d5c_0%,#3d5af5_100%)] p-[22px] text-white tab:flex">
+            <Tile icon={Laptop} size={44} />
+            <p className="text-[17px] font-semibold">Try it in your browser</p>
+            <p className="text-sm leading-[22px] text-white/85">Module 1 of Front-End is free on PractiCode Learn.</p>
+            <a href={site.learn} className="mt-1 flex h-11 items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-[#07060d]">
+              Open PractiCode Learn
+              <Icon as={ArrowUpRight} size={14} />
+            </a>
           </div>
-        </section>
+        </aside>
+      </div>
+
+      {others.length > 0 && (
+        <Section aria-labelledby="more-title" className="pt-0 tab:pt-0">
+          <h2 id="more-title" className="mb-6 font-display text-[28px] leading-8 font-extrabold tracking-[-0.035em] text-ink tab:text-[38px] tab:leading-[42px]">
+            Keep reading
+          </h2>
+          <ul className="grid grid-cols-1 gap-4 tab:grid-cols-3">
+            {others.map((p) => (
+              <li key={p.slug} className="flex min-w-0">
+                <Link
+                  href={`/blog/${p.slug}` as Route}
+                  className="flex min-h-[180px] w-full flex-col gap-3 rounded-[22px] border border-line p-[22px] hover:border-line-strong"
+                  style={{ background: 'var(--pc-soft-ux)' }}
+                >
+                  <span className="self-start rounded-full bg-ux-tint px-2.5 py-1 text-xs font-semibold text-ux-text">{p.category}</span>
+                  <span className="font-display text-xl leading-[26px] font-bold tracking-[-0.015em] text-ink">{p.title}</span>
+                  <span className="mt-auto text-[13px] text-ink-muted">
+                    {p.author} · {p.readMinutes} min read
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
       )}
 
-      {/* Newsletter */}
-      <Newsletter />
-    </div>
+      <Section spacing="last" className="pt-0 tab:pt-0">
+        <CtaBand title="Learn with us." text="Join a class in Ibadan or online, and build something real every week." label="See Programmes" href="/programmes" />
+      </Section>
+      <JsonLd
+        data={[
+          articleLd({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}`, date: post.date, author: post.author, image: post.image.src }),
+          breadcrumbLd([{ name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${post.slug}` }]),
+        ]}
+      />
+    </>
   )
 }

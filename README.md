@@ -1,97 +1,67 @@
-# 🧠 Practicode — Frontend Web Application
+# PractiCode Academy website
 
-Practicode is a modern tech education and digital solutions platform designed to empower individuals and businesses with practical technology skills, mentorship, and innovation.
+The website for [practicode.tech](https://practicode.tech): tech classes in Ibadan and online, from Practicode Consult Limited (company registration no. 8415811).
 
-## 🚀 Tech Stack
+Version 2 (October 2026) is built in the PractiCode Learn "Prism" look, in dark and light. The previous site is kept on the `practicode-v1` branch.
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: TailwindCSS
-- **Animations**: Framer Motion
-- **Forms**: React Hook Form + Zod
-- **Data**: React Query (TanStack Query)
-- **Icons**: Lucide Icons
-- **Email**: EmailJS
+## Stack
 
-## 📦 Getting Started
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- lucide-react icons
+- Zod
+- Supabase, used on the server only
+- Paystack
+- Resend
+- Vercel Analytics, which sets no cookies
 
-### Prerequisites
+## Pages
 
-- Node.js 18+ and npm/yarn/pnpm
-- Git
+| Page | What's on it |
+| --- | --- |
+| Home | Hero, programmes, how it works, SIWES, photos, partners, PractiCode Learn, FAQs |
+| Programmes | Programme finder, plus one page per programme. AI & Machine Learning is "coming soon", with a "notify me" form |
+| SIWES, About, FAQ, Contact | Information pages; Contact has a message form |
+| Blog | News posts, written in `src/content/blog.ts` |
+| Resources | Free reference PDFs from `public/resources` |
+| Privacy, Terms | The privacy notice and terms of enrolment |
+| Enrol | The enrolment form, plus two confirmation pages |
 
-### Installation
+Most content lives in `src/content`: programmes, FAQs, the team, partners, blog posts and the legal pages. Edit it there.
+
+## Enrolment
+
+The form saves a row in `academy_enrolments`, in the Supabase project shared with PractiCode Learn. Introduction letters and transfer receipts go to the private `academy-uploads` bucket. The tables and bucket are created by `supabase/academy.sql`.
+
+- **Paystack:** the student pays on Paystack's checkout. When Paystack sends them back to `/enrol/confirmed`, the server checks the payment with Paystack and marks the enrolment `paid`.
+- **Bank transfer:** the enrolment is saved as `transfer_submitted`, for the academy to check against the account.
+
+Each enrolment emails the student and the academy inbox. The academy email links to any uploads.
+
+The Paystack account is shared with PractiCode Learn. Learn's webhook ignores Academy charges, so Academy payments are confirmed only on the return page.
+
+**Test keys are switched off in production.** With a `sk_test_` key, the live site offers bank transfer only, so test cards can't create real enrolments. Set `PAYSTACK_ALLOW_TEST=1` to override this on purpose.
+
+## Run it
 
 ```bash
-# Clone the repository
-git clone https://github.com/gentlerhiz/Practicode.git
-cd Practicode
-
-# Install dependencies
+cp .env.example .env.local   # then fill it in
 npm install
-# or
-yarn install
-# or
-pnpm install
-
-# Copy environment variables
-cp .env.example .env.local
-
-# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Checks: `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
 
-## 🗂️ Project Structure
+## Environment variables (Vercel)
 
-```
-Practicode/
-├── src/
-│   ├── app/                 # Next.js 14 App Router pages
-│   ├── components/          # Reusable React components
-│   │   ├── ui/             # Base UI components
-│   │   ├── layout/         # Layout components
-│   │   └── sections/       # Page sections
-│   ├── lib/                # Utility functions
-│   ├── hooks/              # Custom React hooks
-│   ├── context/            # React Context providers
-│   ├── types/              # TypeScript types
-│   └── data/               # Mock data
-├── public/                 # Static assets
-└── ...config files
-```
+| Name | Notes |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | `https://practicode.tech` |
+| `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SECRET_KEY` | The shared Supabase project |
+| `PAYSTACK_SECRET_KEY` | The same key as PractiCode Learn |
+| `RESEND_API_KEY` | Sends from `academy@practicode.tech` |
+| `ACADEMY_INBOX` | Optional. Defaults to practicodeacademy@gmail.com |
+| `EMAIL_FROM` | Optional. Defaults to `PractiCode Academy <academy@practicode.tech>` |
 
-## ✨ Features
-
-- ⚡️ Responsive Design (mobile-first)
-- 🌙 Dark/Light Mode Toggle
-- 🪄 Animated UI with Framer Motion
-- 💬 Testimonial Slider
-- 🧱 Reusable Components
-- 🧭 SEO Optimized
-- 📨 Contact Form (EmailJS)
-- 💼 Portfolio Showcase
-
-## 🎨 Color Palette
-
-- **Smoky Black**: #0A0903
-- **Red**: #FF0000
-- **UT Orange**: #FF8200
-- **Amber**: #FFC100
-- **Vanilla**: #FFEAAE
-
-## 📬 Contact
-
-**Practicode Academy**
-- 📍 7B Oba Olagbegi, Old Bodija, Ibadan, Nigeria
-- 📧 practicodeacademy@gmail.com
-- 📞 +234 707 277 8657 / +234 903 057 8667
-
-## 📄 License
-
-© 2025 Practicode Academy. All rights reserved.
+If the Supabase variables are missing, the forms don't fail. They send people to WhatsApp, or to the old Google Form for enrolment.

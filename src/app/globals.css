@@ -1,97 +1,445 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/*
+ * Prism design tokens. Source of truth: docs/design/design-system.md and brand/brand.config.json.
+ * Dark is the default; [data-theme="light"] swaps the values. Components use the Tailwind names
+ * mapped in @theme below (bg-bg, text-ink-muted, border-line, ...), never raw hex values.
+ */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --pc-bg: #07060d;
+  --pc-surface: linear-gradient(180deg, #13101f, #0b0a14);
+  --pc-surface-sunken: #0e0c1a;
+  --pc-surface-row: #0f0d1b;
+  --pc-line: #2a2540;
+  --pc-line-subtle: #1c1930;
+  --pc-line-control: #332e4d;
+  --pc-text: #ffffff;
+  --pc-text-soft: #dcd9ea;
+  --pc-text-muted: #a9a6bc;
+  --pc-text-subtle: #8b88a0;
+  --pc-primary: #ffffff;
+  --pc-on-primary: #07060d;
+  --pc-success: #4be3a8;
+  --pc-error: #ff9aa2;
+  --pc-badge-text: #ff8a3d;
+  --pc-code-gutter: #8b88a0; /* the canvas has #5e5a75, which fails WCAG AA contrast */
+  /* Track text and icon colours ("tint" on dark) */
+  --pc-fe-text: #8ea2ff;
+  --pc-da-text: #4be3a8;
+  --pc-ux-text: #ff7db0;
+  --pc-ai-text: #b9a2ff;
+  --pc-it-text: #ffc15c;
+  --pc-cy-text: #5fd8f2;
+  /* Track card gradients end in the page colour on dark */
+  --pc-fe-deep: #07060d;
+  --pc-da-deep: #07060d;
+  --pc-ux-deep: #07060d;
+  --pc-ai-deep: #07060d;
+  --pc-it-deep: #07060d;
+  --pc-cy-deep: #07060d;
+  --pc-focus: #8ea2ff;
+  --pc-glow-opacity: 1;
+  /* The logo icon is yellow on dark and black on light (design system, light mode rules). */
+  --pc-logo: #fed606;
+  /* Canvas neutrals used by controls: small buttons, strong borders, dividers and empty meters. */
+  --pc-control: #1b1830;
+  --pc-line-strong: #464060;
+  --pc-divider: #221e36;
+  --pc-meter: #26213b;
+  /* A faint wash on outline buttons and segmented groups, and the hover tint for every control. */
+  --pc-wash: rgba(255, 255, 255, 0.03);
+  --pc-hover: rgba(255, 255, 255, 0.07);
+  --pc-press: rgba(255, 255, 255, 0.11);
+  /* Floating glass cards (hero, chat) */
+  --pc-glass: rgba(16, 14, 30, 0.78);
+  /* Menu sheets and the darker end of the surface gradient */
+  --pc-sheet: #0b0a14;
+  --pc-pro-top: #17122a;
+  --pc-cert-top: #1a1a4a;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --pc-bg: #f5f4fa;
+  --pc-surface: linear-gradient(180deg, #ffffff, #faf9fd);
+  --pc-surface-sunken: #f2f0f8;
+  --pc-surface-row: #ffffff;
+  --pc-line: #dfdce9;
+  --pc-line-subtle: #e9e7f1;
+  --pc-line-control: #d2cedf;
+  --pc-text: #15122a;
+  --pc-text-soft: #3b3752;
+  --pc-text-muted: #5d5972;
+  --pc-text-subtle: #66627a;
+  --pc-primary: #15122a;
+  --pc-on-primary: #ffffff;
+  --pc-success: #08704f;
+  --pc-error: #b42834;
+  --pc-badge-text: #b23a0a;
+  --pc-code-gutter: #5d5972; /* the canvas has #8a86a0, which fails WCAG AA contrast */
+  --pc-fe-text: #3550e6;
+  --pc-da-text: #08704f;
+  --pc-ux-text: #b81f57;
+  --pc-ai-text: #6342ee;
+  --pc-it-text: #8a4b00;
+  --pc-cy-text: #0b6577;
+  /* On light, track gradients deepen into the track's own dark shade */
+  --pc-fe-deep: #1f33a8;
+  --pc-da-deep: #05503b;
+  --pc-ux-deep: #8f1745;
+  --pc-ai-deep: #3a20b0;
+  --pc-it-deep: #6b3a00;
+  --pc-cy-deep: #0b4f5e;
+  --pc-focus: #3550e6;
+  --pc-glow-opacity: 0.5;
+  --pc-logo: #000000;
+  --pc-control: #efedf6;
+  --pc-line-strong: #b9b4c9;
+  --pc-divider: #e4e1ed;
+  --pc-meter: #e2dfec;
+  --pc-wash: rgba(21, 18, 42, 0.025);
+  --pc-hover: rgba(21, 18, 42, 0.05);
+  --pc-press: rgba(21, 18, 42, 0.09);
+  --pc-glass: rgba(255, 255, 255, 0.78);
+  --pc-sheet: #faf9fd;
+  --pc-pro-top: #f0edf8;
+  --pc-cert-top: #e8e9fb;
+}
+
+@theme inline {
+  --color-bg: var(--pc-bg);
+  --color-sunken: var(--pc-surface-sunken);
+  --color-row: var(--pc-surface-row);
+  --color-line: var(--pc-line);
+  --color-line-subtle: var(--pc-line-subtle);
+  --color-line-control: var(--pc-line-control);
+  --color-line-strong: var(--pc-line-strong);
+  --color-divider: var(--pc-divider);
+  --color-control: var(--pc-control);
+  --color-meter: var(--pc-meter);
+  --color-wash: var(--pc-wash);
+  --color-hover: var(--pc-hover);
+  --color-press: var(--pc-press);
+  --color-focus: var(--pc-focus);
+  --color-glass: var(--pc-glass);
+  --color-sheet: var(--pc-sheet);
+  --color-ink: var(--pc-text);
+  --color-ink-soft: var(--pc-text-soft);
+  --color-ink-muted: var(--pc-text-muted);
+  --color-ink-subtle: var(--pc-text-subtle);
+  --color-primary: var(--pc-primary);
+  --color-on-primary: var(--pc-on-primary);
+  --color-success: var(--pc-success);
+  --color-success-fill: #2fe6b0;
+  --color-on-success: #04241a;
+  --color-error: var(--pc-error);
+  --color-badge: #ff8a3d;
+  --color-badge-text: var(--pc-badge-text);
+  --color-on-badge: #1f0e00;
+  --color-code-gutter: var(--pc-code-gutter);
+  --color-yellow: #fed606;
+
+  /* Track fills (same in both modes) and text colours (deeper on light) */
+  --color-fe: #3d5af5;
+  --color-fe-text: var(--pc-fe-text);
+  --color-fe-deep: var(--pc-fe-deep);
+  --color-da: #0a7d5c;
+  --color-da-text: var(--pc-da-text);
+  --color-da-deep: var(--pc-da-deep);
+  --color-ux: #d9306f;
+  --color-ux-text: var(--pc-ux-text);
+  --color-ux-deep: var(--pc-ux-deep);
+  --color-ai: #6e4cf5;
+  --color-ai-text: var(--pc-ai-text);
+  --color-ai-deep: var(--pc-ai-deep);
+  /* Foundations (amber) and Security (cyan): deep enough for white text in both modes */
+  --color-it: #a85a00;
+  --color-it-text: var(--pc-it-text);
+  --color-it-deep: var(--pc-it-deep);
+  --color-cy: #0e7490;
+  --color-cy-text: var(--pc-cy-text);
+  --color-cy-deep: var(--pc-cy-deep);
+
+  --font-display: var(--font-bricolage), 'Poppins', system-ui, sans-serif;
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /*
+   * Marketing breakpoints from the design system (phone under 600, tablet under 960, wide from 1240).
+   * Tailwind's sm (640) and lg (1024) stay for app pages, which use 640 and 1024.
+   */
+  --breakpoint-ph: 37.5rem;
+  --breakpoint-tab: 60rem;
+  --breakpoint-wide: 77.5rem;
+}
+
+/* Cards and panels use the surface gradient. */
+@utility surface {
+  background: var(--pc-surface);
+}
+
+/* Blue to violet only: the founder's brand gradient, never with a pink end. */
+@utility brand-gradient {
+  background: linear-gradient(120deg, #3d5af5, #6e4cf5);
+}
+
+/*
+ * The soft blue and violet light behind sign-in, onboarding and other focused pages. Half strength on
+ * light, as the canvas's light frames are.
+ */
+@utility glow {
+  pointer-events: none;
+  position: absolute;
+  opacity: var(--pc-glow-opacity);
+  background:
+    radial-gradient(closest-side at 35% 45%, rgba(77, 107, 255, 0.3), rgba(0, 0, 0, 0) 72%),
+    radial-gradient(closest-side at 68% 55%, rgba(123, 92, 255, 0.24), rgba(0, 0, 0, 0) 72%);
+}
+
+/* Every pressable thing sinks a little when pressed, unless the learner asked for less motion. */
+@utility press {
+  transition-property: background-color, border-color, color, opacity, transform, box-shadow;
+  transition-duration: 150ms;
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+/* The canvas's floating cards and its tools marquee. Both stop for reduced motion (global rule). */
+@keyframes pc-float {
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes pc-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@utility float-slow {
+  animation: pc-float 7s ease-in-out infinite;
+}
+@utility float-slower {
+  animation: pc-float 9s ease-in-out infinite reverse;
+}
+@utility marquee {
+  animation: pc-marquee 40s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility text-balance-safe {
+  text-wrap: balance;
+}
 
 @layer base {
-  :root {
-    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-roboto: 'Roboto', system-ui, sans-serif;
-  }
-
-  * {
-    @apply border-gray-200;
+  html {
+    background: var(--pc-bg);
+    color: var(--pc-text);
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans antialiased;
-    font-family: var(--font-inter);
-    font-size: 16px;
-    line-height: 1.6;
-    letter-spacing: -0.011em;
+    min-height: 100dvh;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@layer components {
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .section-padding {
-    @apply py-12 md:py-20 lg:py-24;
-  }
-
-  .heading-1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold font-display;
-  }
-
-  .heading-2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold font-display;
-  }
-
-  .heading-3 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold font-display;
-  }
-
-  .heading-4 {
-    @apply text-xl md:text-2xl font-semibold;
-  }
-
-  .btn-primary {
-    @apply bg-primary-red text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
-    background-color: #D4A017;
-  }
-  
-  .btn-primary:hover {
-    background-color: #FFCA1A;
-    color: #212121;
-  }
-
-  .btn-secondary {
-    @apply font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
-    background-color: #FFCA1A;
-    color: #212121;
-  }
-  
-  .btn-secondary:hover {
-    opacity: 0.9;
-  }
-
-  .btn-outline {
-    @apply border-2 border-primary-red text-primary-red hover:bg-primary-red hover:text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-300;
-  }
-
-  .card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6;
-  }
-
-  .card-hover {
-    @apply transform hover:-translate-y-2 transition-transform duration-300;
-  }
-}
-
-@layer utilities {
-  .text-balance {
+  h1,
+  h2,
+  h3 {
     text-wrap: balance;
   }
-  
-  /* Fallback for older browsers */
-  @supports not (text-wrap: balance) {
-    .text-balance {
-      max-width: 60ch;
-    }
+
+  :focus-visible {
+    outline: 2px solid var(--pc-focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, #3d5af5 35%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * Track cards and stat cards. On dark they fade into the page; on light they deepen into the track's
+ * own dark shade and stay saturated, with white text in both modes (design system, light mode rules).
+ */
+:root,
+[data-theme='dark'] {
+  --pc-card-fe: linear-gradient(155deg, #3d5af5 0%, #1c2785 38%, #0e0c1a 78%);
+  --pc-card-da: linear-gradient(155deg, #0a7d5c 0%, #0a4e3d 38%, #0e0c1a 78%);
+  --pc-card-work: linear-gradient(150deg, #0a7d5c 0%, #0a4e3d 45%, #0b0a14 100%);
+  --pc-card-ux: linear-gradient(155deg, #d9306f 0%, #6b1540 38%, #0e0c1a 78%);
+  --pc-card-ai: linear-gradient(155deg, #6e4cf5 0%, #33208a 38%, #0e0c1a 78%);
+  --pc-card-it: linear-gradient(155deg, #a85a00 0%, #5a3000 38%, #0e0c1a 78%);
+  --pc-card-cy: linear-gradient(155deg, #0e7490 0%, #0a4352 38%, #0e0c1a 78%);
+  --pc-stat-fe: linear-gradient(165deg, #3d5af5 0%, #1c2785 40%, #0b0a14 80%);
+  --pc-stat-da: linear-gradient(165deg, #0a7d5c 0%, #0b4a3a 40%, #0b0a14 80%);
+  --pc-stat-ux: linear-gradient(165deg, #d9306f 0%, #6b1540 40%, #0b0a14 80%);
+}
+
+[data-theme='light'] {
+  --pc-card-fe: linear-gradient(155deg, #3d5af5 0%, #1f33a8 100%);
+  --pc-card-da: linear-gradient(155deg, #0a7d5c 0%, #05503b 100%);
+  --pc-card-work: linear-gradient(150deg, #0a7d5c 0%, #05503b 100%);
+  --pc-card-ux: linear-gradient(155deg, #d9306f 0%, #8f1745 100%);
+  --pc-card-ai: linear-gradient(155deg, #6e4cf5 0%, #3a20b0 100%);
+  --pc-card-it: linear-gradient(155deg, #a85a00 0%, #6b3a00 100%);
+  --pc-card-cy: linear-gradient(155deg, #0e7490 0%, #0b4f5e 100%);
+  --pc-stat-fe: linear-gradient(165deg, #3d5af5 0%, #1f33a8 100%);
+  --pc-stat-da: linear-gradient(165deg, #0a7d5c 0%, #05503b 100%);
+  --pc-stat-ux: linear-gradient(165deg, #d9306f 0%, #8f1745 100%);
+}
+
+@utility brand-gradient-text {
+  background: linear-gradient(100deg, #8ea2ff, #b9a2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme='light'] .brand-gradient-text {
+  background-image: linear-gradient(100deg, #3550e6, #6342ee);
+}
+
+
+/* Code colours from the canvas (module check, project workspace): selectors in ink, properties blue, values green. */
+@utility code-colours {
+  & .c-sel {
+    color: var(--pc-text);
+  }
+  & .c-prop,
+  & .c-tag {
+    color: var(--pc-fe-text);
+  }
+  & .c-val,
+  & .c-str {
+    color: var(--pc-da-text);
+  }
+  & .c-attr {
+    color: var(--pc-ai-text);
+  }
+  & .c-com {
+    color: var(--pc-text-subtle);
+  }
+}
+
+/*
+ * PractiCode Academy additions. Programme tints sit behind tone text; the "soft" backgrounds are the
+ * canvas's tinted cards (a programme tint fading into the surface). No glows: only code panels have one.
+ */
+:root,
+[data-theme='dark'] {
+  --pc-fe-tint: #1c1f43;
+  --pc-da-tint: #162a30;
+  --pc-ux-tint: #32172c;
+  --pc-ai-tint: #241c43;
+  --pc-card: #13101f;
+  --pc-soft-fe: linear-gradient(160deg, #1c1f43 0%, #13101f 80%);
+  --pc-soft-da: linear-gradient(160deg, #162a30 0%, #13101f 80%);
+  --pc-soft-ux: linear-gradient(160deg, #32172c 0%, #13101f 80%);
+  --pc-soft-ai: linear-gradient(160deg, #241c43 0%, #13101f 80%);
+  --pc-banner-fe: linear-gradient(155deg, #3d5af5 0%, #1c2785 42%, #0e0c1a 85%);
+  --pc-banner-da: linear-gradient(155deg, #0a7d5c 0%, #0a4e3d 42%, #0e0c1a 85%);
+  --pc-banner-ux: linear-gradient(155deg, #d9306f 0%, #6b1540 42%, #0e0c1a 85%);
+  --pc-banner-ai: linear-gradient(155deg, #6e4cf5 0%, #33208a 42%, #0e0c1a 85%);
+  --pc-banner-border: #2a2540;
+  --pc-hero-wash: 0.22;
+}
+
+[data-theme='light'] {
+  --pc-fe-tint: #eaedff;
+  --pc-da-tint: #defbf2;
+  --pc-ux-tint: #feecf2;
+  --pc-ai-tint: #efebff;
+  --pc-card: #ffffff;
+  --pc-soft-fe: linear-gradient(160deg, #eaedff 0%, #ffffff 80%);
+  --pc-soft-da: linear-gradient(160deg, #defbf2 0%, #ffffff 80%);
+  --pc-soft-ux: linear-gradient(160deg, #feecf2 0%, #ffffff 80%);
+  --pc-soft-ai: linear-gradient(160deg, #efebff 0%, #ffffff 80%);
+  --pc-banner-fe: linear-gradient(155deg, #3d5af5 0%, #1f33a8 100%);
+  --pc-banner-da: linear-gradient(155deg, #0a7d5c 0%, #05503b 100%);
+  --pc-banner-ux: linear-gradient(155deg, #d9306f 0%, #8f1745 100%);
+  --pc-banner-ai: linear-gradient(155deg, #6e4cf5 0%, #3a20b0 100%);
+  --pc-banner-border: transparent;
+  --pc-hero-wash: 0.1;
+}
+
+@theme inline {
+  --color-card: var(--pc-card);
+  --color-fe-tint: var(--pc-fe-tint);
+  --color-da-tint: var(--pc-da-tint);
+  --color-ux-tint: var(--pc-ux-tint);
+  --color-ai-tint: var(--pc-ai-tint);
+  --color-banner-border: var(--pc-banner-border);
+}
+
+/* A soft wash of colour behind page heroes (not a glow on any card). */
+@utility hero-wash {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: var(--pc-hero-wash);
+  background:
+    radial-gradient(640px 420px at 12% 0%, #3d5af5, transparent 70%),
+    radial-gradient(560px 400px at 90% 10%, #6e4cf5, transparent 70%);
+}
+
+/* Horizontal sliders on phones: photos, partner logos and filter chips. */
+@utility snap-row {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* Long-form text on the blog and the legal pages. */
+@utility prose-pc {
+  & p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 30px;
+    color: var(--pc-text-soft);
+  }
+  & h2 {
+    margin: 18px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: -0.02em;
+    color: var(--pc-text);
+  }
+  & ul {
+    margin: 0;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--pc-text-soft);
+    font-size: 17px;
+    line-height: 28px;
+  }
+  & a {
+    color: var(--pc-fe-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }

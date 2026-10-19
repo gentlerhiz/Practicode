@@ -1,191 +1,67 @@
-import type { Metadata } from 'next'
-import { Inter, Roboto } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Bricolage_Grotesque, JetBrains_Mono, Poppins } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { SiteFooter } from '@/components/layout/site-footer'
+import { SiteHeader } from '@/components/layout/site-header'
+import { ThemeScript } from '@/components/layout/theme-script'
+import { JsonLd } from '@/components/seo/json-ld'
+import { SkipLink } from '@/components/ui/skip-link'
+import { organizationLd, websiteLd } from '@/lib/seo'
+import { site } from '@/lib/site'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['400', '500', '700', '900'],
-  variable: '--font-roboto',
-  display: 'swap'
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-inter',
-  display: 'swap'
-})
+const display = Bricolage_Grotesque({ subsets: ['latin'], axes: ['opsz'], variable: '--font-bricolage', display: 'swap' })
+const sans = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins', display: 'swap' })
+const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '600'], variable: '--font-jetbrains', display: 'swap' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: 'Practicode Academy | Transform Your Future with Tech Skills',
-    template: '%s | Practicode Academy'
+    default: 'PractiCode Academy | Tech Classes in Ibadan and Online: Front-End, Data Analysis, UI/UX',
+    template: '%s · PractiCode Academy',
   },
-  description: 'Learn Frontend Development, Backend Development, Data Analytics, UI/UX Design, Machine Learning, and Graphics Design. Hands-on training with expert mentorship in Ibadan, Nigeria. Build real-world projects and launch your tech career.',
-  keywords: [
-    'Practicode Academy',
-    'tech training Nigeria',
-    'web development course',
-    'frontend development',
-    'backend development',
-    'data analytics training',
-    'UI/UX design course',
-    'machine learning Nigeria',
-    'graphics design',
-    'coding bootcamp Ibadan',
-    'tech education Nigeria',
-    'learn to code',
-    'programming courses',
-    'digital skills training',
-    'tech mentorship',
-    'career transition tech',
-    'software development training'
-  ],
-  authors: [{ name: 'Practicode Academy' }],
-  creator: 'Practicode Academy',
-  publisher: 'Practicode Academy',
-  applicationName: 'Practicode Academy',
-  category: 'Education',
-  classification: 'Education, Technology Training',
-  metadataBase: new URL('https://practicodea.tech'),
-  alternates: {
-    canonical: 'https://practicodea.tech',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://practicodea.tech',
-    siteName: 'Practicode',
-    title: 'Practicode Academy | Transform Your Future with Tech Skills',
-    description: 'Learn Frontend Development, Backend Development, Data Analytics, UI/UX Design, Machine Learning, and Graphics Design. Hands-on training with expert mentorship in Ibadan, Nigeria.',
-    images: [
-      {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Practicode Academy - Tech Training & Digital Solutions',
-        type: 'image/png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@practicode',
-    creator: '@practicode',
-    title: 'Practicode Academy | Transform Your Future with Tech Skills',
-    description: 'Learn Frontend Development, Backend Development, Data Analytics, UI/UX Design, Machine Learning, and Graphics Design. Hands-on training with expert mentorship.',
-    images: ['/images/og-image.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    // Add your verification codes when you have them
-  },
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
+  description: site.description,
+  applicationName: site.name,
+  publisher: site.publisher,
+  formatDetection: { telephone: false, email: false, address: false },
+  openGraph: { siteName: site.name, locale: site.locale, type: 'website' },
+  twitter: { card: 'summary_large_image' },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P37Z3W33');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#07060D' },
+    { media: '(prefers-color-scheme: light)', color: '#F5F4FA' },
+  ],
+  colorScheme: 'dark light',
+}
 
-        {/* Additional Meta Tags */}
-        <meta name="theme-color" content="#FFCA1A" />
-        <meta name="msapplication-TileColor" content="#FFCA1A" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="format-detection" content="telephone=no" />
-        
-        {/* Geo Tags */}
-        <meta name="geo.region" content="NG-OY" />
-        <meta name="geo.placename" content="Ibadan" />
-        <meta name="geo.position" content="7.3775;3.9470" />
-        <meta name="ICBM" content="7.3775, 3.9470" />
-        
-        {/* Business Info */}
-        <meta property="business:contact_data:street_address" content="7B Oba Olagbegi, Old Bodija" />
-        <meta property="business:contact_data:locality" content="Ibadan" />
-        <meta property="business:contact_data:region" content="Oyo State" />
-        <meta property="business:contact_data:postal_code" content="200001" />
-        <meta property="business:contact_data:country_name" content="Nigeria" />
-        <meta property="business:contact_data:email" content="practicodeacademy@gmail.com" />
-        <meta property="business:contact_data:phone_number" content="+234-707-277-8657" />
-        
-        {/* Preconnect for Performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        
-        {/* Microsoft Clarity Analytics */}
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "u6sl3w2t8c");
-            `,
-          }}
-        />
+export default function RootLayout({ children }: LayoutProps<'/'>) {
+  return (
+    // The boot script changes data-theme before React hydrates, hence suppressHydrationWarning.
+    <html
+      lang="en-GB"
+      data-theme="dark"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <ThemeScript />
       </head>
-      <body className={`${roboto.variable} ${inter.variable}`}>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-P37Z3W33"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
-        
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </div>
+      <body className="bg-bg font-sans text-ink antialiased">
+        <SkipLink />
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+        <JsonLd data={[organizationLd(), websiteLd()]} />
+        {/* Cookieless: counts visits and page speed without identifying anyone (named in the privacy notice). */}
+        {process.env.VERCEL && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   )

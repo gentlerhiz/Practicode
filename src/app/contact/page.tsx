@@ -1,393 +1,176 @@
-'use client'
+import { ArrowUpRight, HeartHandshake, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { ContactForm } from '@/components/site/forms/contact-form'
+import { JsonLd } from '@/components/seo/json-ld'
+import { Icon } from '@/components/ui/icon'
+import { PillWord } from '@/components/ui/pill-word'
+import { Section } from '@/components/ui/section'
+import { Tile } from '@/components/ui/tile'
+import { type as t } from '@/components/ui/type'
+import type { Tone } from '@/content/programmes'
+import { cn } from '@/lib/cn'
+import { breadcrumbLd, localBusinessLd, pageMeta } from '@/lib/seo'
+import { site } from '@/lib/site'
+import { toneBg } from '@/lib/tone'
 
-import { motion } from 'framer-motion'
-import { ArrowLeft, Mail, MapPin, AlertCircle } from 'lucide-react'
-import { useState } from 'react'
-import Link from 'next/link'
-import FAQIntro from '@/components/ui/FAQIntro'
-import Newsletter from '@/components/ui/Newsletter'
+export const metadata = pageMeta({
+  title: 'Contact Us',
+  description: 'Message PractiCode Academy on WhatsApp, call 0903 057 8667, email us, or visit our centre at 7B Oba Olagbegi, Old Bodija, Ibadan.',
+  path: '/contact',
+})
+
+const methods: { label: string; value: string; href: string; icon: typeof Mail; tone: Tone }[] = [
+  { label: 'WhatsApp, fastest', value: '0903 057 8667', href: site.whatsapp, icon: MessageCircle, tone: 'da' },
+  { label: 'Call', value: '+234 707 277 8657', href: 'tel:+2347072778657', icon: Phone, tone: 'fe' },
+  { label: 'Email', value: site.email, href: `mailto:${site.email}`, icon: Mail, tone: 'ux' },
+  { label: 'Visit', value: 'Old Bodija, Ibadan', href: site.maps, icon: MapPin, tone: 'ai' },
+]
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
-  const [errors, setErrors] = useState<{
-    name?: string
-    email?: string
-    message?: string
-  }>({})
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-
-  // Email validation regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-  // Validate individual field
-  const validateField = (name: string, value: string): string | undefined => {
-    switch (name) {
-      case 'name':
-        if (!value.trim()) return 'Name is required'
-        if (value.trim().length < 2) return 'Name must be at least 2 characters'
-        return undefined
-      case 'email':
-        if (!value.trim()) return 'Email is required'
-        if (!emailRegex.test(value)) return 'Please enter a valid email address'
-        return undefined
-      case 'message':
-        if (!value.trim()) return 'Message is required'
-        if (value.trim().length < 10) return 'Message must be at least 10 characters'
-        return undefined
-      default:
-        return undefined
-    }
-  }
-
-  // Validate all fields
-  const validateForm = (): boolean => {
-    const newErrors: typeof errors = {}
-    
-    newErrors.name = validateField('name', formData.name)
-    newErrors.email = validateField('email', formData.email)
-    newErrors.message = validateField('message', formData.message)
-    
-    setErrors(newErrors)
-    
-    // Return true if no errors
-    return !Object.values(newErrors).some(error => error !== undefined)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-    
-    // Clear error for this field when user types
-    if (errors[name as keyof typeof errors]) {
-      setErrors({
-        ...errors,
-        [name]: undefined
-      })
-    }
-  }
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    const error = validateField(name, value)
-    
-    if (error) {
-      setErrors({
-        ...errors,
-        [name]: error
-      })
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitStatus(null)
-
-    // Validate form before submitting
-    if (!validateForm()) {
-      return
-    }
-
-    setIsSubmitting(true)
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', message: '' })
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Bar */}
-      <div className="bg-white border-b border-gray-200 py-6 px-6 md:px-12 lg:px-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#000000] hover:opacity-80 transition-opacity">
-          <ArrowLeft className="w-5 h-5" />
-          <span className="font-semibold">Contact Us</span>
-        </Link>
-        <div className="text-xs text-gray-500 mt-1 ml-7">
-          Home / Contact Us
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left Column - Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-xl border border-gray-200 p-6 shadow-lg"
-          >
-            {/* Icon */}
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 bg-[#FFCA1A] rounded-full flex items-center justify-center">
-                <Mail className="w-6 h-6 text-[#000000]" />
-              </div>
-            </div>
-
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#000000] mb-2">
-                Get in Touch
-              </h2>
-              <p className="text-gray-600 text-sm">
-                We&apos;d love to hear from you. Use the form below to reach out for anything you&apos;d like to talk about.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter your full name"
-                  className={`w-full px-3 py-2.5 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 transition-all text-sm ${
-                    errors.name 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-gray-200 focus:ring-[#FFCA1A] focus:border-transparent'
-                  }`}
-                />
-                {errors.name && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-1 text-red-500 text-xs flex items-center gap-1"
-                  >
-                    <AlertCircle className="w-3 h-3" />
-                    {errors.name}
-                  </motion.p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="your.email@example.com"
-                  className={`w-full px-3 py-2.5 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 transition-all text-sm ${
-                    errors.email 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-gray-200 focus:ring-[#FFCA1A] focus:border-transparent'
-                  }`}
-                />
-                {errors.email && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-1 text-red-500 text-xs flex items-center gap-1"
-                  >
-                    <AlertCircle className="w-3 h-3" />
-                    {errors.email}
-                  </motion.p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Tell us what's on your mind…"
-                  rows={4}
-                  className={`w-full px-3 py-2.5 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 transition-all resize-none text-sm ${
-                    errors.message 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-gray-200 focus:ring-[#FFCA1A] focus:border-transparent'
-                  }`}
-                />
-                {errors.message && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-1 text-red-500 text-xs flex items-center gap-1"
-                  >
-                    <AlertCircle className="w-3 h-3" />
-                    {errors.message}
-                  </motion.p>
-                )}
-              </div>
-
-              {submitStatus === 'success' && (
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                  ✓ Message sent successfully! We&apos;ll get back to you soon.
-                </div>
-              )}
-
-              {submitStatus === 'error' && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                  ✗ Failed to send message. Please try again or email us directly.
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-[#FFCA1A] hover:bg-[#ffc107] text-[#000000] font-bold rounded-full flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed group text-sm"
-              >
-                Send Message
-                <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </motion.div>
-
-          {/* Right Column - Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-6"
-          >
-            <div>
-              <div className="inline-block px-3 py-1 bg-[#FFCA1A] text-[#000000] text-xs font-semibold rounded-full mb-3">
-                REACH OUT
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#000000] mb-3">
-                Let&apos;s Connect
-              </h2>
-              <p className="text-gray-600 text-sm">
-                Feel free to reach out for any enquiry or conversation. Our team is always open to hearing from you.
-              </p>
-            </div>
-
-            {/* Contact Cards */}
-            <div className="space-y-3">
-              {/* Call Us */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <svg className="w-5 h-5 text-[#FFCA1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#000000] mb-1 text-sm">Call Us</h3>
-                    <p className="text-gray-600 text-sm">+234 707 277 8657</p>
-                    <p className="text-gray-600 text-sm">+234 903 057 8667</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Visit Us */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <MapPin className="w-5 h-5 text-[#FFCA1A]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#000000] mb-1 text-sm">Visit Us</h3>
-                    <p className="text-gray-600 text-sm">7B Oba Olagbegi, Old Bodija, Ibadan, Nigeria</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Email Us */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <Mail className="w-5 h-5 text-[#FFCA1A]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#000000] mb-1 text-sm">Email Us</h3>
-                    <p className="text-gray-600 text-sm">practicodeacademy@gmail.com</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Google Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <div className="text-center mb-12">
-            <div className="inline-block px-4 py-1 bg-[#FFCA1A] text-[#000000] text-sm font-semibold rounded-full mb-4">
-              LOCATE US
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#000000] mb-3">
-              Get to Us Directly
-            </h2>
-            <p className="text-gray-600">
-              Using the Google Map Below
+    <>
+      <section className="relative overflow-hidden">
+        <div aria-hidden="true" className="hero-wash" />
+        <div className="relative mx-auto flex max-w-[1280px] flex-wrap items-center gap-7 px-4 pt-8 pb-6 tab:gap-14 tab:px-10 tab:pt-20 tab:pb-12">
+          <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-[22px]">
+            <p className={cn(t.kicker, 'text-da-text')}>Contact</p>
+            <h1 className="font-display text-5xl leading-[54px] font-extrabold tracking-[-0.035em] text-ink tab:text-[88px] tab:leading-[92px]">
+              Let’s <PillWord tone="da">talk.</PillWord>
+            </h1>
+            <p className="max-w-[520px] text-base leading-[26px] text-ink-soft tab:text-lg tab:leading-[30px]">
+              Questions about a programme, SIWES or working with us? Message, call or visit our centre in Old Bodija, Ibadan.
             </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={site.whatsapp} className="press inline-flex h-[54px] w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 font-semibold text-on-primary tab:w-auto">
+                <Tile icon={MessageCircle} tone="da" size={26} className="rounded-lg" />
+                Chat on WhatsApp
+              </a>
+              <a href={site.tel} className="press inline-flex h-[54px] w-full items-center justify-center rounded-full border-[1.5px] border-line-control px-6 font-semibold text-ink tab:w-auto">
+                Call 0903 057 8667
+              </a>
+            </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl overflow-hidden shadow-2xl h-[500px] max-w-6xl mx-auto"
-          >
-            <iframe
-              title="Practicode Academy Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d3.9!3d7.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjQnMDAuMCJOIDPCsDU0JzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1234567890"
-              width="100%"
-              height="100%"
-              className="border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </motion.div>
+          <ul className="grid min-w-0 flex-[1_1_460px] grid-cols-2 gap-3 tab:gap-4">
+            {methods.map((m) => (
+              <li key={m.label}>
+                <a
+                  href={m.href}
+                  className="flex h-full min-h-[150px] flex-col gap-1.5 rounded-3xl border border-banner-border p-4 text-white tab:min-h-[180px] tab:p-[22px]"
+                  style={toneBg.banner(m.tone)}
+                >
+                  <Tile icon={m.icon} size={44} className="border border-white/25" />
+                  <span className="mt-auto text-[13px] text-white/80">{m.label}</span>
+                  <span className="text-base leading-[22px] font-semibold [overflow-wrap:anywhere]">{m.value}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQIntro />
+      <Section className="pt-6 tab:pt-8">
+        <div className="flex flex-wrap items-start gap-6">
+          <div className="flex min-w-0 flex-[1.4_1_520px] flex-col gap-5 rounded-[32px] border border-line bg-card p-[22px] tab:p-10">
+            <div className="flex flex-col gap-2">
+              <h2 className={t.h2sm}>Send us a message</h2>
+              <p className="text-[15px] leading-6 text-ink-muted">We usually reply the same day, by email or WhatsApp.</p>
+            </div>
+            <ContactForm />
+          </div>
 
-      {/* Newsletter Section */}
-      <Newsletter />
-    </div>
+          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-6">
+            <div className="overflow-hidden rounded-[28px] border border-line bg-card">
+              <svg viewBox="0 0 600 340" role="img" aria-label="Map showing our centre at 7B Oba Olagbegi, Old Bodija, Ibadan" className="block h-auto w-full">
+                <rect width="600" height="340" className="fill-sunken" />
+                <rect x="400" y="20" width="170" height="120" rx="18" className="fill-da-tint" />
+                <rect x="30" y="230" width="150" height="90" rx="18" className="fill-da-tint" />
+                <g fill="none" strokeLinecap="round" className="stroke-line [[data-theme=light]_&]:stroke-white">
+                  <path d="M-20 180 C 120 170 220 210 340 190 S 520 150 640 170" strokeWidth="26" />
+                  <path d="M250 -20 C 260 80 240 200 280 360" strokeWidth="20" />
+                  <path d="M60 -20 L 120 360" strokeWidth="12" />
+                  <path d="M-20 90 L 640 60" strokeWidth="12" />
+                  <path d="M380 360 L 470 -20" strokeWidth="12" />
+                  <path d="M-20 290 L 640 270" strokeWidth="10" />
+                </g>
+                <g fontFamily="Poppins, sans-serif" fontSize="13" fontWeight="600" className="fill-ink-subtle">
+                  <text x="44" y="166">Oba Olagbegi</text>
+                  <text x="430" y="86">Old Bodija</text>
+                  <text x="300" y="318">Ibadan</text>
+                </g>
+                <circle cx="300" cy="186" r="46" fill="#3D5AF5" opacity="0.18" />
+                <circle cx="300" cy="186" r="26" fill="#3D5AF5" opacity="0.3" />
+                <path d="M300 120c-19 0-34 15-34 34 0 26 34 58 34 58s34-32 34-58c0-19-15-34-34-34z" fill="#3D5AF5" stroke="#FFFFFF" strokeWidth="4" />
+                <circle cx="300" cy="154" r="12" fill="#FED606" />
+              </svg>
+              <div className="flex flex-col gap-3.5 px-6 pt-5 pb-6">
+                <div className="flex items-start gap-3.5">
+                  <Tile icon={MapPin} tone="fe" size={40} />
+                  <div className="flex flex-col gap-0.5">
+                    <p className="text-base font-semibold text-ink">PractiCode Academy</p>
+                    <p className="text-sm leading-[22px] text-ink-muted">{site.address.full}</p>
+                  </div>
+                </div>
+                <a
+                  href={site.maps}
+                  className="press inline-flex h-[46px] items-center gap-2 self-start rounded-full bg-primary px-5 text-[15px] font-semibold text-on-primary"
+                >
+                  Get Directions
+                  <Icon as={ArrowUpRight} size={16} />
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2.5 rounded-[28px] border border-line bg-card p-5">
+              <h2 className="text-[17px] font-semibold text-ink">Follow our classes</h2>
+              <ul className="flex flex-col gap-1">
+                {site.socials.map((s, i) => (
+                  <li key={s.label}>
+                    <a href={s.href} className="flex items-center gap-3.5 rounded-2xl p-2.5 hover:bg-hover">
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          'flex size-10 shrink-0 items-center justify-center rounded-[13px] font-mono text-[13px] font-semibold text-white',
+                          ['bg-ux', 'bg-fe', 'bg-ai', 'bg-da'][i],
+                        )}
+                      >
+                        {s.short}
+                      </span>
+                      <span className="flex grow flex-col">
+                        <span className="text-[15px] font-semibold text-ink">{s.label}</span>
+                        <span className="text-[13px] text-ink-muted">{s.handle}</span>
+                      </span>
+                      <Icon as={ArrowUpRight} size={16} className="text-ink-muted" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section spacing="last" className="tab:pt-8">
+        <div className="flex flex-wrap items-center gap-6 rounded-[32px] bg-[linear-gradient(120deg,#d9306f_0%,#6e4cf5_55%,#3d5af5_100%)] px-5 py-6 text-white tab:px-12 tab:py-10">
+          <span className="flex size-16 items-center justify-center rounded-[19px] border border-white/30 bg-white/18">
+            <Icon as={HeartHandshake} size={30} />
+          </span>
+          <div className="flex min-w-0 flex-[1_1_440px] flex-col gap-2">
+            <h2 className="font-display text-[28px] leading-8 font-extrabold tracking-[-0.035em] tab:text-[34px] tab:leading-[38px]">Partner with PractiCode Academy</h2>
+            <p className="text-base leading-[26px] text-white/90">
+              Schools, communities, events and companies: talk to Hamdalat Omolola Akinyele, who leads our partnerships.
+            </p>
+          </div>
+          <a
+            href={`mailto:${site.email}?subject=Partnership`}
+            className="press inline-flex h-[54px] w-full items-center justify-center rounded-full bg-white px-6 font-semibold text-[#07060d] tab:w-auto"
+          >
+            Email Our Partnerships Team
+          </a>
+        </div>
+        <p className="mt-5 text-center text-[13px] leading-5 text-ink-subtle">
+          PractiCode Academy is run by {site.publisher}, company registration no. {site.companyNumber}.
+        </p>
+      </Section>
+      <JsonLd data={[localBusinessLd(), breadcrumbLd([{ name: 'Contact', path: '/contact' }])]} />
+    </>
   )
 }
