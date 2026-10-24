@@ -25,7 +25,7 @@ export const metadata = pageMeta({
 
 const facts: { value: string; label: string; icon: typeof Calendar; tone: Tone }[] = [
   { value: '2023', label: 'Founded in Ibadan', icon: Calendar, tone: 'fe' },
-  { value: '100+', label: 'SIWES students hosted', icon: GraduationCap, tone: 'da' },
+  { value: '200+', label: 'SIWES students hosted', icon: GraduationCap, tone: 'da' },
   { value: 'Ibadan + online', label: 'Onsite in Old Bodija or live online', icon: MapPin, tone: 'ux' },
 ]
 

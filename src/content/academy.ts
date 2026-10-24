@@ -33,7 +33,7 @@ export const partners = [
   { name: 'Google Developer Groups', src: '/images/partners/gdg.svg', width: 220, height: 40 },
   { name: 'Muslim Tech Expo', src: '/images/partners/mte.png', width: 160, height: 56 },
   { name: 'Bimaplan Consult', src: '/images/partners/bimaplan.png', width: 156, height: 48 },
-  { name: 'Zeeh Africa', src: '/images/partners/zeeh.png', width: 140, height: 40 },
+  // { name: 'Zeeh Africa', src: '/images/partners/zeeh.png', width: 140, height: 40 },
 ]
 
 export const founder = {
@@ -49,7 +49,7 @@ export const team = [
     name: 'Paul Olaojo',
     role: 'Instructor, Data Analysis',
     tone: 'da' as const,
-    photo: '/images/photos/paul.jpg',
+    photo: '/images/photos/paul2.jpeg',
     initials: 'PO',
     bio: 'An AI/ML engineer, data scientist and backend engineer who builds production-ready AI systems that solve real business problems.',
   },
@@ -57,7 +57,7 @@ export const team = [
     name: 'Hamdalat Omolola Akinyele',
     role: 'Business Development & Partnerships',
     tone: 'ux' as const,
-    photo: '',
+    photo: '/images/photos/hamdallah.jpeg',
     initials: 'HA',
     bio: 'A data analyst skilled in Excel, Power BI, SQL and Python, and trained on our Data Analytics programme.',
   },

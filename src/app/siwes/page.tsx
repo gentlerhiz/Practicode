@@ -168,7 +168,7 @@ export default function SiwesPage() {
               <div className="flex items-center gap-3 rounded-2xl border border-line bg-card px-3.5 py-2.5">
                 <Tile icon={Users} tone="ux" size={40} />
                 <div className="flex flex-col">
-                  <span className="font-display text-2xl leading-7 font-extrabold tracking-[-0.03em] text-ink">100+</span>
+                  <span className="font-display text-2xl leading-7 font-extrabold tracking-[-0.03em] text-ink">200+</span>
                   <span className="text-xs text-ink-muted">SIWES students hosted</span>
                 </div>
               </div>

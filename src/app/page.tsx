@@ -69,7 +69,7 @@ const tools: { name: string; icon: typeof Code; tone: Tone }[] = [
 const facts: { value: string; label: string; icon: typeof Code; tone: Tone }[] = [
   { value: '2023', label: 'Teaching in Ibadan since', icon: Calendar, tone: 'fe' },
   { value: 'Ibadan + online', label: 'Onsite in Old Bodija or live online', icon: MapPin, tone: 'da' },
-  { value: '100+', label: 'SIWES students hosted', icon: GraduationCap, tone: 'ux' },
+  { value: '200+', label: 'SIWES students hosted', icon: GraduationCap, tone: 'ux' },
   { value: 'Certificate', label: 'On completion of every programme', icon: Award, tone: 'ai' },
 ]
 
@@ -89,7 +89,7 @@ const logbook = [
 const siwesPoints: { text: string; icon: typeof Code; tone: Tone }[] = [
   { text: 'Half-price tuition for SIWES and IT students', icon: BadgePercent, tone: 'da' },
   { text: 'Your logbook reviewed and signed every week', icon: Stamp, tone: 'fe' },
-  { text: '100+ SIWES students hosted since 2023', icon: Users, tone: 'ux' },
+  { text: '200+ SIWES students hosted since 2023', icon: Users, tone: 'ux' },
 ]
 
 const floatCard = 'absolute m-0 rounded-[22px] border bg-glass p-3 text-ink backdrop-blur-sm'
