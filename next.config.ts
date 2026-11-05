@@ -38,6 +38,14 @@ const nextConfig: NextConfig = {
           { key: 'Content-Security-Policy', value: buildCsp({ dev: process.env.NODE_ENV === 'development' }) },
         ],
       },
+      // Private pages (the administrator console): never indexed, and no referrer leaves them.
+      {
+        source: '/code/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
+      },
     ]
   },
 }
