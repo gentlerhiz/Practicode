@@ -1,4 +1,5 @@
 import 'server-only'
+import { createHmac, timingSafeEqual } from 'node:crypto'
 import { request as httpsRequest } from 'node:https'
 import { z } from 'zod'
 import type { PaystackTx } from '@/lib/enrolment'
@@ -98,4 +99,13 @@ const Tx = z.object({
 /** Asks Paystack what really happened to a payment. */
 export async function verifyPayment(reference: string): Promise<PaystackTx> {
   return Tx.parse(await paystack('GET', `/transaction/verify/${encodeURIComponent(reference)}`))
+}
+
+/** Whether a webhook body really came from Paystack: HMAC-SHA512 of the raw body with our secret key. */
+export function signedByPaystack(rawBody: string, signature: string | null): boolean {
+  const key = serverEnv.paystackSecret
+  if (!key || !signature) return false
+  const expected = Buffer.from(createHmac('sha512', key).update(rawBody).digest('hex'))
+  const got = Buffer.from(signature)
+  return got.length === expected.length && timingSafeEqual(got, expected)
 }
