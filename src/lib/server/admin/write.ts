@@ -9,7 +9,8 @@ import type {
   SettingsEdit,
 } from '@/lib/admin/schemas'
 import type { ActionState } from '@/lib/admin/types'
-import { admin, UPLOADS_BUCKET } from '../supabase'
+import { sendPlaceConfirmedEmail } from '../email'
+import { admin, UPLOADS_BUCKET, type EnrolmentRow } from '../supabase'
 import type { AdminSession } from './auth'
 import { countInCohort } from './data'
 import { changes, logAction } from './log'
@@ -70,24 +71,42 @@ export async function updateEnrolment(me: AdminSession, v: z.output<typeof Enrol
   return { ok: true, message: 'Saved.' }
 }
 
-/** The three buttons: transfer confirmed, paid (recorded by hand) and cancelled. */
+const SECURED = ['paid', 'confirmed']
+
+/**
+ * Confirm payment or cancel. A bank transfer becomes "confirmed", anything else "paid" (both mean the
+ * place is secured). The first time a place is secured, the student gets their confirmation email; the
+ * update only matches a row that wasn't secured yet, so a double click can't send it twice.
+ */
 export async function setEnrolmentStatus(me: AdminSession, id: string, to: 'confirmed' | 'paid' | 'cancelled'): Promise<ActionState> {
   const db = admin()
   const { data: e } = await db.from('academy_enrolments').select('status, method, amount_kobo, paid_at, paid_amount_kobo, paid_channel').eq('id', id).maybeSingle()
   if (!e) return notFound
-  if (to === 'confirmed' && e.method !== 'transfer') return { ok: false, message: 'Only bank transfers are confirmed by hand. Use “Mark paid” for this one.' }
-  const fields: Record<string, unknown> = { status: to }
-  if (to === 'paid' || to === 'confirmed') {
+  const securing = to !== 'cancelled'
+  const status = securing ? (e.method === 'transfer' ? 'confirmed' : 'paid') : 'cancelled'
+  const fields: Record<string, unknown> = { status }
+  if (securing) {
     fields.paid_at = e.paid_at ?? new Date().toISOString()
-    if (to === 'paid') {
-      fields.paid_amount_kobo = e.paid_amount_kobo ?? e.amount_kobo
-      fields.paid_channel = e.paid_channel ?? 'recorded in console'
-    }
+    fields.paid_amount_kobo = e.paid_amount_kobo ?? e.amount_kobo
+    fields.paid_channel = e.paid_channel ?? (e.method === 'transfer' ? 'bank transfer' : 'recorded in console')
   }
-  const { error } = await db.from('academy_enrolments').update(fields).eq('id', id)
+  let query = db.from('academy_enrolments').update(fields).eq('id', id)
+  if (securing) query = query.not('status', 'in', `(${SECURED.join(',')})`)
+  const { data: updated, error } = await query.select('*').maybeSingle<EnrolmentRow>()
   if (error) return explain(error, 'The status wasn’t changed.')
-  await logAction(me.email, `mark_${to}`, 'academy_enrolments', id, { from: e.status, to })
-  return { ok: true, message: to === 'cancelled' ? 'Cancelled.' : to === 'paid' ? 'Marked paid.' : 'Transfer confirmed.' }
+  if (!updated) return { ok: true, message: 'This payment was already confirmed, so no email was sent again.' }
+  await logAction(me.email, `mark_${status}`, 'academy_enrolments', id, { from: e.status, to: status })
+  if (!securing) return { ok: true, message: 'Cancelled.' }
+
+  const sent = await sendPlaceConfirmedEmail(updated).catch((mailError) => {
+    console.error('Confirmation email failed', mailError)
+    return false
+  })
+  await logAction(me.email, sent ? 'email_confirmation' : 'email_confirmation_failed', 'academy_enrolments', id, null)
+  const first = updated.full_name.trim().split(/\s+/)[0]
+  return sent
+    ? { ok: true, message: `Payment confirmed. We’ve emailed ${first} to say they’re in.` }
+    : { ok: true, message: `Payment confirmed, but the email to ${first} didn’t send. Please message them on WhatsApp.` }
 }
 
 export async function deleteEnrolment(me: AdminSession, id: string): Promise<ActionState> {

@@ -43,5 +43,15 @@ export const waLink = (raw: string | null | undefined) => {
   return n ? `https://wa.me/${n}` : null
 }
 
-/** Status words for people: "transfer_submitted" reads as "Transfer submitted". */
-export const label = (s: string | null | undefined) => (s ? (s.charAt(0).toUpperCase() + s.slice(1)).replace(/_/g, ' ') : '—')
+/** Enrolment statuses in plain words. "Paid online" and "Transfer confirmed" both mean the place is secured. */
+const STATUS_WORDS: Record<string, string> = {
+  awaiting_payment: 'Awaiting payment',
+  transfer_submitted: 'Transfer to check',
+  paid: 'Paid online',
+  confirmed: 'Transfer confirmed',
+  in_group: 'In group',
+}
+
+/** Status words for people: "transfer_submitted" reads as "Transfer to check". */
+export const label = (s: string | null | undefined) =>
+  s ? (STATUS_WORDS[s] ?? (s.charAt(0).toUpperCase() + s.slice(1)).replace(/_/g, ' ')) : '—'

@@ -2,6 +2,7 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Icon } from '@/components/ui/icon'
+import { label } from '@/lib/admin/format'
 import { cn } from '@/lib/cn'
 
 /** Small server-safe building blocks for the administrator console. */
@@ -73,7 +74,7 @@ const STATUS_TONE: Record<string, keyof typeof tones> = {
 }
 
 export function StatusBadge({ status }: { status: string }) {
-  return <Badge tone={STATUS_TONE[status] ?? 'neutral'}>{(status.charAt(0).toUpperCase() + status.slice(1)).replace(/_/g, ' ')}</Badge>
+  return <Badge tone={STATUS_TONE[status] ?? 'neutral'}>{label(status)}</Badge>
 }
 
 /** A horizontally scrolling table frame: wide tables stay readable on phones. */

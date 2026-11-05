@@ -87,8 +87,9 @@ export default async function EnrolmentPage({ params }: PageProps<'/code/adminis
               action={quickEnrolment}
               values={{ id: e.id }}
               buttons={[
-                ...(e.method === 'transfer' && e.status !== 'confirmed' ? [{ to: 'confirmed', label: 'Mark transfer confirmed', variant: 'primary' as const }] : []),
-                ...(e.status !== 'paid' && e.status !== 'confirmed' ? [{ to: 'paid', label: 'Mark paid' }] : []),
+                ...(e.status !== 'paid' && e.status !== 'confirmed'
+                  ? [{ to: e.method === 'transfer' ? 'confirmed' : 'paid', label: 'Confirm payment and email the student', variant: 'primary' as const }]
+                  : []),
                 ...(e.status !== 'cancelled' ? [{ to: 'cancelled', label: 'Cancel enrolment', variant: 'ghost' as const }] : []),
               ]}
             />

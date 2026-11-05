@@ -136,7 +136,10 @@ describe('formatting', () => {
     expect(nairaToKobo('₦80000.50')).toBe(8_000_050)
     expect(nairaToKobo('12a')).toBeNull()
     expect(nairaToKobo('')).toBeNull()
-    expect(label('transfer_submitted')).toBe('Transfer submitted')
+    expect(label('transfer_submitted')).toBe('Transfer to check')
+    expect(label('paid')).toBe('Paid online')
+    expect(label('confirmed')).toBe('Transfer confirmed')
+    expect(label('new')).toBe('New')
   })
 })
 

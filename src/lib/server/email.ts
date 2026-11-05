@@ -264,7 +264,72 @@ export async function sendEnrolmentEmails(e: EnrolmentRow, kind: 'paid' | 'trans
   ])
 }
 
-const TOPICS: Record<string, string> = { programmes: 'A programme', siwes: 'SIWES / IT', partner: 'Partnerships', other: 'Something else' }
+/**
+ * Sent once, when the academy confirms a payment in the console (a checked bank transfer, or a payment
+ * recorded by hand). Paystack payments get their welcome automatically from sendEnrolmentEmails.
+ */
+export async function sendPlaceConfirmedEmail(e: EnrolmentRow): Promise<boolean> {
+  const prog = programmeById(e.course as ProgrammeId)
+  const first = firstName(e.full_name)
+  const amount = naira(e.paid_amount_kobo ?? e.amount_kobo)
+  const transfer = e.method === 'transfer'
+  const { pricing } = await getCatalogue()
+  const programmeUrl = absoluteUrl(`/programmes/${prog.slug}`)
+
+  const html = layout(brand, {
+    preheader: `${transfer ? 'Your transfer is confirmed' : 'Your payment is confirmed'}. Your place on ${prog.title} is secured.`,
+    eyebrow: 'Place confirmed',
+    eyebrowTone: 'success',
+    title: `You’re in, ${first}. Your place is confirmed.`,
+    body:
+      p(
+        `${transfer ? 'We’ve checked and confirmed your bank transfer' : 'We’ve received your payment'}, so your place on <strong>${esc(prog.title)}</strong> is secured. Welcome to PractiCode Academy. I’m really glad you’re here.`,
+      ) +
+      courseCard({ id: prog.id, title: prog.title, meta: prog.meta, summary: prog.summary }) +
+      details([
+        ['Name on your certificate', esc(e.full_name)],
+        ['Amount received', amount],
+        transfer ? ['Transaction ID', esc(e.transfer_id || 'Receipt uploaded')] : ['Reference', esc(e.paystack_reference ?? '—')],
+      ]) +
+      (e.siwes
+        ? note(`<strong>SIWES or IT student:</strong> your ${pricing.siwesPercent}% discount is applied. A ${naira(pricing.siwesAdminFeeKobo)} administrative fee is due when you resume.`)
+        : '') +
+      h2('What happens next') +
+      steps([
+        { title: 'You join your class WhatsApp group', html: `We’ll add you on <strong>${esc(e.whatsapp)}</strong> and share your timetable there.` },
+        { title: 'You get ready for day one', html: 'Bring a laptop if you can, and a notebook. You’ll start building from the first week.' },
+        { title: 'You build real projects', html: 'Every few weeks you finish something you can show people, ending with your capstone.' },
+      ]) +
+      button('See your course outline', programmeUrl) +
+      signOff('This is where your tech journey really begins. Welcome aboard,') +
+      spacer +
+      whatsappHelp(),
+    reason: `You’re getting this because you enrolled at practicode.tech with ${e.email}.`,
+  })
+  const text = plain(
+    [
+      `You’re in, ${first}. Your place is confirmed.`,
+      '',
+      `${transfer ? 'We’ve checked and confirmed your bank transfer' : 'We’ve received your payment'}, so your place on ${prog.title} is secured.`,
+      '',
+      `Name on your certificate: ${e.full_name}`,
+      `Amount received: ${amount}`,
+      transfer ? `Transaction ID: ${e.transfer_id || 'Receipt uploaded'}` : `Reference: ${e.paystack_reference ?? '—'}`,
+      e.siwes && `SIWES or IT: ${pricing.siwesPercent}% discount applied; ${naira(pricing.siwesAdminFeeKobo)} administrative fee due when you resume.`,
+      '',
+      `Next: we’ll add you to your class WhatsApp group on ${e.whatsapp} and share your timetable. Bring a laptop if you can.`,
+      `Your course outline: ${programmeUrl}`,
+      '',
+      'This is where your tech journey really begins. Welcome aboard,',
+      'Idris Akande Rasaq, Founder, PractiCode Academy',
+      `Questions? Reply to this email or WhatsApp us on ${site.phones[0]}.`,
+    ],
+    brand,
+  )
+  return send({ to: e.email, subject: `You’re in, ${first}. Your place on ${prog.title} is confirmed`, html, text })
+}
+
+const TOPICS: Record<string, string> ={ programmes: 'A programme', siwes: 'SIWES / IT', partner: 'Partnerships', other: 'Something else' }
 
 export async function sendMessageEmail(m: { topic: string; name: string; email: string; whatsapp?: string; message: string }) {
   const topic = TOPICS[m.topic] ?? m.topic
