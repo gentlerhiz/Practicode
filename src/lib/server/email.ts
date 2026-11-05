@@ -77,7 +77,7 @@ export async function sendRegistrationEmails(r: RegisterInput & { id?: string },
         { title: 'You enrol when you’re ready', html: 'When enrolment opens for your cohort, you pay online or by bank transfer. We’ll remind you.' },
       ]) +
       button(`Explore ${prog.short}`, programmeUrl) +
-      signOff('I can’t wait to see what you build. See you in class,') +
+      signOff('You’ve just taken a real step into your tech journey, and we’re proud to walk it with you.') +
       spacer +
       whatsappHelp(),
     reason: `You’re getting this because you registered at practicode.tech with ${r.email}.`,
@@ -97,7 +97,7 @@ export async function sendRegistrationEmails(r: RegisterInput & { id?: string },
       `2. ${attendLine(r.attendance)} Explore your course: ${programmeUrl}`,
       '3. You enrol when you’re ready: pay online or by bank transfer when enrolment opens.',
       '',
-      'See you in class,',
+      'You’ve just taken a real step into your tech journey, and we’re proud to walk it with you.',
       'Idris Akande Rasaq, Founder, PractiCode Academy',
       '',
       `Questions? Reply to this email or WhatsApp us on ${site.phones[0]}.`,
