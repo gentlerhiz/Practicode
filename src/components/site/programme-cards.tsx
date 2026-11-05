@@ -6,7 +6,7 @@ import { programmes } from '@/content/programmes'
 import { toneBg, toneClass } from '@/lib/tone'
 import { ProgrammeArt } from './programme-art'
 
-/** The four programmes as large colour cards, like PractiCode Learn's "Available courses". */
+/** The programmes as large colour cards, like PractiCode Learn's "Available courses". */
 export function ProgrammeCards() {
   return (
     <ul className="grid grid-cols-1 gap-4 tab:grid-cols-2 tab:gap-6">

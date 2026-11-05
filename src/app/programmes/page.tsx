@@ -33,7 +33,7 @@ import { toneBg, toneClass } from '@/lib/tone'
 export const metadata = pageMeta({
   title: 'Tech Programmes in Ibadan and Online',
   description:
-    'Front-End Web Development, Data Analysis and UI/UX Design, taught in live classes in Ibadan or online, with a project every week. AI and Machine Learning is coming soon.',
+    'Front-End Web Development, Data Analysis, UI/UX Design, Cybersecurity and Digital Marketing, taught in live classes in Ibadan or online, with a project every week. AI and Machine Learning is coming soon.',
   path: '/programmes',
 })
 
@@ -166,7 +166,7 @@ export default function ProgrammesPage() {
           <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-2">
             <h2 className="font-display text-[28px] leading-8 font-extrabold tracking-[-0.035em] tab:text-[34px] tab:leading-[38px]">Doing SIWES or IT?</h2>
             <p className="text-base leading-[26px] text-white/90">
-              Join Front-End, Data Analysis or UI/UX for your industrial training at half the usual tuition, with your logbook signed every
+              Join one of our programmes for your industrial training with 20% off tuition, with your logbook signed every
               week.
             </p>
           </div>

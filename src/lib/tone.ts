@@ -8,6 +8,8 @@ export const toneClass: Record<Tone, { fill: string; text: string; tint: string;
   fe: { fill: 'bg-fe', text: 'text-fe-text', tint: 'bg-fe-tint', border: 'border-fe-text', ink: 'text-[#1f33a8]' },
   da: { fill: 'bg-da', text: 'text-da-text', tint: 'bg-da-tint', border: 'border-da-text', ink: 'text-[#05503b]' },
   ux: { fill: 'bg-ux', text: 'text-ux-text', tint: 'bg-ux-tint', border: 'border-ux-text', ink: 'text-[#8f1745]' },
+  cs: { fill: 'bg-cs', text: 'text-cs-text', tint: 'bg-cs-tint', border: 'border-cs-text', ink: 'text-[#0b4f5e]' },
+  dm: { fill: 'bg-dm', text: 'text-dm-text', tint: 'bg-dm-tint', border: 'border-dm-text', ink: 'text-[#7c2d0a]' },
   ai: { fill: 'bg-ai', text: 'text-ai-text', tint: 'bg-ai-tint', border: 'border-ai-text', ink: 'text-[#3a20b0]' },
 }
 
@@ -22,7 +24,7 @@ export const TONES: Tone[] = ['fe', 'da', 'ux', 'ai']
 /** Cycles the four colours for lists of icon tiles. */
 export const toneAt = (i: number): Tone => TONES[i % TONES.length]!
 
-const FILL: Record<Tone, string> = { fe: '#3d5af5', da: '#0a7d5c', ux: '#d9306f', ai: '#6e4cf5' }
+const FILL: Record<Tone, string> = { fe: '#3d5af5', da: '#0a7d5c', ux: '#d9306f', cs: '#0e7490', dm: '#c2410c', ai: '#6e4cf5' }
 
 /**
  * A programme colour as CSS variables, for styles that change with state (open, selected). Classes read

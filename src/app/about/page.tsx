@@ -60,7 +60,7 @@ export default function AboutPage() {
               We teach tech by building real things, <PillWord tone="ai">together.</PillWord>
             </h1>
             <p className="max-w-[760px] text-base leading-[26px] text-ink-soft tab:text-lg tab:leading-[30px]">
-              PractiCode Academy started in Ibadan in 2023. We run live classes in front-end development, data analysis and UI/UX design,
+              PractiCode Academy started in Ibadan in 2023. We run live classes in front-end development, data analysis, UI/UX design, cybersecurity and digital marketing,
               onsite in Old Bodija and live online, and we host SIWES and IT students every year.
             </p>
           </div>

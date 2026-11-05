@@ -40,11 +40,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line-subtle bg-bg/90 backdrop-blur-md">
       <Link
-        href="/enrol"
+        href="/register"
         className="block bg-[linear-gradient(90deg,#3d5af5_0%,#6e4cf5_50%,#d9306f_100%)] px-4 py-[9px] text-center text-[13px] font-medium text-white tab:text-sm"
       >
-        Classes are enrolling now, in Ibadan and online.{' '}
-        <span className="font-bold underline underline-offset-2">Enrol now →</span>
+        Registration is open for our next cohort, in Ibadan and online.{' '}
+        <span className="font-bold underline underline-offset-2">Register free →</span>
       </Link>
 
       <nav aria-label="Main" className="mx-auto flex h-[68px] max-w-[1280px] items-center gap-2 px-4 tab:h-[84px] tab:gap-7 tab:px-10">

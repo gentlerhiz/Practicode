@@ -23,6 +23,7 @@ export const privacy: LegalDoc = {
       title: 'What we collect',
       paras: ['We collect the details you give us:'],
       list: [
+        'When you register for a cohort: your name, email, WhatsApp number, course, how you will attend, city and state, whether you are a SIWES or IT student, and, if you choose to say, how you heard about us.',
         'When you enrol: your email, full name, WhatsApp number and chosen programme.',
         'If you are a SIWES or IT student: your matric number, level and introduction letter.',
         'For payment: your Paystack payment reference, or the transaction ID or receipt you upload for a bank transfer.',
@@ -33,7 +34,7 @@ export const privacy: LegalDoc = {
       id: 'use',
       title: 'How we use it',
       paras: [
-        'We use your data to manage your enrolment, confirm your payment, issue your certificate, contact you about your classes and reply to your messages. We do not sell your data or use it for advertising.',
+        'We use your data to manage your enrolment, confirm your payment, issue your certificate, contact you about your cohort and classes, and reply to your messages. We do not sell your data or use it for advertising.',
       ],
     },
     {

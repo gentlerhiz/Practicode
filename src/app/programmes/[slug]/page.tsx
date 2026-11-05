@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: PageProps<'/programmes/[slug]
   return pageMeta({ title: p.seoTitle, description: p.seoDescription, path: `/programmes/${p.slug}` })
 }
 
-const pair = { fe: '#6e4cf5', da: '#3d5af5', ux: '#6e4cf5', ai: '#d9306f' } as const
-const fill = { fe: '#3d5af5', da: '#0a7d5c', ux: '#d9306f', ai: '#6e4cf5' } as const
+const pair = { fe: '#6e4cf5', da: '#3d5af5', ux: '#6e4cf5', cs: '#3d5af5', dm: '#d9306f', ai: '#d9306f' } as const
+const fill = { fe: '#3d5af5', da: '#0a7d5c', ux: '#d9306f', cs: '#0e7490', dm: '#c2410c', ai: '#6e4cf5' } as const
 
 export default async function ProgrammePage({ params }: PageProps<'/programmes/[slug]'>) {
   const p = findProgramme((await params).slug)
@@ -315,7 +315,7 @@ export default async function ProgrammePage({ params }: PageProps<'/programmes/[
         {p.live ? (
           <CtaBand title={`Start ${p.short} with us.`} text="Registration takes about five minutes, and you’ll see the fee before you pay." href={`/enrol?course=${k}` as Route} />
         ) : (
-          <CtaBand title="Want to start now?" text="Front-End, Data Analysis and UI/UX are enrolling now, in Ibadan and online." label="See Programmes" href="/programmes" />
+          <CtaBand title="Want to start now?" text="Our live programmes are open now, in Ibadan and online." label="See Programmes" href="/programmes" />
         )}
       </Section>
       <JsonLd data={[courseLd(p), faqLd(faq), breadcrumbLd([{ name: 'Programmes', path: '/programmes' }, { name: p.title, path: `/programmes/${p.slug}` }])]} />

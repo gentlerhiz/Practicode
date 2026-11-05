@@ -10,7 +10,9 @@ export type EnrolmentRow = {
   email: string
   full_name: string
   whatsapp: string
-  course: 'fe' | 'da' | 'ux'
+  course: 'fe' | 'da' | 'ux' | 'cs' | 'dm'
+  cohort_id: string | null
+  notes: string | null
   siwes: boolean
   matric_number: string | null
   level: string | null

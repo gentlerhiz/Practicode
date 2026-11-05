@@ -39,7 +39,7 @@ export default function OpenGraphImage() {
           <div style={pill('#2FE6B0', '#07060D', 1.5)}>Build.</div>
           <div style={pill('#D9306F', '#FFFFFF', -1.5)}>Launch.</div>
         </div>
-        <div style={{ display: 'flex', fontSize: 34, color: '#A9A6BC' }}>Front-End · Data Analysis · UI/UX Design</div>
+        <div style={{ display: 'flex', fontSize: 34, color: '#A9A6BC' }}>Front-End · Data · UI/UX · Cybersecurity · Marketing</div>
       </div>
     ),
     size,

@@ -39,6 +39,26 @@ export function ProgrammeArt({ id, className }: { id: ProgrammeId; className?: s
         <path d="M176 132 l0 34 l9 -8 l7 15 l7 -3 l-7 -15 l12 0 z" fill="#07060D" stroke="#FFFFFF" strokeWidth="2.5" strokeLinejoin="round" />
       </svg>
     )
+  if (id === 'cs')
+    return (
+      <svg viewBox="0 0 240 200" aria-hidden="true" className={cls}>
+        <path d="M120 16 L192 44 V100 C192 144 160 172 120 186 C80 172 48 144 48 100 V44 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinejoin="round" />
+        <rect x="92" y="88" width="56" height="44" rx="10" fill="#FFFFFF" />
+        <path d="M102 88 V76 a18 18 0 0 1 36 0 V88" fill="none" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
+        <circle cx="120" cy="108" r="6" fill="#0E7490" />
+        <rect x="117" y="110" width="6" height="14" rx="3" fill="#0E7490" />
+      </svg>
+    )
+  if (id === 'dm')
+    return (
+      <svg viewBox="0 0 240 200" aria-hidden="true" className={cls}>
+        <path d="M40 120 L150 56 V160 Z" fill="#FFFFFF" />
+        <rect x="24" y="104" width="30" height="34" rx="8" fill="rgba(255,255,255,0.35)" />
+        <path d="M172 76 C196 88 196 128 172 140" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="6" strokeLinecap="round" />
+        <path d="M190 54 C228 80 228 136 190 162" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="6" strokeLinecap="round" />
+        <circle cx="66" cy="166" r="10" fill="#FFD2B0" />
+      </svg>
+    )
   return (
     <svg viewBox="0 0 240 200" aria-hidden="true" className={cls}>
       <g stroke="rgba(255,255,255,0.35)" strokeWidth="2">

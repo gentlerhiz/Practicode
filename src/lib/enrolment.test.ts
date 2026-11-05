@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { chargeCovers, EnrolFields, feeKobo, fieldErrors, naira, newReference, sniffUpload } from './enrolment'
+import { chargeCovers, EnrolFields, FALLBACK_PRICING, fieldErrors, naira, newReference, RegisterFields, sniffUpload, tuitionKobo } from './enrolment'
 
 const base = {
   email: 'ada@example.com',
@@ -11,12 +11,57 @@ const base = {
   confirm: 'on',
 }
 
-describe('fees', () => {
-  it('charges ₦80,000, or ₦40,000 for SIWES and IT students', () => {
-    expect(feeKobo(false)).toBe(8_000_000)
-    expect(feeKobo(true)).toBe(4_000_000)
-    expect(naira(feeKobo(false))).toBe('₦80,000')
-    expect(naira(feeKobo(true))).toBe('₦40,000')
+describe('tuitionKobo', () => {
+  it('charges the full fee, or takes the SIWES percentage off', () => {
+    expect(tuitionKobo(12_000_000, false, 20)).toBe(12_000_000)
+    expect(tuitionKobo(12_000_000, true, 20)).toBe(9_600_000)
+    expect(naira(tuitionKobo(12_000_000, true, 20))).toBe('₦96,000')
+    expect(naira(tuitionKobo(14_000_000, true, 20))).toBe('₦112,000')
+    expect(naira(tuitionKobo(7_000_000, true, 20))).toBe('₦56,000')
+  })
+  it('rounds to a whole naira and handles 0 and 100 percent', () => {
+    expect(tuitionKobo(1_000_033, true, 33)).toBe(670_000)
+    expect(tuitionKobo(5_000_000, true, 0)).toBe(5_000_000)
+    expect(tuitionKobo(5_000_000, true, 100)).toBe(0)
+  })
+  it('keeps built-in fees equal to the seeded ones', () => {
+    expect(FALLBACK_PRICING.feeKobo).toEqual({ fe: 12_000_000, da: 10_000_000, ux: 8_000_000, cs: 14_000_000, dm: 7_000_000 })
+    expect(FALLBACK_PRICING.siwesPercent).toBe(20)
+    expect(FALLBACK_PRICING.siwesAdminFeeKobo).toBe(1_000_000)
+  })
+})
+
+describe('RegisterFields', () => {
+  const reg = {
+    fullName: 'Adaeze Bello',
+    email: 'ada@example.com',
+    whatsapp: '0803 123 4567',
+    course: 'cs',
+    attendance: 'online',
+    city: 'Ibadan',
+    state: 'Oyo',
+    siwes: 'no',
+    consent: 'on',
+  }
+  it('accepts a complete registration', () => {
+    const r = RegisterFields.parse(reg)
+    expect(r.whatsapp).toBe('08031234567')
+    expect(r.siwes).toBe(false)
+    expect(r.heardFrom).toBeUndefined()
+  })
+  it('accepts the new courses and Outside Nigeria, and rejects AI and unknown states', () => {
+    expect(RegisterFields.safeParse({ ...reg, course: 'dm', state: 'Outside Nigeria', heardFrom: 'TikTok' }).success).toBe(true)
+    expect(RegisterFields.safeParse({ ...reg, course: 'ai' }).success).toBe(false)
+    expect(RegisterFields.safeParse({ ...reg, state: 'Atlantis' }).success).toBe(false)
+  })
+  it('needs consent, attendance and the SIWES answer', () => {
+    const rest: Partial<typeof reg> = { ...reg }
+    delete rest.consent
+    delete rest.attendance
+    delete rest.siwes
+    const r = RegisterFields.safeParse(rest)
+    expect(r.success).toBe(false)
+    if (!r.success) expect(Object.keys(fieldErrors(r.error)).sort()).toEqual(['attendance', 'consent', 'siwes'])
   })
 })
 
@@ -31,8 +76,10 @@ describe('EnrolFields', () => {
     expect(EnrolFields.parse({ ...base, whatsapp: '+234 803 123 4567' }).whatsapp).toBe('+2348031234567')
   })
 
-  it('rejects AI, which is not open yet', () => {
+  it('rejects AI, which is not open yet, and accepts the newer courses', () => {
     expect(EnrolFields.safeParse({ ...base, course: 'ai' }).success).toBe(false)
+    expect(EnrolFields.safeParse({ ...base, course: 'cs' }).success).toBe(true)
+    expect(EnrolFields.safeParse({ ...base, course: 'dm' }).success).toBe(true)
   })
 
   it('asks SIWES students for their matric number and level', () => {

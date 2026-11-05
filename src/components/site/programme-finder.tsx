@@ -14,6 +14,8 @@ const SUBJECTS: { id: ProgrammeId; label: string }[] = [
   { id: 'fe', label: 'Web Development' },
   { id: 'da', label: 'Data' },
   { id: 'ux', label: 'Design' },
+  { id: 'cs', label: 'Security' },
+  { id: 'dm', label: 'Marketing' },
   { id: 'ai', label: 'AI' },
 ]
 

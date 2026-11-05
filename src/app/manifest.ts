@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'PractiCode Academy',
     short_name: 'PractiCode',
-    description: 'Tech classes in Ibadan and online: front-end development, data analysis and UI/UX design.',
+    description: 'Tech classes in Ibadan and online: front-end development, data analysis, UI/UX design, cybersecurity and digital marketing.',
     start_url: '/',
     display: 'standalone',
     background_color: '#07060D',

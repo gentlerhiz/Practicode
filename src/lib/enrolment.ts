@@ -1,33 +1,48 @@
 import { z } from 'zod'
 
-/** Every live programme costs the same. Amounts are in kobo, as Paystack takes them. */
-export const COURSE_FEE_KOBO = 80_000 * 100
-/** SIWES and IT students pay half the tuition... */
-export const SIWES_FEE_KOBO = COURSE_FEE_KOBO / 2
-/** ...plus this administrative fee, paid on resumption (never charged online). */
-export const SIWES_ADMIN_FEE_NAIRA = 10_000
-
-export const feeKobo = (siwes: boolean) => (siwes ? SIWES_FEE_KOBO : COURSE_FEE_KOBO)
-
+/** Amounts are in kobo, as Paystack takes them. */
 export const naira = (kobo: number) => `₦${(kobo / 100).toLocaleString('en-NG')}`
 
-export const ENROLLABLE = ['fe', 'da', 'ux'] as const
+/** The courses people can enrol on or register for. AI & Machine Learning is not open yet. */
+export const ENROLLABLE = ['fe', 'da', 'ux', 'cs', 'dm'] as const
 export type Enrollable = (typeof ENROLLABLE)[number]
+
+/**
+ * Fees and the SIWES terms as the database holds them. The code carries the same values so a failed
+ * read never stops a page; the database is the source of truth.
+ */
+export type Pricing = {
+  feeKobo: Record<Enrollable, number>
+  siwesPercent: number
+  siwesAdminFeeKobo: number
+}
+export const FALLBACK_PRICING: Pricing = {
+  feeKobo: { fe: 120_000 * 100, da: 100_000 * 100, ux: 80_000 * 100, cs: 140_000 * 100, dm: 70_000 * 100 },
+  siwesPercent: 20,
+  siwesAdminFeeKobo: 10_000 * 100,
+}
+
+/** Tuition in kobo: the course fee, less the SIWES discount, rounded to a whole naira. */
+export function tuitionKobo(feeKobo: number, siwes: boolean, percent: number): number {
+  if (!siwes) return feeKobo
+  const discounted = (feeKobo * (100 - percent)) / 100
+  return Math.round(discounted / 100) * 100
+}
 
 export const LEVELS = ['100', '200', '300', '400', '500', 'ND1', 'ND2', 'HND1', 'HND2'] as const
 
 const trimmed = (max: number) => z.string().trim().max(max)
 // Nigerian numbers in any common form: 0803..., +234 803..., 234803...
 const phone = z
-  .string()
+  .string({ error: 'Enter a WhatsApp number like 0803 000 0000.' })
   .trim()
   .transform((v) => v.replace(/[\s()-]/g, ''))
   .pipe(z.string().regex(/^(\+?234|0)[789]\d{9}$/, 'Enter a WhatsApp number like 0803 000 0000.'))
 
 export const EnrolFields = z
   .object({
-    email: z.email('Enter an email address like you@example.com.').max(254),
-    fullName: trimmed(120).min(2, 'Enter your full name as it should appear on your certificate.'),
+    email: z.email({ error: 'Enter an email address like you@example.com.' }).max(254),
+    fullName: z.string({ error: 'Enter your full name as it should appear on your certificate.' }).trim().max(120).min(2, 'Enter your full name as it should appear on your certificate.'),
     whatsapp: phone,
     course: z.enum(ENROLLABLE, 'Choose a programme.'),
     siwes: z.enum(['yes', 'no']).transform((v) => v === 'yes'),
@@ -42,6 +57,29 @@ export const EnrolFields = z
     if (v.siwes && !v.level) ctx.addIssue({ code: 'custom', path: ['level'], message: 'Choose your level.' })
   })
 export type EnrolInput = z.output<typeof EnrolFields>
+
+export const REGISTRATION_STATES = [
+  'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta',
+  'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'FCT (Abuja)', 'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina',
+  'Kebbi', 'Kogi', 'Kwara', 'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers',
+  'Sokoto', 'Taraba', 'Yobe', 'Zamfara', 'Outside Nigeria',
+] as const
+export const HEARD_FROM = ['Instagram', 'TikTok', 'X', 'LinkedIn', 'WhatsApp', 'A friend', 'Google', 'An event', 'Other'] as const
+
+/** Free registration for a cohort: no payment, no documents. */
+export const RegisterFields = z.object({
+  fullName: z.string({ error: 'Enter your full name.' }).trim().max(120).min(2, 'Enter your full name.'),
+  email: z.email({ error: 'Enter an email address like you@example.com.' }).max(254),
+  whatsapp: phone,
+  course: z.enum(ENROLLABLE, 'Choose a course.'),
+  attendance: z.enum(['in_person', 'online'], 'Choose how you’ll attend.'),
+  city: z.string({ error: 'Enter your city or town.' }).trim().max(80).min(2, 'Enter your city or town.'),
+  state: z.enum(REGISTRATION_STATES, 'Choose your state.'),
+  siwes: z.enum(['yes', 'no'], 'Tell us if you’re a SIWES or IT student.').transform((v) => v === 'yes'),
+  heardFrom: z.enum(HEARD_FROM).optional(),
+  consent: z.literal('on', 'Please tick this box so we can send you updates.'),
+})
+export type RegisterInput = z.output<typeof RegisterFields>
 
 export const MessageFields = z.object({
   topic: z.enum(['programmes', 'siwes', 'partner', 'other']),

@@ -11,7 +11,7 @@ import { toneBg } from '@/lib/tone'
 export const metadata = { title: 'Page not found' }
 
 const links: { title: string; note: string; href: Route; icon: typeof House; tone: Tone }[] = [
-  { title: 'Programmes', note: 'Front-End, Data, UI/UX', href: '/programmes', icon: GraduationCap, tone: 'fe' },
+  { title: 'Programmes', note: 'Web, data, design, security, marketing', href: '/programmes', icon: GraduationCap, tone: 'fe' },
   { title: 'SIWES and IT', note: 'Industrial training with us', href: '/siwes', icon: Stamp, tone: 'da' },
   { title: 'FAQs', note: 'Quick answers', href: '/faq', icon: ListChecks, tone: 'ux' },
   { title: 'Contact', note: 'WhatsApp, call or visit', href: '/contact', icon: MessageCircle, tone: 'ai' },

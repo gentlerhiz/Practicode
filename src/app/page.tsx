@@ -87,7 +87,7 @@ const logbook = [
 ]
 
 const siwesPoints: { text: string; icon: typeof Code; tone: Tone }[] = [
-  { text: 'Half-price tuition for SIWES and IT students', icon: BadgePercent, tone: 'da' },
+  { text: '20% off tuition for SIWES and IT students', icon: BadgePercent, tone: 'da' },
   { text: 'Your logbook reviewed and signed every week', icon: Stamp, tone: 'fe' },
   { text: '200+ SIWES students hosted since 2023', icon: Users, tone: 'ux' },
 ]
@@ -130,7 +130,7 @@ export default function HomePage() {
         <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-7 text-center">
           <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-glass px-3.5 py-2 text-[13px] font-medium text-ink-soft">
             <span className="size-2 rounded-full bg-success-fill" />
-            Tech classes in Ibadan and online · Enrolling now
+            Tech classes in Ibadan and online · Registration open
           </p>
           <h1 className="font-display text-[52px] leading-[66px] font-extrabold tracking-[-0.035em] text-ink tab:text-[104px] tab:leading-[120px]">
             <PillWord tone="fe" className="-rotate-2">
@@ -140,15 +140,15 @@ export default function HomePage() {
             <PillWord tone="ux">Launch.</PillWord>
           </h1>
           <p className="max-w-[640px] text-base leading-[26px] text-ink-soft tab:text-[19px] tab:leading-[31px]">
-            Master in-demand tech skills through hands-on training in front-end development, data analysis and UI/UX design. Build
+            Master in-demand tech skills through hands-on training in front-end development, data analysis, UI/UX design, cybersecurity and digital marketing. Build
             real-world projects with expert mentors, and launch your tech journey with a portfolio you can show employers.
           </p>
           <div className="flex w-full flex-wrap justify-center gap-3 tab:w-auto">
             <Link
-              href="/enrol"
+              href="/register"
               className="press inline-flex h-[54px] w-full items-center justify-center gap-2.5 rounded-full bg-primary px-[26px] font-semibold text-on-primary hover:opacity-90 tab:w-auto"
             >
-              Enrol Now
+              Register Free
               <Icon as={ArrowRight} />
             </Link>
             <Link
@@ -270,7 +270,7 @@ export default function HomePage() {
               Doing your SIWES? Make it count.
             </h2>
             <p className="text-base leading-[26px] text-ink-soft">
-              Spend your industrial training building real projects in front-end development, data analysis or UI/UX design, instead of
+              Spend your industrial training building real projects in front-end development, data analysis, UI/UX design, cybersecurity or digital marketing, instead of
               filing papers.
             </p>
             <ul className="flex flex-col gap-3">

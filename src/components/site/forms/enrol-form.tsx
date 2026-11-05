@@ -9,7 +9,7 @@ import { Spinner } from '@/components/ui/spinner'
 import { Tile } from '@/components/ui/tile'
 import { liveProgrammes, programmeById } from '@/content/programmes'
 import { cn } from '@/lib/cn'
-import { feeKobo, LEVELS, naira, SIWES_ADMIN_FEE_NAIRA, type Enrollable } from '@/lib/enrolment'
+import { LEVELS, naira, tuitionKobo, type Enrollable, type Pricing } from '@/lib/enrolment'
 import { toneVars } from '@/lib/tone'
 import { ErrorText, FormAlert, Honeypot, inputClass, labelClass, shrinkPhoto } from './form-bits'
 
@@ -38,10 +38,14 @@ export function EnrolForm({
   initialCourse,
   initialSiwes = false,
   paystackOn,
+  pricing,
+  liveCourses,
 }: {
   initialCourse: Enrollable
   initialSiwes?: boolean
   paystackOn: boolean
+  pricing: Pricing
+  liveCourses: Enrollable[]
 }) {
   const [course, setCourse] = useState<Enrollable>(initialCourse)
   const [siwes, setSiwes] = useState(initialSiwes)
@@ -53,7 +57,11 @@ export function EnrolForm({
   const [leaving, setLeaving] = useState(false)
   const form = useRef<HTMLFormElement>(null)
 
-  const fee = naira(feeKobo(siwes))
+  const courseFee = pricing.feeKobo[course]
+  const payKobo = tuitionKobo(courseFee, siwes, pricing.siwesPercent)
+  const fee = naira(payKobo)
+  const discountKobo = courseFee - payKobo
+  const options = liveProgrammes.filter((o) => liveCourses.includes(o.id as Enrollable))
   const p = programmeById(course)
   const err = (k: string) => errors[k]
   const aria = (k: string) => ({ 'aria-invalid': err(k) ? true : undefined, 'aria-describedby': err(k) ? `${k}-error` : undefined })
@@ -130,7 +138,7 @@ export function EnrolForm({
             Choose your programme
           </legend>
           <div role="radiogroup" aria-label="Programme" className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-3">
-            {liveProgrammes.map((o) => (
+            {options.map((o) => (
               <button
                 key={o.id}
                 type="button"
@@ -142,7 +150,9 @@ export function EnrolForm({
                 <Tile icon={o.icon} tone={o.id} size={42} />
                 <span className="flex flex-col gap-0.5">
                   <span className="text-[15px] leading-[22px] font-semibold">{o.title}</span>
-                  <span className="text-[13px] text-ink-muted">{o.meta.replace('Beginner · ', '')}</span>
+                  <span className="text-[13px] text-ink-muted">
+                    {o.meta.replace('Beginner · ', '')} · {naira(tuitionKobo(pricing.feeKobo[o.id as Enrollable], siwes, pricing.siwesPercent))}
+                  </span>
                 </span>
               </button>
             ))}
@@ -185,8 +195,8 @@ export function EnrolForm({
             <div className="flex flex-col gap-4">
               <p className="flex items-center gap-3 rounded-[14px] bg-da-tint px-4 py-3 text-sm leading-[22px] text-da-text">
                 <Tile icon={BadgePercent} tone="da" size={32} />
-                SIWES and IT students get 50% off: you pay {naira(feeKobo(true))}. A ₦{SIWES_ADMIN_FEE_NAIRA.toLocaleString('en-NG')} administrative
-                fee is due on resumption.
+                SIWES and IT students get {pricing.siwesPercent}% off: for {p.title} you pay {naira(tuitionKobo(courseFee, true, pricing.siwesPercent))}. A{' '}
+                {naira(pricing.siwesAdminFeeKobo)} administrative fee is due on resumption.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex min-w-0 flex-[1_1_220px] flex-col gap-1.5">
@@ -349,12 +359,12 @@ export function EnrolForm({
         <dl className="flex flex-col gap-2.5 text-sm">
           <div className="flex justify-between gap-3">
             <dt className="text-white/80">Course fee</dt>
-            <dd>₦80,000</dd>
+            <dd>{naira(courseFee)}</dd>
           </div>
           {siwes && (
             <div className="flex justify-between gap-3 text-[#2fe6b0]">
-              <dt>SIWES discount (50%)</dt>
-              <dd>−₦40,000</dd>
+              <dt>SIWES discount ({pricing.siwesPercent}%)</dt>
+              <dd>−{naira(discountKobo)}</dd>
             </div>
           )}
           <div className="flex items-baseline justify-between gap-3 border-t border-white/20 pt-3 text-base font-semibold">
@@ -362,7 +372,7 @@ export function EnrolForm({
             <dd className="font-display text-[28px] font-extrabold">{fee}</dd>
           </div>
         </dl>
-        {siwes && <p className="text-[13px] leading-5 text-white/80">Plus the ₦10,000 administrative fee, due on resumption.</p>}
+        {siwes && <p className="text-[13px] leading-5 text-white/80">Plus the {naira(pricing.siwesAdminFeeKobo)} administrative fee, due on resumption.</p>}
         <ul className="flex flex-col gap-2.5 border-t border-white/20 pt-4 text-[13px] leading-5">
           {[
             [MapPin, 'Onsite in Ibadan or live online'],

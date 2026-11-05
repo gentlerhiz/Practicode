@@ -14,7 +14,7 @@ export const site = {
   name: 'PractiCode Academy',
   url: resolveSiteUrl(),
   description:
-    'Tech classes in Ibadan and online: front-end development, data analysis and UI/UX design. Build real projects with expert mentors and finish with a portfolio you can show employers.',
+    'Tech classes in Ibadan and online: front-end development, data analysis, UI/UX design, cybersecurity and digital marketing. Build real projects with expert mentors and finish with a portfolio you can show employers.',
   locale: 'en_GB' as const,
   publisher: 'Practicode Consult Limited',
   companyNumber: '8415811',

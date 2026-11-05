@@ -1,7 +1,8 @@
 import 'server-only'
 import { programmeById } from '@/content/programmes'
-import { naira, SIWES_ADMIN_FEE_NAIRA } from '@/lib/enrolment'
+import { naira, type RegisterInput } from '@/lib/enrolment'
 import { site } from '@/lib/site'
+import { getCatalogue } from './catalogue'
 import { serverEnv } from './env'
 import { signedUpload, type EnrolmentRow } from './supabase'
 
@@ -52,7 +53,8 @@ export async function sendEnrolmentEmails(e: EnrolmentRow, kind: 'paid' | 'trans
   const programme = programmeById(e.course).title
   const first = esc(e.full_name.split(/\s+/)[0] ?? e.full_name)
   const amount = naira(e.paid_amount_kobo ?? e.amount_kobo)
-  const siwesNote = e.siwes ? p(`As a SIWES/IT student, a ₦${SIWES_ADMIN_FEE_NAIRA.toLocaleString('en-NG')} administrative fee is due on resumption.`) : ''
+  const { pricing } = await getCatalogue()
+  const siwesNote = e.siwes ? p(`As a SIWES/IT student, you get ${pricing.siwesPercent}% off tuition, and a ${naira(pricing.siwesAdminFeeKobo)} administrative fee is due on resumption.`) : ''
 
   const student =
     kind === 'paid'
@@ -131,4 +133,45 @@ export async function sendWaitlistEmail(w: { name: string; email: string; whatsa
     subject: `AI & ML waitlist: ${w.name}`,
     html: layout('New name on the AI & Machine Learning waitlist', rows([['Name', esc(w.name)], ['Email', esc(w.email)], ['WhatsApp', esc(w.whatsapp || '—')]])),
   })
+}
+
+/** The student's confirmation and the academy's notice for a free registration. Every user value is escaped. */
+export async function sendRegistrationEmails(r: RegisterInput, cohortName: string) {
+  const programme = programmeById(r.course).title
+  const first = esc(r.fullName.split(/\s+/)[0] ?? r.fullName)
+  const cohort = esc(cohortName)
+  const attend = r.attendance === 'in_person' ? 'In person in Ibadan' : 'Online'
+
+  const student = layout(
+    `You’re registered, ${first}!`,
+    p(`Thank you for registering for <strong>${cohort}</strong> at PractiCode Academy. Registration is free, and you haven’t paid anything.`) +
+      rows([
+        ['Name', esc(r.fullName)],
+        ['Course', esc(programme)],
+        ['How you’ll attend', esc(attend)],
+      ]) +
+      p('Within a few days, we’ll add you to the cohort’s WhatsApp group. Keep an eye on your email and WhatsApp for course updates.') +
+      p('When you’re ready to start, you pay later when you enrol on our Enrol page.') +
+      p(`Questions? Reply to this email or message us on WhatsApp: ${site.phones[0]}.`),
+  )
+
+  const academy = layout(
+    `New registration: ${esc(r.fullName)}`,
+    rows([
+      ['Cohort', cohort],
+      ['Course', esc(programme)],
+      ['Attendance', esc(attend)],
+      ['Email', esc(r.email)],
+      ['WhatsApp', esc(r.whatsapp)],
+      ['City', esc(r.city)],
+      ['State', esc(r.state)],
+      ['SIWES / IT', r.siwes ? 'Yes' : 'No'],
+      ['Heard about us', esc(r.heardFrom ?? '—')],
+    ]) + p('Every registration is also in Supabase, table academy_registrations.'),
+  )
+
+  await Promise.all([
+    send({ to: r.email, subject: `You’re registered for ${cohortName}`, html: student }),
+    send({ to: serverEnv.inbox, subject: `New registration: ${r.fullName} · ${programme}`, html: academy, replyTo: r.email }),
+  ])
 }

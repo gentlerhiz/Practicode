@@ -37,7 +37,7 @@ import { toneBg, toneClass } from '@/lib/tone'
 export const metadata = pageMeta({
   title: 'SIWES and IT Placement in Ibadan for Tech Students',
   description:
-    'Do your SIWES or IT at PractiCode Academy in Old Bodija, Ibadan: three months building real projects in front-end, data analysis or UI/UX, at half-price tuition, with your logbook signed every week.',
+    'Do your SIWES or IT at PractiCode Academy in Old Bodija, Ibadan: three months building real projects in front-end, data analysis, UI/UX, cybersecurity or digital marketing, with 20% off tuition and your logbook signed every week.',
   path: '/siwes',
 })
 
@@ -51,7 +51,7 @@ const logbook = [
 ]
 
 const expect: Item[] = [
-  { title: 'Half-price tuition', body: 'SIWES and IT students pay 50% of the usual course fee.', icon: BadgePercent, tone: 'da' },
+  { title: '20% off tuition', body: 'SIWES and IT students get 20% off the course fee.', icon: BadgePercent, tone: 'da' },
   { title: 'Administrative fee', body: 'A one-off fee, paid at registration or on resumption.', icon: Wallet, tone: 'fe' },
   { title: 'Three months', body: 'Onsite at our centre in Old Bodija, Ibadan.', icon: Calendar, tone: 'ux' },
   { title: 'Weekly logbook signing', body: 'We review your entries and sign them every week.', icon: Stamp, tone: 'ai' },
@@ -107,7 +107,7 @@ export default function SiwesPage() {
               Make your <PillWord tone="da">SIWES</PillWord> count.
             </h1>
             <p className="max-w-[560px] text-base leading-[26px] text-ink-soft tab:text-lg tab:leading-[30px]">
-              Spend your three-month industrial training building real projects in front-end development, data analysis or UI/UX design. We
+              Spend your three-month industrial training building real projects in front-end development, data analysis, UI/UX design, cybersecurity or digital marketing. We
               review and sign your logbook every week.
             </p>
             <div className="flex flex-wrap gap-3">

@@ -5,28 +5,32 @@ export type QA = { q: string; a: string }
 export type FaqTopic = { id: string; label: string; tone: Tone; icon: LucideIcon; items: QA[] }
 
 const online: QA = { q: 'Can I join online?', a: 'Yes. Every class runs onsite at our centre in Old Bodija, Ibadan, and live online at the same time.' }
-const cost: QA = { q: 'How much does a programme cost?', a: 'You’ll see the full fee on the enrolment form before you pay anything. SIWES and IT students get 50% off tuition.' }
+const cost: QA = { q: 'How much does a programme cost?', a: 'You’ll see the full fee on the enrolment form before you pay anything. SIWES and IT students get 20% off tuition.' }
 const certificate: QA = { q: 'Do I get a certificate?', a: 'Yes. When you finish your programme and capstone project, you receive a PractiCode Academy certificate of completion.' }
 const siwesJoin: QA = { q: 'I’m on SIWES or IT. Can I join?', a: 'Yes. We host SIWES and IT students from computer science and related courses, and we review and sign your logbook every week.' }
 const selfPaced: QA = { q: 'Can I learn at my own pace instead?', a: 'Yes. Try PractiCode Learn, our self-paced platform. Module 1 of Front-End is free, and lessons run in your browser.' }
-const howEnrol: QA = { q: 'How do I enrol?', a: 'Fill the form on our Enrol page, choose your programme and pay online with Paystack or by bank transfer. It takes about five minutes, and we confirm by email and on WhatsApp.' }
+const howEnrol: QA = { q: 'How do I enrol?', a: 'Register free on our Register page first, and we’ll add you to the cohort’s WhatsApp group. When you’re ready, fill the form on our Enrol page, choose your programme and pay online with Paystack or by bank transfer. We confirm by email and on WhatsApp.' }
 
 export const homeFaq: QA[] = [howEnrol, online, cost, certificate, siwesJoin, selfPaced]
 
 export const siwesFaq: QA[] = [
   { q: 'Who can do SIWES with you?', a: 'Students on industrial training from computer science, software engineering, IT, computer engineering, cybersecurity, data science and related courses.' },
   { q: 'How long is the programme?', a: 'Three months, onsite at our centre in Old Bodija, Ibadan.' },
-  { q: 'What does it cost?', a: 'SIWES and IT students pay half the usual tuition, plus a one-off administrative fee. You’ll see both amounts when you register.' },
+  { q: 'What does it cost?', a: 'SIWES and IT students get 20% off tuition, plus a one-off administrative fee. You’ll see both amounts on the enrolment form.' },
   { q: 'Do you sign logbooks?', a: 'Yes. Submit your logbook every week and we review your entries before signing them.' },
   { q: 'Do I need my own laptop?', a: 'A laptop is strongly recommended, so you can practise between classes and keep your projects.' },
 ]
 
 const start: Record<Exclude<ProgrammeId, 'ai'>, string> = {
+  cs: 'No. Cybersecurity starts with everyday habits, such as passwords and spotting scams, and builds up week by week.',
+  dm: 'No. Digital Marketing starts with knowing your customer and builds up to a campaign you plan yourself.',
   fe: 'No. Front-End starts from your very first web page and builds up week by week.',
   da: 'No. Data Analysis starts with Excel basics and builds up to Power BI dashboards.',
   ux: 'No. UI/UX starts with how people use products, then teaches Figma step by step.',
 }
 const finish: Record<Exclude<ProgrammeId, 'ai'>, string> = {
+  cs: 'A personal security plan you can explain, the tasks you completed each week, and a PractiCode Academy certificate of completion.',
+  dm: 'A campaign plan for a real small business, the content you made each week, and a PractiCode Academy certificate of completion.',
   fe: 'A published capstone website, the projects you built each week, and a PractiCode Academy certificate of completion.',
   da: 'A Power BI dashboard built on real data, the reports you made each week, and a PractiCode Academy certificate of completion.',
   ux: 'A clickable Figma prototype you have tested with real people, the case study behind it, and a PractiCode Academy certificate of completion.',
@@ -37,7 +41,7 @@ export function programmeFaq(id: ProgrammeId): QA[] {
     return [
       { q: 'When does AI & Machine Learning open?', a: 'We haven’t set a date yet. Leave your details on this page and we’ll message you as soon as enrolment opens.' },
       { q: 'What will I need to know first?', a: 'We’ll share the entry requirements when enrolment opens. Comfort with a computer and basic maths will help.' },
-      { q: 'Can I start another programme now?', a: 'Yes. Front-End, Data Analysis and UI/UX are all enrolling now, onsite in Ibadan or online.' },
+      { q: 'Can I start another programme now?', a: 'Yes. Front-End, Data Analysis, UI/UX, Cybersecurity and Digital Marketing are all open, onsite in Ibadan or online.' },
       { q: 'Will it run online too?', a: 'Yes. Like our other programmes, it will run onsite in Ibadan and live online.' },
     ]
   return [
