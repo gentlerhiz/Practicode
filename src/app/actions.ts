@@ -193,7 +193,7 @@ export async function register(fd: FormData): Promise<FormResult> {
     if (!catalogue.live.includes(v.course)) return { ok: false, errors: { course: 'That course isn’t open for registration right now.' } }
 
     const email = v.email.toLowerCase()
-    const { error } = await admin()
+    const { data: saved, error } = await admin()
       .from('academy_registrations')
       .insert({
         cohort_id: cohort.id,
@@ -208,13 +208,15 @@ export async function register(fd: FormData): Promise<FormResult> {
         heard_from: v.heardFrom ?? null,
         consent: true,
       })
+      .select('id')
+      .single<{ id: string }>()
     if (error) {
       if (error.code === '23505') return { ok: false, errors: { email: `This email is already registered for ${cohort.name}. We’ll be in touch on WhatsApp.` } }
       throw new Error(error.message)
     }
     // The registration is saved; a failed email must not undo it.
     try {
-      await sendRegistrationEmails({ ...v, email }, cohort.name)
+      await sendRegistrationEmails({ ...v, email, id: saved?.id }, cohort.name)
     } catch (mailError) {
       console.error('Registration emails failed', mailError)
     }
