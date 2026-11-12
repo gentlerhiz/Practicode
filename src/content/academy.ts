@@ -33,7 +33,7 @@ export const partners = [
   { name: 'Google Developer Groups', src: '/images/partners/gdg.svg', width: 220, height: 40 },
   { name: 'Muslim Tech Expo', src: '/images/partners/mte.png', width: 160, height: 56 },
   { name: 'Bimaplan Consult', src: '/images/partners/bimaplan.png', width: 156, height: 48 },
-  { name: 'ISF Forum' },
+  { name: 'ISF Forum', src: '/images/partners/isf-forum.jpeg', width: 1176, height: 518 },
   // { name: 'Zeeh Africa', src: '/images/partners/zeeh.png', width: 140, height: 40 },
 ]
 
