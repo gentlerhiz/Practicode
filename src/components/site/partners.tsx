@@ -12,7 +12,11 @@ export function Partners({ title = 'Partners and communities we work with' }: { 
             key={p.name}
             className="flex h-[104px] w-[72%] shrink-0 items-center justify-center rounded-3xl border border-line bg-white px-6 tab:w-auto"
           >
-            <Image src={p.src} alt={p.name} width={p.width} height={p.height} className="h-auto max-h-12 w-auto max-w-full object-contain" />
+            {p.src ? (
+              <Image src={p.src} alt={p.name} width={p.width} height={p.height} className="h-auto max-h-12 w-auto max-w-full object-contain" />
+            ) : (
+              <span className="text-center font-display text-lg font-extrabold tracking-[-0.03em] text-ink">{p.name}</span>
+            )}
           </li>
         ))}
       </ul>
