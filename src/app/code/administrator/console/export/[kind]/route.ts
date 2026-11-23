@@ -1,5 +1,6 @@
 import { toCsv } from '@/lib/admin/csv'
 import { EnrolmentFilter, MessageFilter, RegistrationFilter, WaitlistFilter } from '@/lib/admin/schemas'
+import { waitlistCourseName } from '@/lib/admin/format'
 import { requireAdmin } from '@/lib/server/admin/auth'
 import { listCohorts, listCourses, listEnrolments, listMessages, listRegistrations, listWaitlist, pickCohort } from '@/lib/server/admin/data'
 import { logExport } from '@/lib/server/admin/write'
@@ -78,7 +79,7 @@ export async function GET(request: Request, ctx: RouteContext<'/code/administrat
   } else if (kind === 'waitlist') {
     const f = WaitlistFilter.parse(query)
     const { rows } = await listWaitlist(f, 'all')
-    csv = toCsv(['created_at', 'course', 'name', 'email', 'whatsapp', 'id'], rows)
+    csv = toCsv(['created_at', 'course', 'name', 'email', 'whatsapp', 'id'], rows.map((r) => ({ ...r, course: waitlistCourseName(r.course) })))
     rowsOut = rows.length
     filter = f
   } else {

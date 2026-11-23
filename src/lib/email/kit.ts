@@ -187,7 +187,7 @@ export function layout(brand: Brand, e: EmailParts) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px">
 <tr><td style="padding:0 4px 20px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-<td><a href="${esc(brand.siteUrl)}" style="text-decoration:none"><img src="${esc(brand.logoUrl)}" width="200" height="22" alt="PractiCode Academy" style="display:block;width:200px;height:auto;color:${C.ink};font-family:${SANS};font-size:16px;font-weight:700"></a></td>
+<td><a href="${esc(brand.siteUrl)}" style="color:${C.ink};font-family:${DISPLAY};font-size:18px;line-height:24px;font-weight:800;text-decoration:none">PractiCode Academy</a></td>
 <td align="right" class="pc-hide-sm" style="font-family:${SANS};font-size:13px;line-height:18px"><a href="${esc(brand.siteUrl)}" style="color:${C.muted};text-decoration:none">practicode.tech</a></td>
 </tr></table>
 </td></tr>

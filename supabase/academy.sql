@@ -42,7 +42,7 @@ alter table public.academy_messages enable row level security;
 create table if not exists public.academy_waitlist (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
-  course text not null check (course in ('ai')),
+  course text not null check (course in ('ai', 'ai_ml')),
   name text not null check (char_length(name) between 2 and 120),
   email text not null check (char_length(email) <= 254),
   whatsapp text check (char_length(whatsapp) <= 20),

@@ -21,11 +21,11 @@ describe('email kit', () => {
     expect(button('Go', 'https://a.test/?a=1&b="2"')).toContain('href="https://a.test/?a=1&amp;b=&quot;2&quot;"')
   })
 
-  it('builds a responsive layout with the logo, a preheader and the footer', () => {
+  it('builds a responsive layout with the text header, a preheader and the footer', () => {
     const html = layout(brand, { preheader: 'Your place is saved', title: 'Welcome', body: details([['Course', 'Data Analysis']]), reason: 'Because' })
     expect(html).toContain('name="viewport"')
     expect(html).toContain('@media (max-width:620px)')
-    expect(html).toContain(brand.logoUrl)
+    expect(html).toContain('PractiCode Academy')
     expect(html).toContain('Your place is saved')
     expect(html).toContain('Company registration no. 8415811')
   })

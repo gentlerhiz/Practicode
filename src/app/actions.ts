@@ -3,6 +3,7 @@
 import { randomBytes, randomUUID } from 'node:crypto'
 import { headers } from 'next/headers'
 import {
+  AiRegistrationFields,
   EnrolFields,
   fieldErrors,
   MessageFields,
@@ -14,7 +15,7 @@ import {
   WaitlistFields,
 } from '@/lib/enrolment'
 import { getCatalogueFresh, getCurrentCohortFresh } from '@/lib/server/catalogue'
-import { sendEnrolmentEmails, sendMessageEmail, sendRegistrationEmails, sendWaitlistEmail } from '@/lib/server/email'
+import { sendAiRegistrationEmails, sendEnrolmentEmails, sendMessageEmail, sendRegistrationEmails, sendWaitlistEmail } from '@/lib/server/email'
 import { canStore, paystackEnabled } from '@/lib/server/env'
 import { startPayment } from '@/lib/server/paystack'
 import { admin, UPLOADS_BUCKET, type EnrolmentRow } from '@/lib/server/supabase'
@@ -172,6 +173,36 @@ export async function joinWaitlist(fd: FormData): Promise<FormResult> {
     return { ok: true }
   } catch (error) {
     console.error('Waitlist failed', error)
+    return { ok: false, errors: {}, message: 'That didn’t save. Please try again, or message us on WhatsApp.' }
+  }
+}
+
+export async function registerAiCourse(fd: FormData): Promise<FormResult> {
+  if (isBot(fd)) return { ok: true }
+  if (!canStore()) return unavailable
+  const parsed = AiRegistrationFields.safeParse(fields(fd))
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error), message: 'Please check the highlighted fields.' }
+  const r = parsed.data
+  try {
+    const waitlist = await admin()
+      .from('academy_waitlist')
+      .upsert(
+        { course: 'ai', name: r.fullName, email: r.email.toLowerCase(), whatsapp: r.whatsapp },
+        { onConflict: 'course,email' },
+      )
+    if (waitlist.error) throw new Error(waitlist.error.message)
+
+    await sendAiRegistrationEmails({
+      name: r.fullName,
+      email: r.email.toLowerCase(),
+      whatsapp: r.whatsapp,
+      city: r.city,
+      state: r.state,
+      message: r.message,
+    })
+    return { ok: true }
+  } catch (error) {
+    console.error('AI course registration failed', error)
     return { ok: false, errors: {}, message: 'That didn’t save. Please try again, or message us on WhatsApp.' }
   }
 }

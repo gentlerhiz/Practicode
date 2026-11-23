@@ -3,10 +3,10 @@ import { ConfirmDelete } from '@/components/admin/forms'
 import { FilterBar } from '@/components/admin/filters'
 import { Empty, PageHead, Pager, TableFrame, td, th } from '@/components/admin/ui'
 import { Icon } from '@/components/ui/icon'
-import { waLink, when } from '@/lib/admin/format'
+import { waitlistCourseName, waLink, when } from '@/lib/admin/format'
 import { filterQuery, WaitlistFilter } from '@/lib/admin/schemas'
 import { requireAdmin } from '@/lib/server/admin/auth'
-import { listCourses, listWaitlist, PAGE_SIZE } from '@/lib/server/admin/data'
+import { listWaitlist, PAGE_SIZE } from '@/lib/server/admin/data'
 import { removeWaitlistEntry } from '../../actions'
 
 export const metadata = { title: 'Waitlist' }
@@ -16,8 +16,7 @@ const BASE = '/code/administrator/console/waitlist'
 export default async function WaitlistPage({ searchParams }: PageProps<'/code/administrator/console/waitlist'>) {
   await requireAdmin()
   const f = WaitlistFilter.parse(await searchParams)
-  const [{ rows, total }, courses] = await Promise.all([listWaitlist(f, { limit: PAGE_SIZE, offset: (f.page - 1) * PAGE_SIZE }), listCourses()])
-  const courseName = (id: string) => courses.find((c) => c.id === id)?.title ?? id
+  const { rows, total } = await listWaitlist(f, { limit: PAGE_SIZE, offset: (f.page - 1) * PAGE_SIZE })
 
   return (
     <>
@@ -55,7 +54,7 @@ export default async function WaitlistPage({ searchParams }: PageProps<'/code/ad
                     <span className="font-semibold text-ink">{w.name}</span>
                     <div className="text-xs text-ink-muted">{w.email}</div>
                   </td>
-                  <td className={td}>{courseName(w.course)}</td>
+                  <td className={td}>{waitlistCourseName(w.course)}</td>
                   <td className={`${td} whitespace-nowrap`}>
                     {wa ? (
                       <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-da-text hover:underline">

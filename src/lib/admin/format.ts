@@ -43,6 +43,12 @@ export const waLink = (raw: string | null | undefined) => {
   return n ? `https://wa.me/${n}` : null
 }
 
+export const waitlistCourseName = (id: string) => {
+  if (id === 'ai') return 'AI Video Creation'
+  if (id === 'ai_ml') return 'AI & Machine Learning'
+  return id
+}
+
 /** Enrolment statuses in plain words. "Paid online" and "Transfer confirmed" both mean the place is secured. */
 const STATUS_WORDS: Record<string, string> = {
   awaiting_payment: 'Awaiting payment',

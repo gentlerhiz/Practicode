@@ -377,3 +377,107 @@ export async function sendWaitlistEmail(w: { name: string; email: string; whatsa
     text: plain([`${w.name} joined the AI & ML waitlist`, `Email: ${w.email}`, `WhatsApp: ${w.whatsapp || '—'}`, '', `Console: ${consoleUrl}`], brand),
   })
 }
+
+export async function sendAiRegistrationEmails(r: {
+  name: string
+  email: string
+  whatsapp: string
+  city: string
+  state: string
+  message?: string
+}) {
+  const first = firstName(r.name)
+  const consoleUrl = absoluteUrl(`${CONSOLE}/waitlist`)
+  const whatsappUrl = `${site.whatsapp}?text=${encodeURIComponent('Hello PractiCode Academy! I just registered for the AI Video Creation course. I would like to make payment and reserve my place.')}`
+
+  const learnerHtml = layout(brand, {
+    preheader: 'Your AI Video Creation registration is received. Here are your next steps.',
+    eyebrow: 'AI Video Creation',
+    eyebrowTone: 'success',
+    title: `You’re registered, ${first}.`,
+    body:
+      p(`Thank you for registering for <strong>AI Video Creation</strong>. We’re excited to help you turn simple ideas into professional AI videos.`) +
+      courseCard({
+        id: 'ai',
+        title: 'AI Video Creation',
+        meta: 'Beginner friendly · Starts 6 December 2026',
+        summary: 'Learn AI video fundamentals, POV UGC videos, product videos, prompt engineering, editing and sound design.',
+      }) +
+      h2('Reserve your place') +
+      steps([
+        { title: 'Message us on WhatsApp', html: `Chat with PractiCode Academy on <strong>${esc(site.phones[0]!)}</strong> and say you’ve registered for AI Video Creation.` },
+        { title: 'Make your payment', html: 'Early bird fee: <strong>₦10,000</strong>. Late bird fee: <strong>₦20,000</strong>. We’ll confirm the correct payment option with you.' },
+        { title: 'Get your class details', html: 'After payment, we’ll share the class timetable and any preparation you need before 6 December 2026.' },
+      ]) +
+      button('Message Us on WhatsApp', whatsappUrl) +
+      signOff('We can’t wait to see what you create,') +
+      spacer +
+      whatsappHelp(),
+    reason: `You’re getting this because you registered for AI Video Creation at practicode.tech with ${r.email}.`,
+  })
+  const learnerText = plain(
+    [
+      `You’re registered, ${first}.`,
+      '',
+      'Thank you for registering for AI Video Creation.',
+      'Course: AI Video Creation',
+      'Start date: 6 December 2026',
+      'Early bird fee: ₦10,000',
+      'Late bird fee: ₦20,000',
+      '',
+      'Next steps:',
+      `1. Message us on WhatsApp: ${whatsappUrl}`,
+      '2. Make your payment and reserve your place.',
+      '3. Receive your class timetable and preparation details.',
+      '',
+      'We can’t wait to see what you create.',
+      'Idris Akande Rasaq, Founder, PractiCode Academy',
+      '',
+      `Questions? Reply to this email or WhatsApp us on ${site.phones[0]}.`,
+    ],
+    brand,
+  )
+
+  const academyHtml = layout(brand, {
+    preheader: `${r.name} registered for AI Video Creation.`,
+    eyebrow: 'New AI course registration',
+    eyebrowTone: 'success',
+    title: `New registration: ${r.name}`,
+    body:
+      p(`${esc(r.name)} has registered for <strong>AI Video Creation</strong>.`) +
+      details([
+        ['Course', esc('AI Video Creation')],
+        ['Email', mailto(r.email)],
+        ['WhatsApp', esc(r.whatsapp)],
+        ['City and state', `${esc(r.city)}, ${esc(r.state)}`],
+        ['Start date', esc('6 December 2026')],
+        ['Early bird fee', esc('₦10,000')],
+        ['Late bird fee', esc('₦20,000')],
+        ['Learner note', esc(r.message || 'No additional note')],
+      ]) +
+      button('Open the registration list', consoleUrl) +
+      p('Reply to this email to contact the learner directly.', { muted: true, size: 14, last: true }),
+    reason: 'Sent to the academy inbox for a new AI Video Creation registration on practicode.tech.',
+  })
+  const academyText = plain(
+    [
+      `New AI Video Creation registration: ${r.name}`,
+      `Course: AI Video Creation`,
+      `Email: ${r.email}`,
+      `WhatsApp: ${r.whatsapp}`,
+      `City and state: ${r.city}, ${r.state}`,
+      'Start date: 6 December 2026',
+      'Early bird fee: ₦10,000',
+      'Late bird fee: ₦20,000',
+      `Learner note: ${r.message || 'No additional note'}`,
+      '',
+      `Open the registration list: ${consoleUrl}`,
+    ],
+    brand,
+  )
+
+  await Promise.all([
+    send({ to: r.email, subject: `You’re registered, ${first}. Next steps for AI Video Creation`, html: learnerHtml, text: learnerText, replyTo: site.email }),
+    send({ to: serverEnv.inbox, subject: `New AI Video Creation registration: ${r.name}`, html: academyHtml, text: academyText, replyTo: r.email }),
+  ])
+}

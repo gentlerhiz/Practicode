@@ -31,7 +31,7 @@ export function NotifyForm({ course }: { course: ProgrammeId }) {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
-    fd.set('course', course)
+    fd.set('course', course === 'ai' ? 'ai_ml' : course)
     startTransition(async () => {
       const r = await joinWaitlist(fd)
       if (r.ok) setDone(true)

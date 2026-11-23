@@ -90,10 +90,19 @@ export const MessageFields = z.object({
 })
 
 export const WaitlistFields = z.object({
-  course: z.literal('ai'),
+  course: z.enum(['ai', 'ai_ml']),
   name: trimmed(120).min(2, 'Enter your name.'),
   email: z.email('Enter an email address like you@example.com.').max(254),
   whatsapp: z.union([z.literal(''), phone]).optional(),
+})
+
+export const AiRegistrationFields = z.object({
+  fullName: z.string({ error: 'Enter your full name.' }).trim().max(120).min(2, 'Enter your full name.'),
+  email: z.email({ error: 'Enter an email address like you@example.com.' }).max(254),
+  whatsapp: phone,
+  city: z.string({ error: 'Enter your city or town.' }).trim().max(80).min(2, 'Enter your city or town.'),
+  state: z.enum(REGISTRATION_STATES, 'Choose your state.'),
+  message: trimmed(4000).optional(),
 })
 
 /** Field errors keyed by field name, the first message for each. */
